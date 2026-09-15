@@ -3,28 +3,28 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
-  <title>Happy Birthday, Gorgeous ✨</title>
+  <title>Happy Birthday, Gorgeous ❤️✨</title>
 
-  <!-- Google Luxury Fonts (High Legibility & Decorative) -->
+  <!-- Google Luxury & Calligraphy Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;900&family=Cormorant+Garamond:ital,wght@0,600;0,700;1,600&family=Playfair+Display:ital,wght@0,700;0,900;1,600&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,600&family=Playfair+Display:ital,wght@0,700;0,900;1,600&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
   
   <!-- Canvas Confetti CDN -->
   <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 
   <style>
     :root {
-      --bg-vivid-core: #13031f;
-      --aurora-plum: #420857;
-      --aurora-violet: #6b1487;
-      --aurora-amber: #e85d04;
-      --vivid-gold: #ffe49e;
+      --ruby-red: #d90429;
+      --crimson-heart: #ef233c;
+      --vivid-rose: #ff4d6d;
+      --candy-blush: #ff758f;
+      --soft-peach: #ffb3c1;
       --pure-gold: #ffbe0b;
-      --rose-pearl: #f7cad0;
-      --card-bg: rgba(22, 6, 36, 0.94);
-      --card-border: rgba(255, 228, 158, 0.45);
-      --gold-glow: 0 0 25px rgba(255, 190, 11, 0.45);
+      --card-white: rgba(255, 255, 255, 0.94);
+      --card-border: rgba(239, 35, 60, 0.35);
+      --wine-text: #4a001a;
+      --sub-text: #6b1432;
     }
 
     * {
@@ -36,21 +36,21 @@
     }
 
     body {
-      /* Vivid Living Aurora Gradient Background */
+      /* Bright, Loving, Non-Dim Pink Ambient Gradient */
       background: 
-        radial-gradient(circle at 50% 0%, #680d85 0%, transparent 45%),
-        radial-gradient(circle at 100% 30%, #50085a 0%, transparent 50%),
-        radial-gradient(circle at 0% 70%, #7b1274 0%, transparent 50%),
-        linear-gradient(180deg, #1b042b 0%, #2f0842 35%, #180326 70%, #0d0117 100%);
-      color: #ffffff;
+        radial-gradient(circle at 20% 15%, #ffd1dc 0%, transparent 45%),
+        radial-gradient(circle at 80% 25%, #ffb3c1 0%, transparent 50%),
+        radial-gradient(circle at 50% 65%, #ff758f 0%, transparent 55%),
+        linear-gradient(175deg, #ffc2d1 0%, #ff8fa3 35%, #ff4d6d 75%, #c9184a 100%);
+      color: var(--wine-text);
       font-family: 'Plus Jakarta Sans', sans-serif;
       overflow-x: hidden;
       min-height: 100vh;
       position: relative;
     }
 
-    /* Ambient Particle Canvas */
-    #ambient-canvas {
+    /* Red Hearts Canvas */
+    #hearts-canvas {
       position: fixed;
       top: 0;
       left: 0;
@@ -66,7 +66,7 @@
     #gift-portal {
       position: fixed;
       inset: 0;
-      background: radial-gradient(circle at center, #420b57 0%, #0a0114 90%);
+      background: radial-gradient(circle at center, #ff758f 0%, #a4133c 90%);
       z-index: 99999;
       display: flex;
       flex-direction: column;
@@ -86,65 +86,64 @@
     .gift-box {
       width: 100%;
       max-width: 330px;
-      background: linear-gradient(150deg, #370c4f, #150324);
-      border: 2px solid var(--vivid-gold);
+      background: #ffffff;
+      border: 3px solid var(--ruby-red);
       border-radius: 28px;
-      box-shadow: 0 25px 65px rgba(0, 0, 0, 0.95), 0 0 35px rgba(255, 190, 11, 0.4);
+      box-shadow: 0 25px 65px rgba(164, 19, 60, 0.6), 0 0 35px rgba(255, 255, 255, 0.6);
       display: flex;
       flex-direction: column;
       align-items: center;
       text-align: center;
       padding: 2.4rem 1.8rem;
       cursor: pointer;
-      animation: phonePulse 2.8s infinite ease-in-out alternate;
+      animation: heartBeatBox 2.8s infinite ease-in-out alternate;
     }
 
     .gift-seal {
-      width: 76px;
-      height: 76px;
+      width: 80px;
+      height: 80px;
       border-radius: 50%;
-      background: radial-gradient(circle at 35% 35%, #ffe49e, #c78d06);
-      box-shadow: 0 0 28px rgba(255, 228, 158, 0.8);
+      background: radial-gradient(circle at 35% 35%, #ff4d6d, #d90429);
+      box-shadow: 0 0 28px rgba(217, 4, 41, 0.7);
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 2.1rem;
-      margin-bottom: 1.4rem;
+      font-size: 2.2rem;
+      margin-bottom: 1.2rem;
     }
 
     .gift-title {
       font-family: 'Playfair Display', serif;
       font-size: 1.95rem;
-      font-weight: 700;
-      color: #ffffff;
+      font-weight: 900;
+      color: var(--wine-text);
       line-height: 1.2;
-      margin-bottom: 0.6rem;
-      text-shadow: 0 2px 12px rgba(0,0,0,0.9);
+      margin-bottom: 0.5rem;
     }
 
     .gift-subtitle {
       font-family: 'Cormorant Garamond', serif;
       font-size: 1.25rem;
-      font-weight: 600;
-      color: var(--vivid-gold);
+      font-weight: 700;
+      color: var(--crimson-heart);
       font-style: italic;
       line-height: 1.5;
     }
 
     .tap-btn-pill {
-      margin-top: 1.8rem;
-      background: linear-gradient(135deg, var(--pure-gold), var(--aurora-amber));
-      color: #0b0114;
+      margin-top: 1.6rem;
+      background: linear-gradient(135deg, var(--crimson-heart), var(--ruby-red));
+      color: #ffffff;
       font-size: 0.88rem;
       letter-spacing: 2px;
       padding: 0.85rem 1.9rem;
       border-radius: 999px;
       text-transform: uppercase;
       font-weight: 800;
-      box-shadow: 0 8px 25px rgba(255, 190, 11, 0.6);
+      box-shadow: 0 8px 25px rgba(217, 4, 41, 0.5);
     }
 
-    /* Main Phone Container */
+    /* Main Container */
     .phone-container {
       position: relative;
       z-index: 1;
@@ -155,7 +154,7 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 4rem;
+      gap: 3.8rem;
     }
 
     /* Top Audio Pill (Mobile) */
@@ -163,30 +162,29 @@
       position: fixed;
       top: 14px;
       right: 14px;
-      background: rgba(18, 4, 30, 0.96);
-      border: 1.5px solid var(--vivid-gold);
-      backdrop-filter: blur(16px);
+      background: #ffffff;
+      border: 2px solid var(--ruby-red);
       padding: 0.45rem 1rem;
       border-radius: 999px;
       display: flex;
       align-items: center;
       gap: 0.6rem;
       z-index: 100;
-      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.85);
+      box-shadow: 0 8px 25px rgba(164, 19, 60, 0.4);
       cursor: pointer;
     }
 
     .pulse-disc {
-      width: 15px;
-      height: 15px;
+      width: 16px;
+      height: 16px;
       border-radius: 50%;
-      background: var(--pure-gold);
-      box-shadow: 0 0 12px var(--pure-gold);
+      background: var(--ruby-red);
+      box-shadow: 0 0 12px var(--crimson-heart);
       animation: spin 3s linear infinite;
     }
 
     /* =========================================================
-       HERO: HIGH CONTRAST & VISIBILITY (NO BLENDING)
+       HERO: CRISP & HIGH VISIBILITY
        ========================================================= */
     .hero-banner {
       text-align: center;
@@ -199,36 +197,36 @@
       gap: 0.5rem;
       padding: 0.5rem 1.4rem;
       border-radius: 999px;
-      background: rgba(255, 228, 158, 0.18);
-      border: 1.5px solid var(--vivid-gold);
+      background: #ffffff;
+      border: 1.5px solid var(--ruby-red);
       font-size: 0.78rem;
       letter-spacing: 2px;
       text-transform: uppercase;
-      color: #ffffff;
+      color: var(--ruby-red);
       margin-bottom: 1.1rem;
       font-weight: 800;
-      box-shadow: var(--gold-glow);
+      box-shadow: 0 4px 15px rgba(217, 4, 41, 0.25);
     }
 
     .hero-banner h1 {
       font-family: 'Playfair Display', serif;
-      font-size: clamp(2.4rem, 9.8vw, 3.3rem);
+      font-size: clamp(2.4rem, 10vw, 3.4rem);
       font-weight: 900;
       line-height: 1.2;
-      margin-bottom: 0.8rem;
-      color: var(--vivid-gold);
-      text-shadow: 0 4px 20px rgba(0, 0, 0, 0.95), 0 0 30px rgba(255, 190, 11, 0.5);
+      margin-bottom: 0.6rem;
+      color: #ffffff;
+      text-shadow: 0 3px 15px rgba(164, 19, 60, 0.8), 0 2px 4px rgba(0,0,0,0.4);
     }
 
     .hero-banner p {
       font-family: 'Cormorant Garamond', serif;
       font-size: 1.35rem;
-      font-weight: 600;
+      font-weight: 700;
       color: #ffffff;
       line-height: 1.6;
       font-style: italic;
       padding: 0 0.5rem;
-      text-shadow: 0 2px 12px rgba(0,0,0,0.9);
+      text-shadow: 0 2px 10px rgba(164, 19, 60, 0.8);
     }
 
     /* =========================================================
@@ -236,12 +234,11 @@
        ========================================================= */
     .lyrics-container {
       width: 100%;
-      background: var(--card-bg);
-      border: 1.5px solid var(--card-border);
-      backdrop-filter: blur(20px);
-      border-radius: 26px;
+      background: var(--card-white);
+      border: 2px solid var(--card-border);
+      border-radius: 28px;
       padding: 1.6rem 1.2rem;
-      box-shadow: 0 20px 45px rgba(0, 0, 0, 0.75);
+      box-shadow: 0 20px 45px rgba(164, 19, 60, 0.35);
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -253,14 +250,14 @@
       justify-content: space-between;
       width: 100%;
       padding-bottom: 0.7rem;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+      border-bottom: 1.5px solid rgba(217, 4, 41, 0.15);
       margin-bottom: 0.6rem;
     }
 
     .lyrics-header-title {
       font-size: 0.78rem;
       letter-spacing: 2px;
-      color: var(--vivid-gold);
+      color: var(--ruby-red);
       text-transform: uppercase;
       font-weight: 800;
     }
@@ -289,9 +286,9 @@
     .lyric-line {
       font-family: 'Cormorant Garamond', serif;
       font-size: 1.3rem;
-      font-weight: 600;
+      font-weight: 700;
       font-style: italic;
-      color: rgba(255, 255, 255, 0.45);
+      color: rgba(74, 0, 26, 0.4);
       text-align: center;
       transition: all 0.35s ease;
       cursor: pointer;
@@ -304,10 +301,10 @@
     .lyric-line.active {
       color: #ffffff;
       font-size: 1.55rem;
-      font-weight: 700;
-      background: linear-gradient(135deg, rgba(255, 228, 158, 0.3), rgba(232, 93, 4, 0.3));
-      border: 1.5px solid var(--vivid-gold);
-      box-shadow: 0 0 20px rgba(255, 190, 11, 0.45);
+      font-weight: 800;
+      background: linear-gradient(135deg, var(--crimson-heart), var(--ruby-red));
+      border: 1.5px solid var(--ruby-red);
+      box-shadow: 0 0 20px rgba(217, 4, 41, 0.45);
       transform: scale(1.04);
     }
 
@@ -337,9 +334,9 @@
       inset: 0;
       border-radius: 28px;
       overflow: hidden;
-      background: #0d0118;
-      border: 2px solid var(--card-border);
-      box-shadow: 0 22px 55px rgba(0, 0, 0, 0.85);
+      background: #fff0f3;
+      border: 3px solid #ffffff;
+      box-shadow: 0 22px 55px rgba(164, 19, 60, 0.4);
       opacity: 0;
       transform: scale(0.95);
       transition: all 0.65s cubic-bezier(0.2, 0.9, 0.25, 1);
@@ -359,7 +356,7 @@
       width: calc(100% + 24px);
       height: calc(100% + 24px);
       object-fit: cover;
-      filter: blur(26px) brightness(0.4);
+      filter: blur(26px) brightness(0.65);
       z-index: 1;
     }
 
@@ -377,9 +374,9 @@
       position: absolute;
       top: 16px;
       left: 16px;
-      background: rgba(18, 4, 30, 0.92);
-      border: 1.5px solid var(--vivid-gold);
-      color: #ffffff;
+      background: #ffffff;
+      border: 1.5px solid var(--ruby-red);
+      color: var(--ruby-red);
       padding: 0.35rem 0.9rem;
       border-radius: 999px;
       font-size: 0.75rem;
@@ -387,15 +384,15 @@
       text-transform: uppercase;
       font-weight: 800;
       z-index: 5;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.8);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
     }
 
     .swipe-hint {
       position: absolute;
       top: 16px;
       right: 16px;
-      background: rgba(255, 255, 255, 0.22);
-      color: #fff;
+      background: rgba(255, 255, 255, 0.85);
+      color: var(--ruby-red);
       padding: 0.35rem 0.8rem;
       border-radius: 999px;
       font-size: 0.7rem;
@@ -403,6 +400,7 @@
       z-index: 5;
       backdrop-filter: blur(8px);
       font-weight: 800;
+      border: 1px solid var(--ruby-red);
     }
 
     .deck-caption-box {
@@ -411,7 +409,7 @@
       left: 0;
       width: 100%;
       padding: 2.2rem 1.4rem 1.4rem;
-      background: linear-gradient(to top, rgba(10, 2, 22, 0.98) 32%, rgba(10, 2, 22, 0.25) 85%, transparent 100%);
+      background: linear-gradient(to top, rgba(74, 0, 26, 0.98) 32%, rgba(74, 0, 26, 0.3) 85%, transparent 100%);
       display: flex;
       justify-content: space-between;
       align-items: flex-end;
@@ -423,14 +421,14 @@
       font-size: 1.45rem;
       font-weight: 700;
       color: #ffffff;
-      text-shadow: 0 2px 10px rgba(0,0,0,0.95);
+      text-shadow: 0 2px 10px rgba(0,0,0,0.8);
     }
 
     .deck-sub {
       font-family: 'Cormorant Garamond', serif;
       font-size: 1.18rem;
       font-weight: 600;
-      color: var(--vivid-gold);
+      color: #ffd1dc;
       font-style: italic;
       margin-top: 2px;
     }
@@ -438,7 +436,10 @@
     .deck-counter {
       font-family: 'Playfair Display', serif;
       font-size: 1rem;
-      color: var(--rose-pearl);
+      color: #ffffff;
+      background: var(--ruby-red);
+      padding: 0.2rem 0.6rem;
+      border-radius: 8px;
       letter-spacing: 1px;
       font-weight: 800;
     }
@@ -452,9 +453,9 @@
     }
 
     .nav-btn {
-      background: rgba(42, 11, 64, 0.95);
-      border: 1.5px solid var(--vivid-gold);
-      color: var(--vivid-gold);
+      background: #ffffff;
+      border: 2px solid var(--ruby-red);
+      color: var(--ruby-red);
       width: 44px;
       height: 44px;
       border-radius: 50%;
@@ -463,7 +464,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.7);
+      box-shadow: 0 4px 15px rgba(217, 4, 41, 0.35);
     }
 
     .deck-dots {
@@ -474,7 +475,7 @@
     .dot {
       width: 8px;
       height: 8px;
-      background: rgba(255, 255, 255, 0.35);
+      background: rgba(255, 255, 255, 0.55);
       border-radius: 50%;
       transition: all 0.3s ease;
     }
@@ -482,8 +483,8 @@
     .dot.active {
       width: 24px;
       border-radius: 12px;
-      background: var(--vivid-gold);
-      box-shadow: 0 0 10px var(--vivid-gold);
+      background: #ffffff;
+      box-shadow: 0 0 10px rgba(255, 255, 255, 0.9);
     }
 
     /* =========================================================
@@ -491,12 +492,11 @@
        ========================================================= */
     .video-spotlight {
       width: 100%;
-      background: var(--card-bg);
-      border: 1.5px solid var(--card-border);
-      backdrop-filter: blur(20px);
-      border-radius: 26px;
+      background: var(--card-white);
+      border: 2px solid var(--card-border);
+      border-radius: 28px;
       padding: 1.6rem 1.2rem;
-      box-shadow: 0 20px 45px rgba(0, 0, 0, 0.75);
+      box-shadow: 0 20px 45px rgba(164, 19, 60, 0.35);
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -513,14 +513,14 @@
     .video-title {
       font-family: 'Playfair Display', serif;
       font-size: 1.45rem;
-      font-weight: 700;
-      color: #ffffff;
+      font-weight: 900;
+      color: var(--wine-text);
     }
 
     .rotate-btn {
-      background: rgba(255, 228, 158, 0.18);
-      border: 1.5px solid var(--vivid-gold);
-      color: var(--vivid-gold);
+      background: #ffffff;
+      border: 1.5px solid var(--ruby-red);
+      color: var(--ruby-red);
       padding: 0.45rem 1rem;
       border-radius: 999px;
       font-size: 0.75rem;
@@ -536,7 +536,7 @@
       border-radius: 18px;
       overflow: hidden;
       background: #000;
-      border: 1px solid rgba(255, 255, 255, 0.25);
+      border: 2px solid var(--card-border);
       position: relative;
       display: flex;
       align-items: center;
@@ -565,11 +565,11 @@
     .cake-prompt {
       font-family: 'Cormorant Garamond', serif;
       font-size: 1.45rem;
-      font-weight: 600;
-      color: var(--vivid-gold);
+      font-weight: 700;
+      color: #ffffff;
       font-style: italic;
       text-align: center;
-      text-shadow: 0 2px 10px rgba(0,0,0,0.8);
+      text-shadow: 0 2px 10px rgba(164, 19, 60, 0.8);
     }
 
     .noble-cake {
@@ -586,12 +586,9 @@
 
     .flame-core {
       position: absolute;
-      top: -20px;
-      width: 18px;
-      height: 28px;
-      background: radial-gradient(ellipse at bottom, #fff 15%, var(--pure-gold) 45%, var(--aurora-amber) 85%);
-      border-radius: 50% 50% 35% 35%;
-      filter: drop-shadow(0 0 18px var(--pure-gold));
+      top: -24px;
+      font-size: 2rem;
+      filter: drop-shadow(0 0 16px var(--ruby-red));
       animation: flameWobble 0.16s infinite alternate;
       transition: all 0.4s ease;
     }
@@ -604,39 +601,38 @@
     .candle-pillar {
       width: 10px;
       height: 40px;
-      background: repeating-linear-gradient(45deg, #fff, #fff 5px, var(--pure-gold) 5px, var(--pure-gold) 10px);
+      background: repeating-linear-gradient(45deg, #fff, #fff 5px, var(--ruby-red) 5px, var(--ruby-red) 10px);
       border-radius: 4px;
     }
 
     .cake-tier-1 {
       width: 110px;
       height: 36px;
-      background: linear-gradient(135deg, #4d156b, #2a093d);
+      background: linear-gradient(135deg, #ff758f, #ff4d6d);
       border-radius: 12px 12px 4px 4px;
-      border: 1.5px solid var(--card-border);
+      border: 2px solid #ffffff;
     }
 
     .cake-tier-2 {
       width: 165px;
       height: 45px;
-      background: linear-gradient(135deg, #370c4f, #1b032b);
+      background: linear-gradient(135deg, #c9184a, #800f2f);
       border-radius: 14px;
       margin-top: 3px;
-      border: 1.5px solid var(--card-border);
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.8);
+      border: 2px solid #ffffff;
+      box-shadow: 0 10px 25px rgba(128, 15, 47, 0.4);
     }
 
     /* =========================================================
-       6. REAL WISH BOX (CLEAN START)
+       6. WISH BOX (CLEAN START)
        ========================================================= */
     .wish-section {
       width: 100%;
-      background: var(--card-bg);
+      background: var(--card-white);
       border: 2px solid var(--card-border);
-      backdrop-filter: blur(20px);
       border-radius: 28px;
       padding: 1.8rem 1.4rem;
-      box-shadow: 0 20px 45px rgba(0, 0, 0, 0.8);
+      box-shadow: 0 20px 45px rgba(164, 19, 60, 0.35);
       display: flex;
       flex-direction: column;
       gap: 1.2rem;
@@ -645,8 +641,8 @@
     .wish-header-title {
       font-family: 'Playfair Display', serif;
       font-size: 1.65rem;
-      font-weight: 700;
-      color: #ffffff;
+      font-weight: 900;
+      color: var(--wine-text);
       text-align: center;
       margin-bottom: 0.2rem;
     }
@@ -654,28 +650,29 @@
     .wish-header-sub {
       font-family: 'Cormorant Garamond', serif;
       font-size: 1.2rem;
-      font-weight: 600;
-      color: var(--vivid-gold);
+      font-weight: 700;
+      color: var(--crimson-heart);
       font-style: italic;
       text-align: center;
     }
 
     .wish-input, .wish-textarea {
       width: 100%;
-      background: rgba(14, 3, 24, 0.95);
-      border: 1.5px solid rgba(255, 228, 158, 0.35);
+      background: #ffffff;
+      border: 2px solid rgba(217, 4, 41, 0.25);
       border-radius: 14px;
       padding: 0.75rem 1rem;
-      color: #fff;
+      color: var(--wine-text);
       font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 600;
       font-size: 0.95rem;
       outline: none;
       transition: all 0.3s ease;
     }
 
     .wish-input:focus, .wish-textarea:focus {
-      border-color: var(--vivid-gold);
-      box-shadow: 0 0 15px rgba(255, 228, 158, 0.4);
+      border-color: var(--ruby-red);
+      box-shadow: 0 0 15px rgba(217, 4, 41, 0.25);
     }
 
     .wish-textarea {
@@ -691,8 +688,8 @@
 
     .emoji-tap {
       font-size: 1.4rem;
-      background: rgba(255, 255, 255, 0.1);
-      border: 1px solid rgba(255, 255, 255, 0.25);
+      background: #fff0f3;
+      border: 1.5px solid var(--candy-blush);
       border-radius: 50%;
       width: 42px;
       height: 42px;
@@ -703,9 +700,9 @@
     }
 
     .send-wish-btn {
-      background: linear-gradient(135deg, var(--pure-gold), var(--aurora-amber));
+      background: linear-gradient(135deg, var(--crimson-heart), var(--ruby-red));
       border: none;
-      color: #0b0114;
+      color: #ffffff;
       font-family: 'Plus Jakarta Sans', sans-serif;
       font-weight: 800;
       font-size: 0.95rem;
@@ -714,7 +711,7 @@
       padding: 0.9rem;
       border-radius: 14px;
       cursor: pointer;
-      box-shadow: 0 5px 20px rgba(255, 190, 11, 0.5);
+      box-shadow: 0 5px 20px rgba(217, 4, 41, 0.4);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -732,8 +729,8 @@
     }
 
     .wish-card {
-      background: rgba(14, 3, 24, 0.85);
-      border: 1px solid rgba(255, 228, 158, 0.3);
+      background: #fff0f3;
+      border: 1.5px solid rgba(217, 4, 41, 0.2);
       border-radius: 14px;
       padding: 0.85rem 1rem;
       animation: fadeIn 0.4s ease forwards;
@@ -742,7 +739,7 @@
     .wish-author {
       font-weight: 800;
       font-size: 0.88rem;
-      color: var(--vivid-gold);
+      color: var(--ruby-red);
       display: flex;
       justify-content: space-between;
       margin-bottom: 0.25rem;
@@ -750,14 +747,15 @@
 
     .wish-time {
       font-size: 0.7rem;
-      color: var(--rose-pearl);
+      color: var(--crimson-heart);
       font-weight: 500;
     }
 
     .wish-msg {
       font-size: 0.95rem;
-      color: #ffffff;
+      color: var(--wine-text);
       line-height: 1.45;
+      font-weight: 600;
     }
 
     /* =========================================================
@@ -766,11 +764,11 @@
     .grid-header {
       font-family: 'Playfair Display', serif;
       font-size: 2.15rem;
-      font-weight: 700;
+      font-weight: 900;
       text-align: center;
       color: #ffffff;
       margin-bottom: -2rem;
-      text-shadow: 0 2px 10px rgba(0,0,0,0.8);
+      text-shadow: 0 3px 15px rgba(164, 19, 60, 0.8);
     }
 
     .scrapbook-grid {
@@ -781,12 +779,11 @@
     }
 
     .photo-card {
-      background: var(--card-bg);
-      border: 1.5px solid var(--card-border);
-      backdrop-filter: blur(14px);
+      background: var(--card-white);
+      border: 2px solid var(--card-border);
       border-radius: 24px;
       padding: 14px 14px 18px;
-      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.7);
+      box-shadow: 0 18px 40px rgba(164, 19, 60, 0.35);
     }
 
     .photo-frame-box {
@@ -794,7 +791,7 @@
       height: 380px;
       border-radius: 16px;
       overflow: hidden;
-      background: #0d0118;
+      background: #fff0f3;
       position: relative;
     }
 
@@ -808,10 +805,10 @@
     .photo-card-text {
       font-family: 'Cormorant Garamond', serif;
       font-size: 1.4rem;
-      font-weight: 600;
+      font-weight: 700;
       text-align: center;
       margin-top: 12px;
-      color: var(--vivid-gold);
+      color: var(--ruby-red);
       font-style: italic;
     }
 
@@ -820,20 +817,19 @@
        ========================================================= */
     .parchment-scroll {
       position: relative;
-      background: linear-gradient(145deg, rgba(38, 9, 58, 0.96), rgba(16, 3, 28, 0.98));
-      border: 2px solid var(--vivid-gold);
+      background: #ffffff;
+      border: 3px solid var(--ruby-red);
       border-radius: 28px;
       padding: 3rem 1.6rem 2.5rem;
       width: 100%;
-      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.85), inset 0 0 30px rgba(255, 190, 11, 0.15);
+      box-shadow: 0 25px 60px rgba(164, 19, 60, 0.45);
       text-align: left;
     }
 
-    /* Filigree Ornamental Corners */
     .corner-decor {
       position: absolute;
-      font-size: 1.2rem;
-      color: var(--vivid-gold);
+      font-size: 1.3rem;
+      color: var(--ruby-red);
       line-height: 1;
     }
     .top-left { top: 12px; left: 14px; }
@@ -846,31 +842,30 @@
       top: -24px;
       left: 50%;
       transform: translateX(-50%);
-      width: 48px;
-      height: 48px;
+      width: 50px;
+      height: 50px;
       border-radius: 50%;
-      background: radial-gradient(circle at 35% 35%, #ffd56b, #b27b00);
+      background: radial-gradient(circle at 35% 35%, #ff4d6d, #d90429);
       border: 2px solid #ffffff;
-      box-shadow: 0 0 20px rgba(255, 190, 11, 0.7);
+      box-shadow: 0 0 20px rgba(217, 4, 41, 0.6);
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 1.3rem;
+      font-size: 1.4rem;
     }
 
     .scroll-header {
       font-family: 'Playfair Display', serif;
-      font-size: 1.75rem;
-      font-weight: 700;
-      color: #ffffff;
+      font-size: 1.8rem;
+      font-weight: 900;
+      color: var(--wine-text);
       text-align: center;
-      margin-bottom: 1.2rem;
-      text-shadow: 0 2px 10px rgba(0,0,0,0.8);
+      margin-bottom: 0.8rem;
     }
 
     .scroll-divider {
       text-align: center;
-      color: var(--vivid-gold);
+      color: var(--crimson-heart);
       font-size: 1rem;
       letter-spacing: 4px;
       margin-bottom: 1.4rem;
@@ -879,9 +874,9 @@
     .scroll-body {
       font-family: 'Cormorant Garamond', serif;
       font-size: 1.3rem;
-      font-weight: 600;
+      font-weight: 700;
       line-height: 1.8;
-      color: #ffffff;
+      color: var(--wine-text);
       font-style: italic;
     }
 
@@ -893,25 +888,24 @@
       line-height: 0.8;
       padding-top: 4px;
       padding-right: 8px;
-      color: var(--vivid-gold);
+      color: var(--ruby-red);
       font-weight: 900;
       font-style: normal;
-      text-shadow: 0 2px 10px rgba(255, 190, 11, 0.5);
     }
 
     .scroll-sign {
       font-family: 'Playfair Display', serif;
       font-size: 1.4rem;
-      font-weight: 700;
-      color: var(--vivid-gold);
+      font-weight: 800;
+      color: var(--ruby-red);
       text-align: right;
       margin-top: 1.8rem;
     }
 
     /* Keyframes */
-    @keyframes phonePulse {
-      0% { transform: scale(1); box-shadow: 0 20px 50px rgba(0,0,0,0.9), 0 0 25px rgba(255, 190, 11, 0.25); }
-      100% { transform: scale(1.02); box-shadow: 0 25px 65px rgba(0,0,0,0.9), 0 0 35px rgba(255, 190, 11, 0.5); }
+    @keyframes heartBeatBox {
+      0% { transform: scale(1); box-shadow: 0 20px 50px rgba(164, 19, 60, 0.4); }
+      100% { transform: scale(1.02); box-shadow: 0 25px 65px rgba(164, 19, 60, 0.6); }
     }
     @keyframes spin {
       from { transform: rotate(0deg); }
@@ -929,8 +923,8 @@
 </head>
 <body>
 
-  <!-- Ambient Stardust Canvas -->
-  <canvas id="ambient-canvas"></canvas>
+  <!-- Floating Red Hearts Canvas -->
+  <canvas id="hearts-canvas"></canvas>
 
   <!-- Audio Element: Exact Filename -->
   <audio id="main-audio" loop preload="auto">
@@ -938,13 +932,13 @@
   </audio>
 
   <!-- =========================================================
-       1. AMETHYST & GOLD GIFT UNWRAP
+       1. GIFT UNWRAP OVERLAY
        ========================================================= -->
   <div id="gift-portal">
     <div class="gift-box" id="unwrap-card">
-      <div class="gift-seal">✦</div>
+      <div class="gift-seal">❤️</div>
       <h2 class="gift-title">For You, Today</h2>
-      <p class="gift-subtitle">A special celebration prepared with love & warm wishes...</p>
+      <p class="gift-subtitle">A special celebration prepared with all my love...</p>
       <div class="tap-btn-pill">✨ Tap To Open ✨</div>
     </div>
   </div>
@@ -952,16 +946,16 @@
   <!-- Discreet Audio Pill -->
   <div class="top-pill" id="pill-toggle">
     <div class="pulse-disc"></div>
-    <span style="font-size:0.75rem; color:var(--vivid-gold); font-weight:700;">Love Me Not 🎵</span>
+    <span style="font-size:0.75rem; color:var(--ruby-red); font-weight:800;">Love Me Not 🎵</span>
   </div>
 
   <div class="phone-container">
     
-    <!-- Hero Banner (100% VISIBLE SOLID TEXT) -->
+    <!-- Hero Banner (HIGH CONTRAST & BRIGHT) -->
     <header class="hero-banner">
-      <div class="royal-badge">✦ A Special Birthday Celebration ✦</div>
+      <div class="royal-badge">❤️ A Special Birthday Celebration ❤️</div>
       <h1>Happy Birthday, Beautiful</h1>
-      <p>"He loves me not, he loves me... he holds me tight then lets me go." A quiet corner created to celebrate the grace, gentle laughter, and radiance you bring everywhere.</p>
+      <p>"He loves me not, he loves me... he holds me tight then lets me go." A corner created to celebrate the grace, gentle laughter, and radiance you bring everywhere.</p>
     </header>
 
     <!-- ========================================================
@@ -969,8 +963,8 @@
          ======================================================== -->
     <div class="lyrics-container">
       <div class="lyrics-header">
-        <span class="lyrics-header-title">✦ Live Lyrics</span>
-        <span style="font-size: 0.72rem; color: var(--rose-pearl); font-weight:600;">Ravyn Lenae • Love Me Not</span>
+        <span class="lyrics-header-title">❤️ Live Lyrics</span>
+        <span style="font-size: 0.75rem; color: var(--ruby-red); font-weight:700;">Ravyn Lenae • Love Me Not</span>
       </div>
       <div class="lyrics-scroller" id="lyrics-scroller">
         <div class="lyrics-stream" id="lyrics-stream"></div>
@@ -985,7 +979,7 @@
 
         <!-- 1. Birthday Glow -->
         <div class="deck-slide active">
-          <span class="deck-badge">Birthday Glow</span>
+          <span class="deck-badge">Birthday Glow ❤️</span>
           <span class="swipe-hint">Swipe ⇄</span>
           <img class="bg-blur" src="WhatsApp Image 2026-09-15 at 15.21.50.jpeg" alt="Birthday Glow" />
           <img class="fg-main" src="WhatsApp Image 2026-09-15 at 15.21.50.jpeg" alt="Birthday Glow" />
@@ -1000,7 +994,7 @@
 
         <!-- 2. Yellow & Purple Saree -->
         <div class="deck-slide">
-          <span class="deck-badge">Splendor</span>
+          <span class="deck-badge">Splendor ❤️</span>
           <span class="swipe-hint">Swipe ⇄</span>
           <img class="bg-blur" src="WhatsApp Image 2026-09-15 at 14.25.10.jpeg" alt="Saree" onerror="this.src='psl2.jpeg'" />
           <img class="fg-main" src="WhatsApp Image 2026-09-15 at 14.25.10.jpeg" alt="Saree" onerror="this.src='psl2.jpeg'" />
@@ -1015,7 +1009,7 @@
 
         <!-- 3. Candid Stone Wall Laugh with Gajra -->
         <div class="deck-slide">
-          <span class="deck-badge">Unfiltered</span>
+          <span class="deck-badge">Unfiltered ❤️</span>
           <span class="swipe-hint">Swipe ⇄</span>
           <img class="bg-blur" src="WhatsApp Image 2026-09-15 at 14.25.12.jpeg" alt="Laugh" onerror="this.src='psl3.jpeg'" />
           <img class="fg-main" src="WhatsApp Image 2026-09-15 at 14.25.12.jpeg" alt="Laugh" onerror="this.src='psl3.jpeg'" />
@@ -1030,7 +1024,7 @@
 
         <!-- 4. Purple Silk by Temple Gate -->
         <div class="deck-slide">
-          <span class="deck-badge">Heritage</span>
+          <span class="deck-badge">Heritage ❤️</span>
           <span class="swipe-hint">Swipe ⇄</span>
           <img class="bg-blur" src="WhatsApp Image 2026-09-15 at 14.25.11.jpeg" alt="Temple" />
           <img class="fg-main" src="WhatsApp Image 2026-09-15 at 14.25.11.jpeg" alt="Temple" />
@@ -1045,7 +1039,7 @@
 
         <!-- 5. Yellow Kurti Ganesha Blessings -->
         <div class="deck-slide">
-          <span class="deck-badge">Blessings</span>
+          <span class="deck-badge">Blessings ❤️</span>
           <span class="swipe-hint">Swipe ⇄</span>
           <img class="bg-blur" src="WhatsApp Image 2026-09-15 at 14.25.08.jpeg" alt="Blessings" />
           <img class="fg-main" src="WhatsApp Image 2026-09-15 at 14.25.08.jpeg" alt="Blessings" />
@@ -1060,7 +1054,7 @@
 
         <!-- 6. Under the Tree -->
         <div class="deck-slide">
-          <span class="deck-badge">Serenity</span>
+          <span class="deck-badge">Serenity ❤️</span>
           <span class="swipe-hint">Swipe ⇄</span>
           <img class="bg-blur" src="psl2.jpeg" alt="Tree" />
           <img class="fg-main" src="psl2.jpeg" alt="Tree" />
@@ -1075,7 +1069,7 @@
 
         <!-- 7. Night Cafe Leaning on Table -->
         <div class="deck-slide">
-          <span class="deck-badge">Evening</span>
+          <span class="deck-badge">Evening ❤️</span>
           <span class="swipe-hint">Swipe ⇄</span>
           <img class="bg-blur" src="psl3.jpeg" alt="Night Cafe" />
           <img class="fg-main" src="psl3.jpeg" alt="Night Cafe" />
@@ -1090,7 +1084,7 @@
 
       </div>
 
-      <!-- Thumb Nav Controls -->
+      <!-- Controls -->
       <div class="deck-nav">
         <button class="nav-btn" id="deck-prev" aria-label="Previous">❮</button>
         <div class="deck-dots" id="deck-dots"></div>
@@ -1099,11 +1093,11 @@
     </div>
 
     <!-- ========================================================
-         4. PHONE CINEMA VIDEO (270° Landscape Right-Side Up)
+         4. CINEMA VIDEO REEL (270° Landscape Right-Side Up)
          ======================================================== -->
     <div class="video-spotlight">
       <div class="video-header">
-        <div class="video-title">Cinema Spotlight</div>
+        <div class="video-title">Cinema Spotlight 🎬</div>
         <button class="rotate-btn" id="rotate-vid-btn">🔄 Rotate</button>
       </div>
       <div class="video-landscape-box">
@@ -1112,16 +1106,16 @@
           Your browser does not support the video tag.
         </video>
       </div>
-      <p style="font-size:0.8rem; color:var(--rose-pearl); font-style:italic; text-align:center;">Flipped right-side up in landscape mode. Tap rotate anytime if desired!</p>
+      <p style="font-size:0.8rem; color:var(--crimson-heart); font-style:italic; text-align:center; font-weight:600;">Flipped right-side up in landscape view. Tap rotate anytime if desired!</p>
     </div>
 
     <!-- ========================================================
          5. INTERACTIVE CANDLE CAKE
          ======================================================== -->
     <div class="cake-zone">
-      <div class="cake-prompt" id="cake-hint">Touch the flame to make a quiet wish 🕯️</div>
+      <div class="cake-prompt" id="cake-hint">Touch the heart flame to make a quiet wish 🕯️</div>
       <div class="noble-cake" id="cake-click">
-        <div class="flame-core" id="cake-flame"></div>
+        <div class="flame-core" id="cake-flame">❤️</div>
         <div class="candle-pillar"></div>
         <div class="cake-tier-1"></div>
         <div class="cake-tier-2"></div>
@@ -1129,7 +1123,7 @@
     </div>
 
     <!-- ========================================================
-         6. REAL WISH BOX (NO FAKE WISHES)
+         6. REAL WISH BOX (CLEAN START)
          ======================================================== -->
     <div class="wish-section">
       <h3 class="wish-header-title">Leave a Birthday Wish 💌</h3>
@@ -1138,25 +1132,23 @@
       <input type="text" id="wish-name" class="wish-input" placeholder="Your Name..." />
       <textarea id="wish-text" class="wish-textarea" placeholder="Write your heartfelt birthday message..."></textarea>
       
-      <!-- Quick Emojis -->
+      <!-- Emojis -->
       <div class="emoji-row">
+        <div class="emoji-tap" onclick="addEmoji('❤️')">❤️</div>
         <div class="emoji-tap" onclick="addEmoji('💖')">💖</div>
         <div class="emoji-tap" onclick="addEmoji('👑')">👑</div>
         <div class="emoji-tap" onclick="addEmoji('🎂')">🎂</div>
         <div class="emoji-tap" onclick="addEmoji('🌸')">🌸</div>
-        <div class="emoji-tap" onclick="addEmoji('✨')">✨</div>
       </div>
 
-      <button class="send-wish-btn" id="btn-send-wish">Send Wish ✨</button>
+      <button class="send-wish-btn" id="btn-send-wish">Send Wish ❤️</button>
 
-      <!-- Live Wall of Wishes (Starts Clean) -->
-      <div class="wish-wall" id="wish-wall">
-        <!-- Rendered dynamically -->
-      </div>
+      <!-- Live Wall of Wishes (No Fake Wishes) -->
+      <div class="wish-wall" id="wish-wall"></div>
     </div>
 
     <!-- ========================================================
-         7. SCRAPBOOK (Static Gallery)
+         7. SCRAPBOOK (Static Photos)
          ======================================================== -->
     <h2 class="grid-header">A Gallery of You</h2>
 
@@ -1222,14 +1214,14 @@
          8. PRESENTABLE & DECORATIVE ROYAL LETTER SCROLL
          ======================================================== -->
     <div class="parchment-scroll">
-      <div class="scroll-wax">👑</div>
+      <div class="scroll-wax">❤️</div>
       <div class="corner-decor top-left">❦</div>
       <div class="corner-decor top-right">❦</div>
       <div class="corner-decor bottom-left">❦</div>
       <div class="corner-decor bottom-right">❦</div>
 
       <h3 class="scroll-header">To Someone Truly Remarkable</h3>
-      <div class="scroll-divider">✦ ✦ ✦</div>
+      <div class="scroll-divider">❤️ ❤️ ❤️</div>
 
       <div class="scroll-body">
         <span class="drop-cap">Y</span>ou carry an effortless blend of elegance and warmth that makes every space feel gentler. Whether captured in woven silk, smiling beside ancient stone corridors, or enjoying a quiet evening, you are genuinely unforgettable.
@@ -1237,7 +1229,7 @@
         May this year greet you with deep peace, endless laughter, and the quiet fulfillment of every dream close to your heart.
       </div>
 
-      <div class="scroll-sign">Happy Birthday, Always ✨</div>
+      <div class="scroll-sign">Happy Birthday, Always ❤️✨</div>
     </div>
 
   </div>
@@ -1265,7 +1257,7 @@
       { time: 81, text: "But he love me not, he loves me..." },
       { time: 84, text: "He holds me tight, then lets me go" },
       { time: 86, text: "He love me not, he loves me..." },
-      { time: 88, text: "He holds me tight, then lets me go ✦" },
+      { time: 88, text: "He holds me tight, then lets me go ❤️" },
       { time: 91, text: "Soon as you leave me, we always lose connection" },
       { time: 95, text: "It's getting messy, I feel for your affection" },
       { time: 100, text: "Don't loosen your grip, gotta hold on me now forever" },
@@ -1275,10 +1267,10 @@
       { time: 126, text: "And, oh, it's hard to see you, but I wish you were right here ✨" },
       { time: 131, text: "Always hard to leave you when I get you everywhere" },
       { time: 140, text: "Oh, no, I don't need you, but I miss you, come here" },
-      { time: 145, text: "And, oh, it's hard to see you, but I wish you were right here ✦" },
+      { time: 145, text: "And, oh, it's hard to see you, but I wish you were right here ❤️" },
       { time: 163, text: "He love me not, he loves me... He holds me tight, then lets me go..." },
       { time: 182, text: "You gotta say that you're sorry at the end of the night..." },
-      { time: 200, text: "And, oh, it's hard to see you, but I wish you were right here ✦" }
+      { time: 200, text: "And, oh, it's hard to see you, but I wish you were right here ❤️" }
     ];
 
     const lyricsStream = document.getElementById('lyrics-stream');
@@ -1309,7 +1301,7 @@
         particleCount: 95,
         spread: 85,
         origin: { y: 0.5 },
-        colors: ['#ffe49e', '#f7cad0', '#ffffff', '#e85d04']
+        colors: ['#ef233c', '#d90429', '#ffffff', '#ffb3c1']
       });
     });
 
@@ -1441,17 +1433,17 @@
           particleCount: 95,
           spread: 80,
           origin: { y: 0.65 },
-          colors: ['#ffe49e', '#f7cad0', '#ffffff', '#e85d04']
+          colors: ['#ef233c', '#d90429', '#ffffff', '#ffb3c1']
         });
       } else {
         flame.classList.remove('extinguished');
-        cakeHint.innerText = "Touch the flame to make a quiet wish 🕯️";
+        cakeHint.innerText = "Touch the heart flame to make a quiet wish 🕯️";
         blownOut = false;
       }
     });
 
     /* ==========================================================
-       6. WISH BOX (CLEAN START - NO FAKE WISHES)
+       6. WISH BOX (CLEAN START)
        ========================================================= */
     const wishName = document.getElementById('wish-name');
     const wishText = document.getElementById('wish-text');
@@ -1470,7 +1462,7 @@
     function renderWishWall(wishes) {
       wishWall.innerHTML = '';
       if (!wishes || wishes.length === 0) {
-        wishWall.innerHTML = '<div style="text-align:center; color:var(--rose-pearl); font-style:italic; font-size:0.95rem; font-weight:600; padding:1.2rem 0;">No wishes yet. Be the first to leave a blessing! ✨</div>';
+        wishWall.innerHTML = '<div style="text-align:center; color:var(--crimson-heart); font-style:italic; font-size:0.95rem; font-weight:700; padding:1.2rem 0;">No wishes yet. Be the first to leave a blessing! ❤️</div>';
         return;
       }
       wishes.forEach(item => {
@@ -1497,7 +1489,7 @@
       const msg = wishText.value.trim();
 
       if (!name || !msg) {
-        alert("Please write your name and a birthday wish! 💖");
+        alert("Please write your name and a birthday wish! ❤️");
         return;
       }
 
@@ -1524,7 +1516,7 @@
         particleCount: 70,
         spread: 60,
         origin: { y: 0.8 },
-        colors: ['#ffe49e', '#ffbe0b', '#ffffff']
+        colors: ['#ef233c', '#d90429', '#ffffff']
       });
     });
 
@@ -1537,11 +1529,11 @@
     loadWishes();
 
     /* ==========================================================
-       7. AMBIENT PARTICLES CANVAS
+       7. FLOATING RED HEARTS CANVAS ENGINE
        ========================================================= */
-    const canvas = document.getElementById('ambient-canvas');
+    const canvas = document.getElementById('hearts-canvas');
     const ctx = canvas.getContext('2d');
-    let particles = [];
+    let heartList = [];
 
     function resize() {
       canvas.width = window.innerWidth;
@@ -1550,38 +1542,46 @@
     window.addEventListener('resize', resize);
     resize();
 
-    class StardustParticle {
+    class FloatingHeart {
       constructor() { this.init(); }
       init() {
         this.x = Math.random() * canvas.width;
-        this.y = canvas.height + 15;
-        this.radius = Math.random() * 2.2 + 0.8;
-        this.speedY = -(Math.random() * 0.7 + 0.3);
-        this.speedX = Math.sin(Math.random() * 8) * 0.4;
-        this.opacity = Math.random() * 0.7 + 0.3;
-        this.color = Math.random() > 0.4 ? '255, 228, 158' : '247, 202, 208';
+        this.y = canvas.height + 25;
+        this.size = Math.random() * 16 + 10;
+        this.speedY = -(Math.random() * 0.9 + 0.5);
+        this.speedX = Math.sin(Math.random() * 8) * 0.5;
+        this.opacity = Math.random() * 0.65 + 0.35;
+        this.color = Math.random() > 0.35 ? '#d90429' : '#ef233c';
       }
       update() {
         this.y += this.speedY;
         this.x += this.speedX;
-        if (this.y < -20) this.init();
+        if (this.y < -30) this.init();
       }
       draw() {
+        ctx.save();
+        ctx.translate(this.x, this.y);
+        ctx.globalAlpha = this.opacity;
+        ctx.fillStyle = this.color;
+        
+        // Exact Bezier Heart Shape
         ctx.beginPath();
-        ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(${this.color}, ${this.opacity})`;
-        ctx.shadowBlur = 10;
-        ctx.shadowColor = `rgba(${this.color}, 0.8)`;
+        const top = this.size * 0.3;
+        ctx.moveTo(0, top);
+        ctx.bezierCurveTo(0, 0, -this.size / 2, 0, -this.size / 2, top);
+        ctx.bezierCurveTo(-this.size / 2, (this.size + top) / 2, 0, this.size, 0, this.size);
+        ctx.bezierCurveTo(0, this.size, this.size / 2, (this.size + top) / 2, this.size / 2, top);
+        ctx.bezierCurveTo(this.size / 2, 0, 0, 0, 0, top);
         ctx.fill();
-        ctx.shadowBlur = 0;
+        ctx.restore();
       }
     }
 
-    for (let i = 0; i < 40; i++) particles.push(new StardustParticle());
+    for (let i = 0; i < 30; i++) heartList.push(new FloatingHeart());
 
     function animate() {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
-      particles.forEach(p => { p.update(); p.draw(); });
+      heartList.forEach(h => { h.update(); h.draw(); });
       requestAnimationFrame(animate);
     }
     animate();
