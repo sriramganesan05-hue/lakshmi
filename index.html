@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>A Majestic Celebration for Royalty ✨👑</title>
 
-  <!-- Google Luxury & Calligraphy Fonts -->
+  <!-- Luxury & Calligraphy Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700;900&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
@@ -41,7 +41,7 @@
       position: relative;
     }
 
-    /* Interactive Heart-Dust Canvas */
+    /* Ambient Canvas */
     #galaxy-canvas {
       position: fixed;
       top: 0;
@@ -52,6 +52,158 @@
       z-index: 0;
     }
 
+    /* =========================================================
+       THE 3D ROYAL BIRTHDAY CARD OVERLAY
+       ========================================================= */
+    #card-portal {
+      position: fixed;
+      inset: 0;
+      background: radial-gradient(circle at center, #26063b 0%, #06020c 85%);
+      z-index: 9999;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 1.5rem;
+      transition: opacity 1s cubic-bezier(0.4, 0, 0.2, 1), visibility 1s;
+    }
+
+    #card-portal.opened {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+
+    .card-scene {
+      width: 320px;
+      height: 440px;
+      perspective: 1500px;
+      cursor: pointer;
+    }
+
+    @media (min-width: 600px) {
+      .card-scene {
+        width: 360px;
+        height: 480px;
+      }
+    }
+
+    .card-3d {
+      width: 100%;
+      height: 100%;
+      position: relative;
+      transform-style: preserve-3d;
+      transition: transform 1.2s cubic-bezier(0.2, 0.85, 0.4, 1.2);
+    }
+
+    .card-scene:hover .card-3d {
+      transform: rotateY(-10deg) scale(1.02);
+    }
+
+    .card-scene.open-action .card-3d {
+      transform: rotateY(-140deg) scale(0.95);
+    }
+
+    /* Outer Cover of the Birthday Card */
+    .card-front, .card-inside {
+      position: absolute;
+      inset: 0;
+      border-radius: 24px;
+      backface-visibility: hidden;
+    }
+
+    .card-front {
+      background: linear-gradient(145deg, #2b0542, #130222);
+      border: 2px solid var(--regal-gold);
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.85), 0 0 35px rgba(230, 0, 103, 0.35);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 2.5rem 1.8rem;
+      z-index: 2;
+    }
+
+    .card-front-crown {
+      font-size: 2.8rem;
+      filter: drop-shadow(0 0 15px var(--regal-gold));
+      margin-bottom: 0.8rem;
+      animation: heartBeat 2s infinite ease-in-out;
+    }
+
+    .card-front h2 {
+      font-family: 'Cinzel Decorative', serif;
+      font-size: 1.6rem;
+      color: var(--champagne-glow);
+      letter-spacing: 2px;
+      margin-bottom: 0.5rem;
+    }
+
+    .card-front p {
+      font-size: 1.15rem;
+      color: #dfcaee;
+      font-style: italic;
+      margin-bottom: 2.2rem;
+    }
+
+    /* Royal Wax Seal */
+    .wax-seal {
+      width: 72px;
+      height: 72px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 35% 35%, #ff4d88, #b8004f);
+      border: 2px solid var(--regal-gold);
+      box-shadow: 0 0 25px rgba(230, 0, 103, 0.7), inset 0 2px 4px rgba(255,255,255,0.4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.8rem;
+      color: #fff;
+      animation: sealGlow 2s infinite alternate;
+    }
+
+    .tap-hint {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.78rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--regal-gold);
+      margin-top: 1.4rem;
+      font-weight: 600;
+    }
+
+    /* =========================================================
+       SUBTLE FLOATING MUTE BUTTON (Once Card is Opened)
+       ========================================================= */
+    .floating-mute {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background: rgba(22, 6, 38, 0.8);
+      border: 1px solid var(--regal-gold);
+      backdrop-filter: blur(12px);
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      color: var(--champagne-glow);
+      box-shadow: 0 0 15px rgba(245, 197, 99, 0.3);
+      cursor: pointer;
+      z-index: 100;
+      transition: all 0.3s ease;
+    }
+    .floating-mute:hover {
+      transform: scale(1.1);
+      box-shadow: 0 0 25px rgba(230, 0, 103, 0.6);
+    }
+
+    /* =========================================================
+       MAIN SITE CONTENT
+       ========================================================= */
     .universe-container {
       position: relative;
       z-index: 1;
@@ -64,101 +216,17 @@
       gap: 6rem;
     }
 
-    /* =========================================================
-       MAJESTIC FLOATING HEART LOCKET (Audio Player)
-       ========================================================= */
-    .audio-locket {
-      position: fixed;
-      top: 24px;
-      right: 24px;
-      background: rgba(18, 4, 32, 0.88);
-      border: 1.5px solid var(--regal-gold);
-      backdrop-filter: blur(20px);
-      padding: 0.65rem 1.3rem;
-      border-radius: 999px;
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-      box-shadow: 0 10px 35px rgba(230, 0, 103, 0.45), 0 0 20px rgba(245, 197, 99, 0.3);
-      z-index: 999;
-      cursor: pointer;
-      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    }
-
-    .audio-locket:hover {
-      transform: scale(1.06);
-      box-shadow: 0 12px 45px rgba(230, 0, 103, 0.6), 0 0 30px rgba(245, 197, 99, 0.5);
-    }
-
-    .heart-disc {
-      position: relative;
-      width: 38px;
-      height: 38px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.5rem;
-      animation: heartPulse 1.8s infinite ease-in-out;
-    }
-
-    .heart-disc.playing {
-      animation: heartSpin 3s linear infinite, heartPulse 1.2s infinite ease-in-out;
-    }
-
-    .locket-text {
-      display: flex;
-      flex-direction: column;
-      font-family: 'Montserrat', sans-serif;
-    }
-
-    .locket-title {
-      font-size: 0.82rem;
-      font-weight: 600;
-      letter-spacing: 1px;
-      color: var(--champagne-glow);
-    }
-
-    .locket-status {
-      font-size: 0.68rem;
-      color: var(--ethereal-rose);
-      letter-spacing: 0.5px;
-    }
-
-    /* Waveform Equalizer */
-    .sound-bars {
-      display: flex;
-      align-items: flex-end;
-      gap: 3px;
-      height: 14px;
-    }
-
-    .sound-bar {
-      width: 2.5px;
-      height: 4px;
-      background: var(--regal-gold);
-      border-radius: 3px;
-      transition: height 0.2s ease;
-    }
-
-    .heart-disc.playing ~ .locket-text .sound-bars .sound-bar:nth-child(1) { animation: wave 0.8s infinite alternate; }
-    .heart-disc.playing ~ .locket-text .sound-bars .sound-bar:nth-child(2) { animation: wave 0.6s 0.2s infinite alternate; }
-    .heart-disc.playing ~ .locket-text .sound-bars .sound-bar:nth-child(3) { animation: wave 0.9s 0.4s infinite alternate; }
-
-    /* =========================================================
-       HERO: IMPERIAL CELESTIAL PROCLAMATION
-       ========================================================= */
+    /* Hero */
     .hero-crown {
       text-align: center;
       max-width: 880px;
       position: relative;
-      animation: royalFade 1.6s ease-out forwards;
     }
 
     .crown-emblem {
       font-size: 2.5rem;
       filter: drop-shadow(0 0 15px var(--regal-gold));
       margin-bottom: 0.6rem;
-      animation: floatSlow 3.5s ease-in-out infinite alternate;
     }
 
     .majesty-tag {
@@ -200,7 +268,7 @@
     }
 
     /* =========================================================
-       MAJESTIC 3D ROYAL STAGE (Grand Cinematic Photo Transitions)
+       MAJESTIC 3D ROYAL STAGE (Cinematic Photo Transitions)
        ========================================================= */
     .stage-wrapper {
       width: 100%;
@@ -218,7 +286,6 @@
       perspective: 1400px;
     }
 
-    /* Glowing Arch Portal */
     .arch-glow {
       position: absolute;
       inset: -4px;
@@ -263,7 +330,6 @@
       transform: scale(1.08);
     }
 
-    /* Grand Velvet Shadow Gradient */
     .slide-veil {
       position: absolute;
       inset: 0;
@@ -304,7 +370,6 @@
       font-weight: 600;
     }
 
-    /* Stage Navigation */
     .stage-nav {
       display: flex;
       align-items: center;
@@ -356,7 +421,7 @@
     }
 
     /* =========================================================
-       HEART-PLUCK ORACLE ("LOVE ME NOT" SLOWED ODE)
+       HEART-PLUCK ORACLE
        ========================================================= */
     .oracle-altar {
       background: var(--glass-surface);
@@ -419,7 +484,7 @@
     }
 
     /* =========================================================
-       THE IMPERIAL BIRTHDAY CANDELABRA (Interactive Cake)
+       CAKE & GALLERY
        ========================================================= */
     .cake-sanctum {
       display: flex;
@@ -476,7 +541,6 @@
       background: linear-gradient(135deg, var(--majestic-magenta), #80003b);
       border-radius: 18px 18px 4px 4px;
       box-shadow: 0 0 25px rgba(230, 0, 103, 0.4);
-      position: relative;
     }
 
     .tier-base {
@@ -489,9 +553,6 @@
       box-shadow: 0 10px 30px rgba(0,0,0,0.7);
     }
 
-    /* =========================================================
-       ROYAL ARCH GALLERY GRID (All 6 Photos)
-       ========================================================= */
     .gallery-heading {
       font-family: 'Cinzel Decorative', serif;
       font-size: clamp(2rem, 4.5vw, 2.6rem);
@@ -517,7 +578,6 @@
       padding: 16px 16px 24px;
       box-shadow: 0 20px 45px rgba(0, 0, 0, 0.55);
       transition: all 0.45s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-      position: relative;
     }
 
     .palace-frame:hover {
@@ -562,9 +622,6 @@
       margin-top: 4px;
     }
 
-    /* =========================================================
-       THE IMPERIAL LOVE DECREE (Letter)
-       ========================================================= */
     .imperial-scroll {
       background: linear-gradient(135deg, rgba(35, 8, 58, 0.75), rgba(14, 2, 26, 0.9));
       border: 2px solid var(--gold-border);
@@ -616,36 +673,23 @@
       margin-top: 2rem;
     }
 
-    /* Animations */
-    @keyframes heartPulse {
+    @keyframes sealGlow {
+      0% { box-shadow: 0 0 20px rgba(230, 0, 103, 0.6); }
+      100% { box-shadow: 0 0 35px rgba(245, 197, 99, 0.9); }
+    }
+    @keyframes heartBeat {
       0%, 100% { transform: scale(1); }
-      50% { transform: scale(1.18); }
-    }
-    @keyframes heartSpin {
-      from { transform: rotate(0deg); }
-      to { transform: rotate(360deg); }
-    }
-    @keyframes wave {
-      0% { height: 3px; }
-      100% { height: 14px; }
-    }
-    @keyframes floatSlow {
-      0% { transform: translateY(0); }
-      100% { transform: translateY(-8px); }
+      50% { transform: scale(1.15); }
     }
     @keyframes flameSway {
       0% { transform: rotate(-4deg) scale(0.96); }
       100% { transform: rotate(4deg) scale(1.04); }
     }
-    @keyframes royalFade {
-      from { opacity: 0; transform: translateY(-30px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
   </style>
 </head>
 <body>
 
-  <!-- Floating Heart & Stardust Background Canvas -->
+  <!-- Background Hearts Canvas -->
   <canvas id="galaxy-canvas"></canvas>
 
   <!-- =========================================================
@@ -655,18 +699,26 @@
     <source src="ravyn lenae - love me not [ slowed + reverb ] (lyrics).mp3" type="audio/mp3">
   </audio>
 
-  <!-- Majestic Heart Locket Widget -->
-  <div class="audio-locket" id="audio-locket" title="Tap to Play / Pause Song">
-    <div class="heart-disc" id="heart-disc">💖</div>
-    <div class="locket-text">
-      <span class="locket-title">Love Me Not [Slowed]</span>
-      <span class="locket-status" id="locket-status">▶ Tap to Play Song</span>
-      <div class="sound-bars">
-        <div class="sound-bar"></div>
-        <div class="sound-bar"></div>
-        <div class="sound-bar"></div>
+  <!-- =========================================================
+       THE BIRTHDAY CARD (TAP TO OPEN & PLAY SONG)
+       ========================================================= -->
+  <div id="card-portal">
+    <div class="card-scene" id="card-scene">
+      <div class="card-3d">
+        <div class="card-front">
+          <div class="card-front-crown">👑</div>
+          <h2>For Her Majesty</h2>
+          <p>A royal celebration prepared just for you...</p>
+          <div class="wax-seal">💌</div>
+          <div class="tap-hint">✦ Tap To Open Birthday Card ✦</div>
+        </div>
       </div>
     </div>
+  </div>
+
+  <!-- Discreet Floating Mute/Unmute Icon (Available after card is opened) -->
+  <div class="floating-mute" id="mute-toggle" title="Mute / Unmute" style="display: none;">
+    🔊
   </div>
 
   <div class="universe-container">
@@ -680,7 +732,7 @@
     </header>
 
     <!-- ========================================================
-         MAJESTIC 3D ROYAL ARCH STAGE (Cinematic Showcase)
+         MAJESTIC 3D ROYAL ARCH STAGE
          ======================================================== -->
     <div class="stage-wrapper">
       <div class="royal-arch">
@@ -775,7 +827,7 @@
     </div>
 
     <!-- ========================================================
-         HEART-PLUCK ORACLE: "LOVE ME NOT"
+         HEART-PLUCK ORACLE
          ======================================================== -->
     <div class="oracle-altar">
       <h3 class="oracle-title">The Heart Oracle 💖</h3>
@@ -796,12 +848,11 @@
     </div>
 
     <!-- ========================================================
-         THE ROYAL ARCH GALLERY GRID (All 6 Photos)
+         THE ROYAL ARCH GALLERY GRID
          ======================================================== -->
     <h2 class="gallery-heading">The Imperial Pantheon of Frames</h2>
 
     <div class="regal-grid">
-      <!-- 1 -->
       <div class="palace-frame">
         <div class="photo-arch">
           <img src="WhatsApp Image 2026-09-15 at 14.25.10.jpeg" alt="Empress" onerror="this.src='psl2.jpeg'" />
@@ -810,7 +861,6 @@
         <div class="frame-sub">Traditional silk woven in gold & violet</div>
       </div>
 
-      <!-- 2 -->
       <div class="palace-frame">
         <div class="photo-arch">
           <img src="WhatsApp Image 2026-09-15 at 14.25.12.jpeg" alt="Laughter" onerror="this.src='psl3.jpeg'" />
@@ -819,7 +869,6 @@
         <div class="frame-sub">Stone temple corridors & jasmine flowers</div>
       </div>
 
-      <!-- 3 -->
       <div class="palace-frame">
         <div class="photo-arch">
           <img src="WhatsApp Image 2026-09-15 at 14.25.11.jpeg" alt="Gates" />
@@ -828,7 +877,6 @@
         <div class="frame-sub">Carved bronze gates and regal purple silk</div>
       </div>
 
-      <!-- 4 -->
       <div class="palace-frame">
         <div class="photo-arch">
           <img src="WhatsApp Image 2026-09-15 at 14.25.08.jpeg" alt="Blessings" />
@@ -837,7 +885,6 @@
         <div class="frame-sub">Warm smiles and divine blessings</div>
       </div>
 
-      <!-- 5 -->
       <div class="palace-frame">
         <div class="photo-arch">
           <img src="psl2.jpeg" alt="Tree" />
@@ -846,7 +893,6 @@
         <div class="frame-sub">Under ancient roots and quiet sunlight</div>
       </div>
 
-      <!-- 6 -->
       <div class="palace-frame">
         <div class="photo-arch">
           <img src="psl3.jpeg" alt="Night" />
@@ -872,45 +918,49 @@
 
   <script>
     /* ==========================================================
-       1. AUDIO ENGINE: "Love Me Not [Slowed + Reverb]"
+       1. CARD OPENING & AUDIO PLAYBACK (BROWSER-SAFE)
        ========================================================== */
+    const cardScene = document.getElementById('card-scene');
+    const cardPortal = document.getElementById('card-portal');
     const audio = document.getElementById('majestic-audio');
-    const audioLocket = document.getElementById('audio-locket');
-    const heartDisc = document.getElementById('heart-disc');
-    const locketStatus = document.getElementById('locket-status');
-    let isPlaying = false;
+    const muteToggle = document.getElementById('mute-toggle');
+    let isOpened = false;
 
-    function startMusic() {
-      audio.play().then(() => {
-        isPlaying = true;
-        heartDisc.classList.add('playing');
-        locketStatus.innerText = "Playing [Slowed + Reverb] 🎶";
-      }).catch(e => {
-        console.warn("Autoplay policy restricted audio:", e);
-        locketStatus.innerText = "▶ Tap here to start music";
+    cardScene.addEventListener('click', () => {
+      if (isOpened) return;
+      isOpened = true;
+
+      // 1. Play the slowed + reverb song immediately upon opening
+      audio.play().catch(e => console.log("Audio play allowed:", e));
+
+      // 2. Animate the card open
+      cardScene.classList.add('open-action');
+
+      // 3. Launch royal gold and pink hearts confetti explosion
+      confetti({
+        particleCount: 100,
+        spread: 100,
+        origin: { y: 0.5 },
+        colors: ['#f5c563', '#e60067', '#ff4d88', '#ffffff']
       });
-    }
 
-    function pauseMusic() {
-      audio.pause();
-      isPlaying = false;
-      heartDisc.classList.remove('playing');
-      locketStatus.innerText = "Paused ✨";
-    }
-
-    audioLocket.addEventListener('click', () => {
-      if (!isPlaying) startMusic();
-      else pauseMusic();
+      // 4. Reveal the main majestic site
+      setTimeout(() => {
+        cardPortal.classList.add('opened');
+        muteToggle.style.display = 'flex';
+      }, 900);
     });
 
-    // Auto-unlock sound on first user touch/interaction anywhere
-    function unlockAudio() {
-      if (!isPlaying) startMusic();
-      window.removeEventListener('click', unlockAudio);
-      window.removeEventListener('touchstart', unlockAudio);
-    }
-    window.addEventListener('click', unlockAudio);
-    window.addEventListener('touchstart', unlockAudio);
+    // Mute/Unmute Toggle
+    muteToggle.addEventListener('click', () => {
+      if (audio.paused) {
+        audio.play();
+        muteToggle.innerText = '🔊';
+      } else {
+        audio.pause();
+        muteToggle.innerText = '🔇';
+      }
+    });
 
     /* ==========================================================
        2. CINEMATIC 3D SLIDE TRANSITIONS
@@ -970,7 +1020,6 @@
         verdictBox.style.opacity = '1';
         pick++;
 
-        // Burst hearts
         if (pick >= answers.length) {
           confetti({
             particleCount: 80,
@@ -1010,7 +1059,7 @@
     });
 
     /* ==========================================================
-       5. INTERACTIVE FLOATING HEARTS & STARDUST CANVAS
+       5. FLOATING HEARTS & STARDUST CANVAS
        ========================================================== */
     const canvas = document.getElementById('galaxy-canvas');
     const ctx = canvas.getContext('2d');
@@ -1044,7 +1093,6 @@
         ctx.translate(this.x, this.y);
         ctx.globalAlpha = this.opacity;
         ctx.fillStyle = this.color;
-        // Draw Heart Shape
         ctx.beginPath();
         const topCurveHeight = this.size * 0.3;
         ctx.moveTo(0, topCurveHeight);
@@ -1068,27 +1116,6 @@
       requestAnimationFrame(renderGalaxy);
     }
     renderGalaxy();
-
-    // Spawn heart burst on click
-    window.addEventListener('click', (e) => {
-      const heart = document.createElement('div');
-      heart.innerText = '💖';
-      heart.style.position = 'fixed';
-      heart.style.left = `${e.clientX - 12}px`;
-      heart.style.top = `${e.clientY - 12}px`;
-      heart.style.fontSize = '1.5rem';
-      heart.style.pointerEvents = 'none';
-      heart.style.zIndex = '9999';
-      heart.style.transition = 'all 1s cubic-bezier(0.2, 0.9, 0.3, 1)';
-      document.body.appendChild(heart);
-      
-      requestAnimationFrame(() => {
-        heart.style.transform = `translate(${(Math.random() - 0.5) * 80}px, -70px) scale(0)`;
-        heart.style.opacity = '0';
-      });
-
-      setTimeout(() => heart.remove(), 1000);
-    });
   </script>
 </body>
 </html>
