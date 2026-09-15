@@ -3,27 +3,27 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Happy Birthday, Pretty Girl 🎀✨</title>
+  <title>Happy Birthday, Queen ✨</title>
 
-  <!-- Google Aesthetic Fonts -->
+  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Italiana&family=Plus+Jakarta+Sans:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,600;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;900&family=Dancing+Script:wght@700&family=Outfit:wght@300;400;600;700&family=Playfair+Display:ital,wght@0,600;1,400&display=swap" rel="stylesheet">
   
   <!-- Canvas Confetti -->
   <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 
   <style>
     :root {
-      --bg-cream: #fff5f7;
-      --soft-pink: #ffd6df;
-      --cotton-candy: #ffb3c6;
-      --hot-berry: #ff4d6d;
-      --lavender: #e8dff5;
-      --gold-shimmer: #ffe066;
-      --text-dark: #3a2233;
-      --text-muted: #8d7385;
-      --card-white: rgba(255, 255, 255, 0.85);
+      --bg-dark: #090214;
+      --bg-purple: #1e0538;
+      --vivid-magenta: #ff007f;
+      --vivid-purple: #9d00ff;
+      --sunset-gold: #ffb703;
+      --amber-glow: #fb8500;
+      --glass: rgba(255, 255, 255, 0.08);
+      --glass-border: rgba(255, 215, 0, 0.28);
+      --neon-glow: 0 0 25px rgba(255, 0, 127, 0.45);
     }
 
     * {
@@ -34,16 +34,16 @@
     }
 
     body {
-      background: linear-gradient(135deg, #fff0f3 0%, #fbe4e8 50%, #f6e6f9 100%);
-      color: var(--text-dark);
-      font-family: 'Plus Jakarta Sans', sans-serif;
+      background: radial-gradient(circle at 50% 15%, #2d0a4e 0%, #150329 45%, var(--bg-dark) 85%);
+      color: #fff;
+      font-family: 'Outfit', sans-serif;
       overflow-x: hidden;
       min-height: 100vh;
       position: relative;
     }
 
-    /* Floating Petals Canvas */
-    #petal-canvas {
+    /* Ambient Background FX Canvas */
+    #ambient-canvas {
       position: fixed;
       top: 0;
       left: 0;
@@ -53,144 +53,179 @@
       z-index: 0;
     }
 
-    .main-wrapper {
+    .wrapper {
       position: relative;
       z-index: 1;
-      max-width: 1050px;
+      max-width: 1100px;
       margin: 0 auto;
-      padding: 2.5rem 1.2rem 6rem;
+      padding: 3rem 1.4rem 6rem;
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 4.5rem;
+      gap: 5rem;
     }
 
-    /* Top Floating Music Player */
-    .music-bar {
+    /* =========================================================
+       VIVID RETRO GLOW MUSIC PLAYER
+       ========================================================= */
+    .music-widget {
       position: fixed;
-      top: 18px;
-      right: 18px;
-      background: rgba(255, 255, 255, 0.88);
-      backdrop-filter: blur(14px);
-      border: 1.5px solid rgba(255, 179, 198, 0.6);
-      padding: 0.6rem 1.1rem;
+      top: 20px;
+      right: 20px;
+      background: rgba(20, 5, 38, 0.85);
+      border: 1px solid rgba(255, 0, 127, 0.4);
+      backdrop-filter: blur(18px);
+      padding: 0.65rem 1.2rem;
       border-radius: 999px;
       display: flex;
       align-items: center;
-      gap: 0.8rem;
-      box-shadow: 0 10px 25px rgba(255, 77, 109, 0.15);
+      gap: 0.9rem;
+      box-shadow: 0 8px 30px rgba(255, 0, 127, 0.35), inset 0 0 15px rgba(255, 183, 3, 0.15);
       z-index: 999;
       cursor: pointer;
-      transition: all 0.3s ease;
+      transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     }
 
-    .music-bar:hover {
+    .music-widget:hover {
       transform: scale(1.05);
-      box-shadow: 0 12px 30px rgba(255, 77, 109, 0.25);
+      border-color: var(--sunset-gold);
     }
 
-    .vinyl {
-      width: 32px;
-      height: 32px;
+    .vinyl-disc {
+      width: 38px;
+      height: 38px;
       border-radius: 50%;
-      background: radial-gradient(circle, #2d2424 35%, #ff4d6d 36%, #111 60%);
+      background: radial-gradient(circle, #ff007f 20%, #111 25%, #222 55%, #ffb703 60%, #111 65%);
       border: 2px solid #fff;
       display: flex;
       align-items: center;
       justify-content: center;
-      animation: spinVinyl 3.5s linear infinite;
+      box-shadow: 0 0 12px rgba(255, 0, 127, 0.8);
+      animation: spin 3s linear infinite;
       animation-play-state: paused;
     }
 
-    .vinyl.playing {
+    .vinyl-disc.spinning {
       animation-play-state: running;
     }
 
-    .vinyl::after {
-      content: '';
-      width: 8px;
-      height: 8px;
+    .vinyl-center {
+      width: 10px;
+      height: 10px;
       background: #fff;
       border-radius: 50%;
     }
 
-    .music-info {
+    .audio-details {
       display: flex;
       flex-direction: column;
     }
 
-    .music-title {
+    .song-title {
       font-size: 0.85rem;
-      font-weight: 600;
-      color: var(--hot-berry);
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      background: linear-gradient(90deg, #ff007f, #ffb703);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
     }
 
-    .music-sub {
-      font-size: 0.7rem;
-      color: var(--text-muted);
+    .song-sub {
+      font-size: 0.72rem;
+      color: #d1b8e8;
     }
+
+    /* Equalizer wave bars */
+    .eq-bars {
+      display: flex;
+      align-items: flex-end;
+      gap: 3px;
+      height: 16px;
+    }
+
+    .bar {
+      width: 3px;
+      background: var(--vivid-magenta);
+      border-radius: 3px;
+      height: 4px;
+      transition: height 0.2s ease;
+    }
+
+    .vinyl-disc.spinning ~ .audio-details .eq-bars .bar:nth-child(1) { animation: bounce 0.6s infinite alternate; }
+    .vinyl-disc.spinning ~ .audio-details .eq-bars .bar:nth-child(2) { animation: bounce 0.8s 0.2s infinite alternate; }
+    .vinyl-disc.spinning ~ .audio-details .eq-bars .bar:nth-child(3) { animation: bounce 0.5s 0.4s infinite alternate; }
 
     /* Hero Section */
     .hero {
       text-align: center;
-      margin-top: 2rem;
+      max-width: 850px;
       position: relative;
     }
 
-    .coquette-badge {
+    .vivid-badge {
       display: inline-flex;
       align-items: center;
-      gap: 0.5rem;
-      background: #fff;
-      border: 1.5px solid var(--soft-pink);
-      padding: 0.4rem 1.2rem;
+      gap: 0.6rem;
+      padding: 0.5rem 1.6rem;
       border-radius: 999px;
+      background: rgba(255, 0, 127, 0.12);
+      border: 1px solid var(--vivid-magenta);
+      box-shadow: 0 0 25px rgba(255, 0, 127, 0.35);
       font-size: 0.85rem;
-      letter-spacing: 1.5px;
+      letter-spacing: 2.5px;
       text-transform: uppercase;
-      color: var(--hot-berry);
-      box-shadow: 0 4px 15px rgba(255, 179, 198, 0.3);
-      margin-bottom: 1.2rem;
+      color: var(--sunset-gold);
+      margin-bottom: 1.5rem;
+      font-weight: 600;
     }
 
     .hero h1 {
-      font-family: 'Italiana', serif;
-      font-size: clamp(2.8rem, 7vw, 4.8rem);
+      font-family: 'Cinzel', serif;
+      font-size: clamp(2.6rem, 6.5vw, 4.6rem);
+      font-weight: 900;
       line-height: 1.15;
-      color: #3b1728;
-      margin-bottom: 0.8rem;
+      margin-bottom: 1rem;
+      background: linear-gradient(135deg, #ffffff 15%, #ffd166 45%, #ff007f 80%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      filter: drop-shadow(0 0 35px rgba(255, 0, 127, 0.4));
     }
 
     .hero h1 span {
-      font-family: 'Caveat', cursive;
-      color: var(--hot-berry);
-      font-size: 1.2em;
+      font-family: 'Dancing Script', cursive;
+      font-size: 1.25em;
+      color: var(--sunset-gold);
+      -webkit-text-fill-color: var(--sunset-gold);
+      display: block;
+      margin-top: 0.3rem;
     }
 
     .hero p {
-      color: var(--text-muted);
-      font-size: clamp(1rem, 2vw, 1.2rem);
-      max-width: 580px;
+      font-size: clamp(1.05rem, 2.2vw, 1.25rem);
+      color: #e2d4f2;
+      line-height: 1.7;
+      font-weight: 300;
+      max-width: 650px;
       margin: 0 auto;
-      line-height: 1.6;
     }
 
     /* =========================================================
-       PHOTO SHOWCASE CAROUSEL (Smooth 3D Flip & Zoom Transitions)
+       CINEMATIC 3D PHOTO TRANSITION SHOWCASE
        ========================================================= */
-    .showcase-container {
+    .showcase-wrapper {
       width: 100%;
-      max-width: 600px;
+      max-width: 680px;
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 1.5rem;
+      gap: 1.8rem;
     }
 
-    .aesthetic-card-frame {
+    .cinema-stage {
       position: relative;
       width: 100%;
-      height: 480px;
+      height: 520px;
+      border-radius: 28px;
       perspective: 1200px;
     }
 
@@ -198,12 +233,13 @@
       position: absolute;
       inset: 0;
       border-radius: 28px;
-      background: #fff;
-      padding: 14px 14px 20px;
-      box-shadow: 0 20px 45px rgba(230, 92, 123, 0.18), 0 4px 15px rgba(0,0,0,0.04);
+      overflow: hidden;
+      background: #110524;
+      border: 2px solid rgba(255, 183, 3, 0.35);
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.7), 0 0 45px rgba(255, 0, 127, 0.3);
       opacity: 0;
-      transform: scale(0.92) rotate(2deg);
-      transition: all 0.75s cubic-bezier(0.25, 1, 0.5, 1);
+      transform: scale(0.9) rotateY(15deg);
+      transition: all 0.85s cubic-bezier(0.22, 1, 0.36, 1);
       pointer-events: none;
       display: flex;
       flex-direction: column;
@@ -211,153 +247,162 @@
 
     .slide.active {
       opacity: 1;
-      transform: scale(1) rotate(0deg);
+      transform: scale(1) rotateY(0deg);
       pointer-events: auto;
       z-index: 5;
     }
 
-    /* Cute Tape & Bow at Top */
-    .washi-tape {
-      position: absolute;
-      top: -12px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 110px;
-      height: 26px;
-      background: rgba(255, 182, 193, 0.75);
-      backdrop-filter: blur(4px);
-      box-shadow: 0 2px 5px rgba(0,0,0,0.06);
-      transform: translateX(-50%) rotate(-1deg);
-      z-index: 10;
-      border-radius: 3px;
-    }
-
-    .slide-img-wrapper {
+    .slide-media {
       width: 100%;
-      flex: 1;
-      border-radius: 20px;
-      overflow: hidden;
+      height: 100%;
       position: relative;
-      background: #f7e8ec;
+      overflow: hidden;
     }
 
-    .slide-img-wrapper img {
+    .slide-media img {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      object-position: center 20%;
-      transition: transform 1.2s ease;
+      object-position: center top;
+      transition: transform 6s cubic-bezier(0.1, 1, 0.1, 1);
     }
 
-    .slide.active .slide-img-wrapper img {
-      transform: scale(1.04);
+    .slide.active .slide-media img {
+      transform: scale(1.08);
     }
 
-    .slide-caption-bar {
-      padding: 12px 10px 4px;
+    /* Vibrant Gradient Overlay */
+    .slide-gradient {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(9, 2, 20, 0.95) 10%, rgba(9, 2, 20, 0.2) 60%, transparent 100%);
+    }
+
+    .slide-caption-box {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      padding: 2.2rem 2rem 1.6rem;
       display: flex;
       justify-content: space-between;
-      align-items: center;
+      align-items: flex-end;
     }
 
-    .slide-text {
-      font-family: 'Caveat', cursive;
-      font-size: 1.6rem;
-      color: var(--hot-berry);
+    .slide-caption {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.65rem;
+      color: #fff;
+      text-shadow: 0 2px 10px rgba(0,0,0,0.8);
     }
 
-    .slide-counter {
-      font-size: 0.85rem;
-      color: var(--text-muted);
-      font-weight: 600;
+    .slide-sub {
+      font-size: 0.9rem;
+      color: var(--sunset-gold);
+      letter-spacing: 1px;
+      margin-top: 4px;
     }
 
-    /* Slider Controls */
-    .controls {
+    .slide-index {
+      font-family: 'Cinzel', serif;
+      font-size: 1.1rem;
+      color: var(--vivid-magenta);
+      font-weight: 700;
+      letter-spacing: 2px;
+    }
+
+    /* Slider Nav Arrows */
+    .stage-controls {
       display: flex;
       align-items: center;
-      gap: 1.5rem;
+      gap: 1.8rem;
     }
 
-    .ctrl-btn {
-      background: #fff;
-      border: 1.5px solid var(--soft-pink);
-      width: 46px;
-      height: 46px;
+    .nav-arrow {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1.5px solid var(--vivid-magenta);
+      color: #fff;
+      width: 50px;
+      height: 50px;
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
+      cursor: pointer;
       font-size: 1.2rem;
-      color: var(--hot-berry);
-      cursor: pointer;
-      box-shadow: 0 5px 15px rgba(255, 115, 140, 0.15);
+      box-shadow: 0 0 20px rgba(255, 0, 127, 0.3);
       transition: all 0.3s ease;
     }
 
-    .ctrl-btn:hover {
-      transform: scale(1.12);
-      background: var(--hot-berry);
-      color: #fff;
+    .nav-arrow:hover {
+      background: var(--vivid-magenta);
+      transform: scale(1.15);
+      box-shadow: 0 0 30px rgba(255, 0, 127, 0.7);
     }
 
-    .dots-row {
+    .indicators {
       display: flex;
-      gap: 8px;
+      gap: 10px;
     }
 
-    .dot {
-      width: 9px;
-      height: 9px;
+    .pill-dot {
+      width: 10px;
+      height: 10px;
+      background: rgba(255, 255, 255, 0.25);
       border-radius: 50%;
-      background: var(--soft-pink);
       cursor: pointer;
-      transition: all 0.3s ease;
+      transition: all 0.4s ease;
     }
 
-    .dot.active {
-      width: 26px;
-      border-radius: 12px;
-      background: var(--hot-berry);
+    .pill-dot.active {
+      width: 32px;
+      border-radius: 20px;
+      background: linear-gradient(90deg, var(--vivid-magenta), var(--sunset-gold));
+      box-shadow: 0 0 15px var(--vivid-magenta);
     }
 
     /* =========================================================
-       "HE LOVES ME, HE LOVES ME NOT" INTERACTIVE GAME
+       "LOVE ME NOT" INTERACTIVE PETAL EXPERIENCE
        ========================================================= */
-    .loves-game-box {
-      background: #fff;
-      border: 1.5px solid var(--soft-pink);
+    .daisy-card {
+      background: rgba(30, 5, 56, 0.5);
+      border: 1px solid rgba(255, 183, 3, 0.3);
+      backdrop-filter: blur(20px);
       border-radius: 30px;
-      padding: 2.2rem;
+      padding: 2.5rem 2rem;
       text-align: center;
-      max-width: 520px;
+      max-width: 580px;
       width: 100%;
-      box-shadow: 0 15px 40px rgba(255, 179, 198, 0.2);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), inset 0 0 30px rgba(255, 0, 127, 0.15);
     }
 
-    .loves-title {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.7rem;
-      color: #3b1728;
-      margin-bottom: 0.4rem;
+    .daisy-title {
+      font-family: 'Cinzel', serif;
+      font-size: 1.65rem;
+      background: linear-gradient(90deg, #fff, var(--sunset-gold));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 0.5rem;
     }
 
-    .loves-subtitle {
-      font-size: 0.9rem;
-      color: var(--text-muted);
-      margin-bottom: 1.4rem;
+    .daisy-lyric {
+      font-size: 0.95rem;
+      color: #e2d4f2;
+      font-style: italic;
+      margin-bottom: 1.6rem;
     }
 
     .daisy-btn {
-      background: linear-gradient(135deg, #ff758c, #ff4d6d);
+      background: linear-gradient(135deg, var(--vivid-magenta), var(--amber-glow));
       border: none;
       color: #fff;
-      padding: 0.8rem 1.8rem;
+      padding: 0.9rem 2.2rem;
       border-radius: 999px;
-      font-size: 1rem;
-      font-weight: 600;
+      font-size: 1.05rem;
+      font-weight: 700;
+      letter-spacing: 1px;
       cursor: pointer;
-      box-shadow: 0 8px 20px rgba(255, 77, 109, 0.3);
+      box-shadow: 0 0 30px rgba(255, 0, 127, 0.6);
       transition: all 0.3s ease;
       display: inline-flex;
       align-items: center;
@@ -365,136 +410,129 @@
     }
 
     .daisy-btn:hover {
-      transform: scale(1.06);
-      box-shadow: 0 10px 25px rgba(255, 77, 109, 0.45);
+      transform: scale(1.08);
+      box-shadow: 0 0 45px rgba(255, 183, 3, 0.8);
     }
 
-    .loves-result {
-      font-family: 'Caveat', cursive;
-      font-size: 1.9rem;
-      color: var(--hot-berry);
+    .verdict-box {
+      font-family: 'Dancing Script', cursive;
+      font-size: 2.2rem;
+      color: var(--sunset-gold);
+      min-height: 3rem;
       margin-top: 1.2rem;
-      min-height: 2.4rem;
-      transition: all 0.3s ease;
+      transition: opacity 0.3s ease;
+      text-shadow: 0 0 15px rgba(255, 183, 3, 0.5);
     }
 
-    /* Birthday Wish Cake */
-    .cake-area {
+    /* Interactive Candle Cake */
+    .cake-zone {
       display: flex;
       flex-direction: column;
       align-items: center;
       gap: 1.2rem;
     }
 
-    .cake-prompt {
-      font-family: 'Caveat', cursive;
-      font-size: 1.5rem;
-      color: var(--hot-berry);
+    .cake-label {
+      font-family: 'Dancing Script', cursive;
+      font-size: 1.8rem;
+      color: var(--sunset-gold);
     }
 
-    .cake-visual {
-      cursor: pointer;
+    .cake-structure {
       position: relative;
-      width: 180px;
-      height: 150px;
+      width: 200px;
+      height: 160px;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: flex-end;
+      cursor: pointer;
     }
 
     .cake-flame {
       position: absolute;
-      top: -16px;
-      width: 18px;
-      height: 26px;
-      background: radial-gradient(ellipse at bottom, #fff 10%, #ffd166 40%, #ff4d6d 90%);
+      top: -18px;
+      width: 20px;
+      height: 30px;
+      background: radial-gradient(ellipse at bottom, #fff 15%, var(--sunset-gold) 45%, var(--vivid-magenta) 90%);
       border-radius: 50% 50% 35% 35%;
-      filter: drop-shadow(0 0 12px #ffd166);
-      animation: flameWobble 0.2s infinite alternate;
+      filter: drop-shadow(0 0 18px #ffb703);
+      animation: flameWobble 0.16s infinite alternate;
       transition: all 0.4s ease;
     }
 
-    .cake-flame.off {
+    .cake-flame.blown {
       opacity: 0;
       transform: translateY(-20px) scale(0.2);
     }
 
-    .candle-stick {
-      width: 10px;
-      height: 40px;
-      background: repeating-linear-gradient(45deg, #fff, #fff 5px, #ffb3c6 5px, #ffb3c6 10px);
-      border-radius: 4px 4px 0 0;
-      position: relative;
+    .candle-stem {
+      width: 12px;
+      height: 42px;
+      background: repeating-linear-gradient(45deg, #fff, #fff 6px, var(--vivid-magenta) 6px, var(--vivid-magenta) 12px);
+      border-radius: 4px;
     }
 
-    .layer-1 {
-      width: 120px;
-      height: 38px;
-      background: #ffccd5;
-      border-radius: 12px 12px 4px 4px;
-      box-shadow: inset 0 -4px 0 rgba(255, 77, 109, 0.2);
+    .layer-upper {
+      width: 130px;
+      height: 42px;
+      background: linear-gradient(135deg, #ff007f, #d90429);
+      border-radius: 14px 14px 4px 4px;
+      box-shadow: 0 0 20px rgba(255, 0, 127, 0.4);
     }
 
-    .layer-2 {
-      width: 160px;
-      height: 48px;
-      background: #fff;
+    .layer-lower {
+      width: 180px;
+      height: 52px;
+      background: linear-gradient(135deg, #ffb703, #fb8500);
       border-radius: 12px;
       margin-top: 3px;
-      box-shadow: 0 8px 20px rgba(255, 179, 198, 0.4);
-      border: 2px solid #ffe5ec;
+      box-shadow: 0 0 25px rgba(255, 183, 3, 0.4);
     }
 
-    /* Scrapbook Gallery Grid */
-    .scrapbook-title {
-      font-family: 'Italiana', serif;
-      font-size: 2.4rem;
+    /* Gallery Grid */
+    .grid-title {
+      font-family: 'Cinzel', serif;
+      font-size: 2.2rem;
       text-align: center;
-      color: #3b1728;
+      background: linear-gradient(90deg, #fff, var(--sunset-gold));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
       margin-bottom: -2.5rem;
     }
 
-    .scrapbook-grid {
-      width: 100%;
+    .photo-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap: 2.5rem;
-    }
-
-    .polaroid-card {
-      background: #fff;
-      padding: 14px 14px 22px;
-      border-radius: 14px;
-      box-shadow: 0 15px 35px rgba(255, 179, 198, 0.22);
-      transition: all 0.4s ease;
-      position: relative;
-    }
-
-    .polaroid-card:nth-child(even) { transform: rotate(1.5deg); }
-    .polaroid-card:nth-child(odd) { transform: rotate(-1.5deg); }
-
-    .polaroid-card:hover {
-      transform: translateY(-8px) rotate(0deg) scale(1.03);
-      box-shadow: 0 20px 40px rgba(255, 77, 109, 0.25);
-    }
-
-    .pin-ribbon {
-      position: absolute;
-      top: -10px;
-      right: 20px;
-      font-size: 1.3rem;
-    }
-
-    .polaroid-img-box {
       width: 100%;
-      height: 320px;
-      border-radius: 8px;
-      overflow: hidden;
-      background: #fdf2f4;
     }
 
-    .polaroid-img-box img {
+    .gallery-tile {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--glass-border);
+      backdrop-filter: blur(15px);
+      border-radius: 20px;
+      padding: 14px 14px 20px;
+      box-shadow: 0 15px 35px rgba(0,0,0,0.5);
+      transition: all 0.4s ease;
+      cursor: pointer;
+    }
+
+    .gallery-tile:hover {
+      transform: translateY(-10px) scale(1.02);
+      border-color: var(--sunset-gold);
+      box-shadow: 0 20px 45px rgba(255, 0, 127, 0.3), 0 0 25px rgba(255, 183, 3, 0.2);
+    }
+
+    .tile-crop {
+      width: 100%;
+      height: 340px;
+      border-radius: 14px;
+      overflow: hidden;
+    }
+
+    .tile-crop img {
       width: 100%;
       height: 100%;
       object-fit: cover;
@@ -502,290 +540,376 @@
       transition: transform 0.6s ease;
     }
 
-    .polaroid-card:hover .polaroid-img-box img {
+    .gallery-tile:hover .tile-crop img {
       transform: scale(1.08);
     }
 
-    .polaroid-caption {
-      font-family: 'Caveat', cursive;
-      font-size: 1.5rem;
+    .tile-label {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.35rem;
       text-align: center;
-      color: #3b1728;
-      margin-top: 12px;
+      margin-top: 14px;
+      color: #fff;
     }
 
-    /* Aesthetic Letter */
-    .letter-box {
-      background: #fff;
-      border: 2px dashed #ffccd5;
-      border-radius: 24px;
-      padding: 3rem 2.2rem;
-      max-width: 680px;
+    .tile-tag {
+      font-size: 0.85rem;
+      text-align: center;
+      color: var(--sunset-gold);
+      margin-top: 4px;
+    }
+
+    /* Heartfelt Letter */
+    .letter-parchment {
+      background: rgba(20, 5, 38, 0.7);
+      border: 1.5px solid var(--glass-border);
+      backdrop-filter: blur(20px);
+      border-radius: 28px;
+      padding: 3rem 2.5rem;
+      max-width: 700px;
       width: 100%;
-      position: relative;
-      box-shadow: 0 15px 40px rgba(255, 179, 198, 0.2);
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.6), inset 0 0 35px rgba(255, 0, 127, 0.15);
     }
 
-    .letter-title {
-      font-family: 'Caveat', cursive;
-      font-size: 2.2rem;
-      color: var(--hot-berry);
-      margin-bottom: 1rem;
+    .letter-parchment h3 {
+      font-family: 'Dancing Script', cursive;
+      font-size: 2.8rem;
+      color: var(--sunset-gold);
+      margin-bottom: 1.2rem;
     }
 
-    .letter-text {
-      font-size: 1.1rem;
-      line-height: 1.85;
-      color: #553d4c;
+    .letter-body {
+      font-size: 1.15rem;
+      line-height: 1.9;
+      color: #eeddfa;
+      font-weight: 300;
     }
 
     .letter-sign {
-      font-family: 'Caveat', cursive;
-      font-size: 2.2rem;
-      color: var(--hot-berry);
+      font-family: 'Dancing Script', cursive;
+      font-size: 2.4rem;
+      color: var(--vivid-magenta);
       text-align: right;
-      margin-top: 1.5rem;
+      margin-top: 1.8rem;
     }
 
+    @keyframes spin {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+    @keyframes bounce {
+      0% { height: 4px; }
+      100% { height: 16px; }
+    }
     @keyframes flameWobble {
       0% { transform: rotate(-3deg) scale(0.96); }
       100% { transform: rotate(3deg) scale(1.04); }
-    }
-    @keyframes spinVinyl {
-      from { transform: rotate(0deg); }
-      to { transform: rotate(360deg); }
     }
   </style>
 </head>
 <body>
 
-  <!-- Floating Blossom / Sparkle Canvas -->
-  <canvas id="petal-canvas"></canvas>
+  <!-- Ambient Golden & Magenta Sparkle Canvas -->
+  <canvas id="ambient-canvas"></canvas>
 
-  <!-- Audio Element for "Love Me Not" by Ravyn Lenae -->
-  <!-- If you have an mp3 file, you can also rename it to "love-me-not.mp3" in the same folder -->
-  <audio id="audio-player" loop preload="auto">
-    <source src="love-me-not.mp3" type="audio/mp3">
+  <!-- Audio Element (GitHub Audio Support) -->
+  <audio id="audio-stream" loop preload="auto">
+    <source id="audio-src" src="" type="audio/mp3">
   </audio>
 
-  <!-- Top Floating Music Pill -->
-  <div class="music-bar" id="music-toggle" title="Click to play 'Love Me Not'">
-    <div class="vinyl" id="vinyl-icon"></div>
-    <div class="music-info">
-      <span class="music-title">Love Me Not 🎵</span>
-      <span class="music-sub" id="music-status">Click to Play 🎀</span>
+  <!-- Vivid Floating Music Widget -->
+  <div class="music-widget" id="music-player-toggle" title="Click to play 'Love Me Not'">
+    <div class="vinyl-disc" id="vinyl-disc">
+      <div class="vinyl-center"></div>
+    </div>
+    <div class="audio-details">
+      <span class="song-title">Love Me Not 🎵</span>
+      <span class="song-sub" id="track-status">Click to Play ✨</span>
+      <div class="eq-bars">
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+      </div>
     </div>
   </div>
 
-  <div class="main-wrapper">
+  <div class="wrapper">
     
-    <!-- Hero Header -->
+    <!-- Hero Title -->
     <header class="hero">
-      <div class="coquette-badge">🎀 Celebrating You Today 🎀</div>
-      <h1>Happy Birthday, <span>Gorgeous</span> ✨</h1>
-      <p>A soft aesthetic corner filled with your sweetest smiles, traditional grace, and unforgettable memories.</p>
+      <div class="vivid-badge">✨ An Extraordinary Celebration ✨</div>
+      <h1>Happy Birthday, <span>Beautiful</span></h1>
+      <p>From the grandeur of royal silks to that quiet, effortless smile—today belongs entirely to celebrating the light you bring to the universe.</p>
     </header>
 
     <!-- ========================================================
-         MAIN PHOTO CAROUSEL (Smooth 3D Transitions)
+         CINEMATIC 3D PHOTO SLIDER SHOWCASE
          ======================================================== -->
-    <div class="showcase-container">
-      <div class="aesthetic-card-frame">
-        <div class="washi-tape"></div>
+    <div class="showcase-wrapper">
+      <div class="cinema-stage">
 
-        <!-- Slide 1 -->
+        <!-- 1. Yellow & Purple Saree -->
         <div class="slide active">
-          <div class="slide-img-wrapper">
-            <img src="WhatsApp Image 2026-09-15 at 14.25.10.jpeg" alt="Saree Grace" onerror="this.src='psl2.jpeg'" />
+          <div class="slide-media">
+            <img src="WhatsApp Image 2026-09-15 at 14.25.10.jpeg" alt="Silk Royalty" onerror="this.src='psl2.jpeg'" />
+            <div class="slide-gradient"></div>
           </div>
-          <div class="slide-caption-bar">
-            <span class="slide-text">Golden hour royalty & silk grace ✨</span>
-            <span class="slide-counter">01 / 06</span>
-          </div>
-        </div>
-
-        <!-- Slide 2 -->
-        <div class="slide">
-          <div class="slide-img-wrapper">
-            <img src="WhatsApp Image 2026-09-15 at 14.25.12.jpeg" alt="Candid Laugh" onerror="this.src='psl3.jpeg'" />
-          </div>
-          <div class="slide-caption-bar">
-            <span class="slide-text">The softest, prettiest laugh 🌸</span>
-            <span class="slide-counter">02 / 06</span>
+          <div class="slide-caption-box">
+            <div>
+              <div class="slide-caption">Golden Hour Royalty</div>
+              <div class="slide-sub">Grace, tradition, and timeless glow ✨</div>
+            </div>
+            <div class="slide-index">01 / 06</div>
           </div>
         </div>
 
-        <!-- Slide 3 -->
+        <!-- 2. Candid Stone Wall Laugh with Gajra -->
         <div class="slide">
-          <div class="slide-img-wrapper">
-            <img src="WhatsApp Image 2026-09-15 at 14.25.11.jpeg" alt="Purple Elegance" />
+          <div class="slide-media">
+            <img src="WhatsApp Image 2026-09-15 at 14.25.12.jpeg" alt="Candid Laughter" onerror="this.src='psl3.jpeg'" />
+            <div class="slide-gradient"></div>
           </div>
-          <div class="slide-caption-bar">
-            <span class="slide-text">Pure elegance in purple silk 👑</span>
-            <span class="slide-counter">03 / 06</span>
+          <div class="slide-caption-box">
+            <div>
+              <div class="slide-caption">Unfiltered Laughter</div>
+              <div class="slide-sub">The gentle joy that makes hearts soften 🌸</div>
+            </div>
+            <div class="slide-index">02 / 06</div>
           </div>
         </div>
 
-        <!-- Slide 4 -->
+        <!-- 3. Purple Silk by Temple Gate -->
         <div class="slide">
-          <div class="slide-img-wrapper">
-            <img src="WhatsApp Image 2026-09-15 at 14.25.08.jpeg" alt="Sunny Day" />
+          <div class="slide-media">
+            <img src="WhatsApp Image 2026-09-15 at 14.25.11.jpeg" alt="Temple Grace" />
+            <div class="slide-gradient"></div>
           </div>
-          <div class="slide-caption-bar">
-            <span class="slide-text">Smiles that brighten every room 💛</span>
-            <span class="slide-counter">04 / 06</span>
+          <div class="slide-caption-box">
+            <div>
+              <div class="slide-caption">Peacock Silk & Heritage</div>
+              <div class="slide-sub">Standing with quiet, regal majesty 👑</div>
+            </div>
+            <div class="slide-index">03 / 06</div>
           </div>
         </div>
 
-        <!-- Slide 5 -->
+        <!-- 4. Yellow Kurti Ganesha Blessings -->
         <div class="slide">
-          <div class="slide-img-wrapper">
-            <img src="psl2.jpeg" alt="Peaceful Moments" />
+          <div class="slide-media">
+            <img src="WhatsApp Image 2026-09-15 at 14.25.08.jpeg" alt="Divine Smile" />
+            <div class="slide-gradient"></div>
           </div>
-          <div class="slide-caption-bar">
-            <span class="slide-text">Quiet walks & peaceful energy 🌿</span>
-            <span class="slide-counter">05 / 06</span>
+          <div class="slide-caption-box">
+            <div>
+              <div class="slide-caption">Blessed Beginnings</div>
+              <div class="slide-sub">May this new chapter bring endless blessings 🙏</div>
+            </div>
+            <div class="slide-index">04 / 06</div>
           </div>
         </div>
 
-        <!-- Slide 6 -->
+        <!-- 5. Under the Tree -->
         <div class="slide">
-          <div class="slide-img-wrapper">
-            <img src="psl3.jpeg" alt="Evening Vibe" />
+          <div class="slide-media">
+            <img src="psl2.jpeg" alt="Peaceful Walk" />
+            <div class="slide-gradient"></div>
           </div>
-          <div class="slide-caption-bar">
-            <span class="slide-text">Calm evening chats & that gaze ☕</span>
-            <span class="slide-counter">06 / 06</span>
+          <div class="slide-caption-box">
+            <div>
+              <div class="slide-caption">Peaceful Simplicity</div>
+              <div class="slide-sub">Calm walks and everyday sunlight 🌿</div>
+            </div>
+            <div class="slide-index">05 / 06</div>
+          </div>
+        </div>
+
+        <!-- 6. Night Cafe Leaning on Table -->
+        <div class="slide">
+          <div class="slide-media">
+            <img src="psl3.jpeg" alt="Night Cafe" />
+            <div class="slide-gradient"></div>
+          </div>
+          <div class="slide-caption-box">
+            <div>
+              <div class="slide-caption">Warm Evening Glow</div>
+              <div class="slide-sub">Quiet night talks and memories that linger 🌙</div>
+            </div>
+            <div class="slide-index">06 / 06</div>
           </div>
         </div>
 
       </div>
 
-      <!-- Navigation buttons & dots -->
-      <div class="controls">
-        <button class="ctrl-btn" id="prev-btn" aria-label="Previous">❮</button>
-        <div class="dots-row" id="dots-container"></div>
-        <button class="ctrl-btn" id="next-btn" aria-label="Next">❯</button>
+      <!-- Controls -->
+      <div class="stage-controls">
+        <button class="nav-arrow" id="prev-btn" aria-label="Previous">❮</button>
+        <div class="indicators" id="dots-box"></div>
+        <button class="nav-arrow" id="next-btn" aria-label="Next">❯</button>
       </div>
     </div>
 
     <!-- ========================================================
-         "HE LOVES ME, HE LOVES ME NOT" INTERACTIVE GAME
+         "HE LOVES ME, HE LOVES ME NOT" INTERACTIVE EXPERIENCE
          ======================================================== -->
-    <div class="loves-game-box">
-      <h3 class="loves-title">He Loves Me, Loves Me Not? 🌼</h3>
-      <p class="loves-subtitle">Pluck a petal inspired by Ravyn Lenae's song!</p>
-      <button class="daisy-btn" id="petal-btn">Pluck A Petal 🌸</button>
-      <div class="loves-result" id="loves-output">...</div>
+    <div class="daisy-card">
+      <h3 class="daisy-title">Love Me Not 🌼</h3>
+      <p class="daisy-lyric">"He loves me not, he loves me... he holds me tight then lets me go..."</p>
+      <button class="daisy-btn" id="pull-petal-btn">Pull A Petal ✨</button>
+      <div class="verdict-box" id="verdict-display">...</div>
     </div>
 
-    <!-- Birthday Cake -->
-    <div class="cake-area">
-      <div class="cake-prompt" id="cake-status">Tap the flame to make a wish 🕯️</div>
-      <div class="cake-visual" id="cake-clicker">
-        <div class="cake-flame" id="flame-element"></div>
-        <div class="candle-stick"></div>
-        <div class="layer-1"></div>
-        <div class="layer-2"></div>
+    <!-- Interactive Birthday Cake -->
+    <div class="cake-zone">
+      <div class="cake-label" id="candle-text">Blow out the candle & make a wish 🕯️</div>
+      <div class="cake-structure" id="cake-interactive">
+        <div class="cake-flame" id="flame-spark"></div>
+        <div class="candle-stem"></div>
+        <div class="layer-upper"></div>
+        <div class="layer-lower"></div>
       </div>
     </div>
 
     <!-- ========================================================
-         FULL SCRAPBOOK GALLERY OF ALL 6 PHOTOS
+         PHOTO GALLERY GRID OF ALL 6 MOMENTS
          ======================================================== -->
-    <h2 class="scrapbook-title">A Scrapbook of Moments 🎀</h2>
+    <h2 class="grid-title">Gallery of Timeless Frames</h2>
 
-    <div class="scrapbook-grid">
-      <!-- Photo 1 -->
-      <div class="polaroid-card">
-        <span class="pin-ribbon">🎀</span>
-        <div class="polaroid-img-box">
+    <div class="photo-grid">
+      <!-- 1 -->
+      <div class="gallery-tile">
+        <div class="tile-crop">
           <img src="WhatsApp Image 2026-09-15 at 14.25.10.jpeg" alt="Photo 1" onerror="this.src='psl2.jpeg'" />
         </div>
-        <div class="polaroid-caption">A goddess in yellow & purple 💛</div>
+        <div class="tile-label">Traditional Splendor</div>
+        <div class="tile-tag">Yellow & Royal Purple Silk</div>
       </div>
 
-      <!-- Photo 2 -->
-      <div class="polaroid-card">
-        <span class="pin-ribbon">🌸</span>
-        <div class="polaroid-img-box">
+      <!-- 2 -->
+      <div class="gallery-tile">
+        <div class="tile-crop">
           <img src="WhatsApp Image 2026-09-15 at 14.25.12.jpeg" alt="Photo 2" onerror="this.src='psl3.jpeg'" />
         </div>
-        <div class="polaroid-caption">Candid laughter & gajra ✨</div>
+        <div class="tile-label">Soft Spontaneous Joy</div>
+        <div class="tile-tag">Temple Stone & Jasmine Gajra</div>
       </div>
 
-      <!-- Photo 3 -->
-      <div class="polaroid-card">
-        <span class="pin-ribbon">✨</span>
-        <div class="polaroid-img-box">
+      <!-- 3 -->
+      <div class="gallery-tile">
+        <div class="tile-crop">
           <img src="WhatsApp Image 2026-09-15 at 14.25.11.jpeg" alt="Photo 3" />
         </div>
-        <div class="polaroid-caption">Timeless temple grace 🏛️</div>
+        <div class="tile-label">Temple Majesty</div>
+        <div class="tile-tag">Carved Gates & Silk Drapes</div>
       </div>
 
-      <!-- Photo 4 -->
-      <div class="polaroid-card">
-        <span class="pin-ribbon">🌼</span>
-        <div class="polaroid-img-box">
+      <!-- 4 -->
+      <div class="gallery-tile">
+        <div class="tile-crop">
           <img src="WhatsApp Image 2026-09-15 at 14.25.08.jpeg" alt="Photo 4" />
         </div>
-        <div class="polaroid-caption">Sunny blessed smile 🙏</div>
+        <div class="tile-label">A Radiant Morning</div>
+        <div class="tile-tag">Ganesha Blessings</div>
       </div>
 
-      <!-- Photo 5 -->
-      <div class="polaroid-card">
-        <span class="pin-ribbon">🌿</span>
-        <div class="polaroid-img-box">
+      <!-- 5 -->
+      <div class="gallery-tile">
+        <div class="tile-crop">
           <img src="psl2.jpeg" alt="Photo 5" />
         </div>
-        <div class="polaroid-caption">Serene everyday beauty 🍃</div>
+        <div class="tile-label">Breezy & Effortless</div>
+        <div class="tile-tag">Under The Canopy Tree</div>
       </div>
 
-      <!-- Photo 6 -->
-      <div class="polaroid-card">
-        <span class="pin-ribbon">☕</span>
-        <div class="polaroid-img-box">
+      <!-- 6 -->
+      <div class="gallery-tile">
+        <div class="tile-crop">
           <img src="psl3.jpeg" alt="Photo 6" />
         </div>
-        <div class="polaroid-caption">Cosy night-time conversations 🌙</div>
+        <div class="tile-label">Evening Calm</div>
+        <div class="tile-tag">Streetlight Glow & Chai</div>
       </div>
     </div>
 
-    <!-- Soft Heartfelt Birthday Note -->
-    <div class="letter-box">
-      <h3 class="letter-title">To the prettiest girl in the world,</h3>
-      <div class="letter-text">
-        <p>You have a way of lighting up every single space you enter—whether in vibrant sarees with traditional grace, or casually laughing in quiet little moments.</p>
+    <!-- Letter From The Heart -->
+    <div class="letter-parchment">
+      <h3>To Someone Truly Incomparable,</h3>
+      <div class="letter-body">
+        <p>May this year greet you with open doors, sweet surprises, and an abundance of warmth. Never forget the quiet elegance and profound joy you bring into the lives of everyone lucky enough to know you.</p>
         <br>
-        <p>I hope this year showers you with endless happiness, heartfelt dreams coming true, good music playing on repeat, and all the love you effortlessly give to the world.</p>
+        <p>Keep laughing wholeheartedly, dreaming fearlessly, and illuminating every corner you touch.</p>
       </div>
-      <div class="letter-sign">Happy Birthday 🎀✨</div>
+      <div class="letter-sign">Happy Birthday, Always ✨</div>
     </div>
 
   </div>
 
   <script>
     /* ==========================================================
-       1. SMOOTH PHOTO SLIDER LOGIC
+       1. GITHUB AUDIO CONFIGURATION
+       ========================================================== */
+    // PASTE YOUR DIRECT GITHUB RAW AUDIO LINK HERE:
+    const GITHUB_AUDIO_URL = "https://raw.githubusercontent.com/YOUR_USERNAME/YOUR_REPO/main/love-me-not.mp3";
+
+    const audioPlayer = document.getElementById('audio-stream');
+    const audioSrc = document.getElementById('audio-src');
+    const musicWidget = document.getElementById('music-player-toggle');
+    const vinylDisc = document.getElementById('vinyl-disc');
+    const trackStatus = document.getElementById('track-status');
+    let isPlaying = false;
+
+    // Set GitHub audio source
+    if (GITHUB_AUDIO_URL && !GITHUB_AUDIO_URL.includes("YOUR_USERNAME")) {
+      audioSrc.src = GITHUB_AUDIO_URL;
+      audioPlayer.load();
+    } else {
+      // Local fallback
+      audioSrc.src = "love-me-not.mp3";
+    }
+
+    musicWidget.addEventListener('click', () => {
+      if (!isPlaying) {
+        audioPlayer.play().then(() => {
+          trackStatus.innerText = "Playing Ravyn Lenae 🎵";
+          vinylDisc.classList.add('spinning');
+          isPlaying = true;
+        }).catch(() => {
+          // If GitHub URL isn't configured yet, prompt the user!
+          const userUrl = prompt("Enter your direct GitHub raw audio URL (or leave blank for synth chimes):", "");
+          if (userUrl) {
+            audioPlayer.src = userUrl;
+            audioPlayer.play();
+            trackStatus.innerText = "Playing Audio 🎵";
+            vinylDisc.classList.add('spinning');
+            isPlaying = true;
+          }
+        });
+      } else {
+        audioPlayer.pause();
+        trackStatus.innerText = "Paused ✨";
+        vinylDisc.classList.remove('spinning');
+        isPlaying = false;
+      }
+    });
+
+    /* ==========================================================
+       2. CINEMATIC 3D SLIDER LOGIC
        ========================================================== */
     const slides = document.querySelectorAll('.slide');
     const prevBtn = document.getElementById('prev-btn');
     const nextBtn = document.getElementById('next-btn');
-    const dotsContainer = document.getElementById('dots-container');
+    const dotsBox = document.getElementById('dots-box');
     let currentIndex = 0;
-    let autoSlideInterval;
+    let slideTimer;
 
-    // Create indicator dots
     slides.forEach((_, i) => {
       const dot = document.createElement('div');
-      dot.className = `dot ${i === 0 ? 'active' : ''}`;
-      dot.addEventListener('click', () => goToSlide(i));
-      dotsContainer.appendChild(dot);
+      dot.className = `pill-dot ${i === 0 ? 'active' : ''}`;
+      dot.addEventListener('click', () => jumpToSlide(i));
+      dotsBox.appendChild(dot);
     });
+    const dots = document.querySelectorAll('.pill-dot');
 
-    const dots = document.querySelectorAll('.dot');
-
-    function updateSlides() {
+    function renderSlide() {
       slides.forEach((slide, idx) => {
         slide.classList.toggle('active', idx === currentIndex);
       });
@@ -794,201 +918,138 @@
       });
     }
 
-    function goToSlide(index) {
-      currentIndex = index;
-      updateSlides();
-      resetAutoSlide();
-    }
-
     function nextSlide() {
       currentIndex = (currentIndex + 1) % slides.length;
-      updateSlides();
+      renderSlide();
     }
 
     function prevSlide() {
       currentIndex = (currentIndex - 1 + slides.length) % slides.length;
-      updateSlides();
+      renderSlide();
     }
 
-    nextBtn.addEventListener('click', () => { nextSlide(); resetAutoSlide(); });
-    prevBtn.addEventListener('click', () => { prevSlide(); resetAutoSlide(); });
-
-    function resetAutoSlide() {
-      clearInterval(autoSlideInterval);
-      autoSlideInterval = setInterval(nextSlide, 4500);
+    function jumpToSlide(idx) {
+      currentIndex = idx;
+      renderSlide();
+      resetInterval();
     }
-    resetAutoSlide();
+
+    nextBtn.addEventListener('click', () => { nextSlide(); resetInterval(); });
+    prevBtn.addEventListener('click', () => { prevSlide(); resetInterval(); });
+
+    function resetInterval() {
+      clearInterval(slideTimer);
+      slideTimer = setInterval(nextSlide, 5000);
+    }
+    resetInterval();
 
     /* ==========================================================
-       2. "HE LOVES ME, HE LOVES ME NOT" DAISY GAME
+       3. "HE LOVES ME, HE LOVES ME NOT" GAME
        ========================================================== */
-    const petalBtn = document.getElementById('petal-btn');
-    const lovesOutput = document.getElementById('loves-output');
-    const statements = [
-      "He loves me not... 🥀",
-      "He loves me! 🌸",
+    const pullBtn = document.getElementById('pull-petal-btn');
+    const verdict = document.getElementById('verdict-display');
+    const outcomes = [
       "He loves me not... 💭",
-      "He loves me! 💖",
-      "He loves you endlessly! Absolutely, forever! ✨🎀"
+      "He loves me! 🌸",
+      "He loves me not... 🥀",
+      "He loves you unconditionally & endlessly! 👑💖"
     ];
     let step = 0;
 
-    petalBtn.addEventListener('click', () => {
-      lovesOutput.style.opacity = '0';
+    pullBtn.addEventListener('click', () => {
+      verdict.style.opacity = '0';
       setTimeout(() => {
-        lovesOutput.innerText = statements[step % statements.length];
-        lovesOutput.style.opacity = '1';
+        verdict.innerText = outcomes[step % outcomes.length];
+        verdict.style.opacity = '1';
         step++;
 
-        // Burst hearts confetti on winning pull
-        if (step >= statements.length) {
+        if (step >= outcomes.length) {
           confetti({
-            particleCount: 50,
-            spread: 60,
-            colors: ['#ff4d6d', '#ffb3c6', '#ffd166'],
-            shapes: ['circle']
+            particleCount: 75,
+            spread: 70,
+            origin: { y: 0.7 },
+            colors: ['#ff007f', '#ffb703', '#9d00ff']
           });
         }
       }, 200);
     });
 
     /* ==========================================================
-       3. "LOVE ME NOT" MUSIC PLAYER (With Web Audio Backup)
+       4. INTERACTIVE BIRTHDAY CAKE
        ========================================================== */
-    const musicToggle = document.getElementById('music-toggle');
-    const vinylIcon = document.getElementById('vinyl-icon');
-    const musicStatus = document.getElementById('music-status');
-    const audioPlayer = document.getElementById('audio-player');
-    let isPlaying = false;
+    const cake = document.getElementById('cake-interactive');
+    const flame = document.getElementById('flame-spark');
+    const candleText = document.getElementById('candle-text');
+    let extinguished = false;
 
-    // Web Audio Fallback Synth Melody (Ravyn Lenae "Love Me Not" chill chords)
-    let audioCtx = null;
-    let synthInterval = null;
+    cake.addEventListener('click', () => {
+      if (!extinguished) {
+        flame.classList.add('blown');
+        candleText.innerText = "Wish Granted! Happy Birthday! 👑✨";
+        extinguished = true;
 
-    function playSynthDream() {
-      if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-      const chords = [
-        [392.00, 493.88, 587.33], // G major
-        [329.63, 392.00, 493.88], // E minor
-        [349.23, 440.00, 523.25], // F major
-        [261.63, 329.63, 392.00]  // C major
-      ];
-      let chordIndex = 0;
-
-      synthInterval = setInterval(() => {
-        chords[chordIndex % chords.length].forEach(freq => {
-          const osc = audioCtx.createOscillator();
-          const gain = audioCtx.createGain();
-          osc.type = 'sine';
-          osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
-          gain.gain.setValueAtTime(0.04, audioCtx.currentTime);
-          gain.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + 1.2);
-          osc.connect(gain);
-          gain.connect(audioCtx.destination);
-          osc.start();
-          osc.stop(audioCtx.currentTime + 1.2);
-        });
-        chordIndex++;
-      }, 1400);
-    }
-
-    musicToggle.addEventListener('click', () => {
-      if (!isPlaying) {
-        // Attempt MP3 play; if blocked or empty, run soft melodic synth
-        audioPlayer.play().then(() => {
-          musicStatus.innerText = "Playing Ravyn Lenae 🎶";
-        }).catch(() => {
-          playSynthDream();
-          musicStatus.innerText = "Dreaming Chimes 🎶";
-        });
-        vinylIcon.classList.add('playing');
-        isPlaying = true;
-      } else {
-        audioPlayer.pause();
-        clearInterval(synthInterval);
-        vinylIcon.classList.remove('playing');
-        musicStatus.innerText = "Paused 🎀";
-        isPlaying = false;
-      }
-    });
-
-    /* ==========================================================
-       4. INTERACTIVE BIRTHDAY CANDLE
-       ========================================================== */
-    const cakeClicker = document.getElementById('cake-clicker');
-    const flameElement = document.getElementById('flame-element');
-    const cakeStatus = document.getElementById('cake-status');
-    let candleBlown = false;
-
-    cakeClicker.addEventListener('click', () => {
-      if (!candleBlown) {
-        flameElement.classList.add('off');
-        cakeStatus.innerText = "Wish granted! Happy Birthday! 🎀✨";
-        candleBlown = true;
-
-        // Pink and gold celebratory confetti burst
         confetti({
-          particleCount: 100,
-          spread: 80,
+          particleCount: 120,
+          spread: 85,
           origin: { y: 0.6 },
-          colors: ['#ff4d6d', '#ffb3c6', '#ffe066', '#ffffff']
+          colors: ['#ff007f', '#ffb703', '#9d00ff', '#ffffff']
         });
       } else {
-        flameElement.classList.remove('off');
-        cakeStatus.innerText = "Tap the flame to make a wish 🕯️";
-        candleBlown = false;
+        flame.classList.remove('blown');
+        candleText.innerText = "Blow out the candle & make a wish 🕯️";
+        extinguished = false;
       }
     });
 
     /* ==========================================================
-       5. FLOATING SAKURA PETALS CANVAS
+       5. VIVID AMBIENT CANVAS (Glowing Golden & Violet Embers)
        ========================================================== */
-    const canvas = document.getElementById('petal-canvas');
+    const canvas = document.getElementById('ambient-canvas');
     const ctx = canvas.getContext('2d');
-    let petals = [];
+    let particles = [];
 
-    function resize() {
+    function resizeCanvas() {
       canvas.width = window.innerWidth;
       canvas.height = window.innerHeight;
     }
-    window.addEventListener('resize', resize);
-    resize();
+    window.addEventListener('resize', resizeCanvas);
+    resizeCanvas();
 
-    class FloatingPetal {
-      constructor() { this.reset(); }
-      reset() {
+    class GlowingEmber {
+      constructor() { this.init(); }
+      init() {
         this.x = Math.random() * canvas.width;
-        this.y = -20;
-        this.size = Math.random() * 8 + 5;
-        this.speedY = Math.random() * 1.2 + 0.5;
-        this.speedX = Math.random() * 0.8 - 0.4;
-        this.angle = Math.random() * 360;
-        this.spin = Math.random() * 0.03 - 0.015;
-        this.color = Math.random() > 0.5 ? 'rgba(255, 179, 198, 0.45)' : 'rgba(255, 214, 223, 0.4)';
+        this.y = Math.random() * canvas.height;
+        this.radius = Math.random() * 2.5 + 1;
+        this.speedY = -(Math.random() * 0.8 + 0.3);
+        this.speedX = Math.random() * 0.6 - 0.3;
+        this.alpha = Math.random() * 0.7 + 0.3;
+        this.color = Math.random() > 0.5 ? '255, 183, 3' : '255, 0, 127';
       }
       update() {
         this.y += this.speedY;
-        this.x += Math.sin(this.y * 0.015) + this.speedX;
-        this.angle += this.spin;
-        if (this.y > canvas.height + 20) this.reset();
+        this.x += this.speedX;
+        if (this.y < -10) {
+          this.y = canvas.height + 10;
+          this.x = Math.random() * canvas.width;
+        }
       }
       draw() {
-        ctx.save();
-        ctx.translate(this.x, this.y);
-        ctx.rotate(this.angle);
-        ctx.fillStyle = this.color;
         ctx.beginPath();
-        ctx.ellipse(0, 0, this.size, this.size / 1.8, 0, 0, Math.PI * 2);
+        ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(${this.color}, ${this.alpha})`;
+        ctx.shadowBlur = 12;
+        ctx.shadowColor = `rgba(${this.color}, 0.8)`;
         ctx.fill();
-        ctx.restore();
+        ctx.shadowBlur = 0;
       }
     }
 
-    for (let i = 0; i < 30; i++) petals.push(new FloatingPetal());
+    for (let i = 0; i < 45; i++) particles.push(new GlowingEmber());
 
     function animate() {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
-      petals.forEach(p => { p.update(); p.draw(); });
+      particles.forEach(p => { p.update(); p.draw(); });
       requestAnimationFrame(animate);
     }
     animate();
