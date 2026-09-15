@@ -608,7 +608,7 @@
     }
 
     /* =========================================================
-       6. WISH BOX (REMAINS VISIBLE & SAVED FOR LAKSHMI)
+       6. CLEAN REAL WISH BOX (NO FAKE WISHES)
        ========================================================= */
     .wish-section {
       width: 100%;
@@ -1098,11 +1098,11 @@
     </div>
 
     <!-- ========================================================
-         6. THE WISH BOX: EVERYONE'S WISHES REMAIN VISIBLE
+         6. THE WISH BOX: 100% REAL WISHES ONLY
          ======================================================== -->
     <div class="wish-section">
       <h3 class="wish-header-title">Birthday Wishes For Lakshmi 💌</h3>
-      <p class="wish-header-sub">Every wish remains in this box forever for her to read! ✨</p>
+      <p class="wish-header-sub">Every wish written here remains permanently in this box! ✨</p>
       
       <input type="text" id="wish-name" class="wish-input" placeholder="Your Name..." />
       <textarea id="wish-text" class="wish-textarea" placeholder="Write your heartfelt birthday message for Lakshmi..."></textarea>
@@ -1118,9 +1118,9 @@
 
       <button class="send-wish-btn" id="btn-send-wish">Send Wish To Lakshmi ❤️</button>
 
-      <!-- All Wishes Visible Here -->
+      <!-- All Real Wishes Visible Here -->
       <div class="wish-wall" id="wish-wall">
-        <!-- Rendered instantly by Javascript below -->
+        <!-- Javascript renders real wishes or empty prompt here -->
       </div>
     </div>
 
@@ -1214,7 +1214,7 @@
   <script>
     /* ==========================================================
        1. SYNCHRONIZED TIMED LYRICS
-       ========================================================== */
+       ========================================================= */
     const lyricsData = [
       { time: 0, text: "✦ [Intro - Slowed + Reverb] ✦" },
       { time: 18, text: "See, right now, I need you, I'll meet you somewhere now" },
@@ -1419,49 +1419,41 @@
     });
 
     /* ==========================================================
-       6. WISH BOX ENGINE: ALL WISHES PERMANENTLY VISIBLE
+       6. WISH BOX (100% REAL WISHES ONLY - NO FAKE WISHES)
        ========================================================= */
     const wishName = document.getElementById('wish-name');
     const wishText = document.getElementById('wish-text');
     const btnSendWish = document.getElementById('btn-send-wish');
     const wishWall = document.getElementById('wish-wall');
 
-    // 👉 PERMANENT WISHES PRE-STORED FOR HER TO READ IMMEDIATELY
-    // You can add more wishes from family members right here:
-    const PERMANENT_FAMILY_WISHES = [
-      {
-        name: "Your Big Brother ❤️",
-        msg: "Happy Birthday my little sister! You bring so much joy to our family. Watching you grow into such a kind, strong, and beautiful person has been my greatest pride. Love you always! ✨",
-        time: "Always & Forever"
-      },
-      {
-        name: "Amma & Appa (Mom & Dad) ❤️",
-        msg: "Happy Birthday our dearest daughter Lakshmi! May God bless you with good health, immense happiness, and every dream you desire. Stay blessed always 🙏🌸",
-        time: "Blessings Forever"
-      },
-      {
-        name: "Family & Cousins ❤️",
-        msg: "Happiest Birthday to the sweetest Lakshmi! Keep rocking and spreading that radiant smile wherever you go! 🎂🎉",
-        time: "Birthday Love"
-      }
-    ];
+    // Key used to store real submitted wishes
+    const STORAGE_KEY = 'lakshmi_real_submitted_wishes';
 
-    // Load all wishes synchronously on load so nothing is delayed or blank!
     function loadAndDisplayAllWishes() {
-      // 1. Get any new wishes typed into this browser
-      let userAddedWishes = [];
-      const stored = localStorage.getItem('lakshmi_wishes_saved_list');
+      let wishes = [];
+      const stored = localStorage.getItem(STORAGE_KEY);
       if (stored) {
-        try { userAddedWishes = JSON.parse(stored); } catch(e){}
+        try {
+          wishes = JSON.parse(stored);
+        } catch (e) {
+          wishes = [];
+        }
       }
-
-      // 2. Combine all family wishes + user submitted wishes
-      const allWishes = [...userAddedWishes, ...PERMANENT_FAMILY_WISHES];
-      renderWishes(allWishes);
+      renderWishes(wishes);
     }
 
     function renderWishes(wishes) {
       wishWall.innerHTML = '';
+      if (!wishes || wishes.length === 0) {
+        // Clean empty message when no one has posted yet
+        wishWall.innerHTML = `
+          <div style="text-align:center; color:var(--crimson-heart); font-style:italic; font-size:0.95rem; font-weight:700; padding:1.2rem 0;">
+            No wishes yet. Be the first to leave a wish for Lakshmi! ❤️
+          </div>
+        `;
+        return;
+      }
+
       wishes.forEach(item => {
         const card = document.createElement('div');
         card.className = 'wish-card';
@@ -1481,7 +1473,6 @@
       wishText.focus();
     }
 
-    // When anyone sends a wish, it appears INSTANTLY at the top of the box!
     btnSendWish.addEventListener('click', () => {
       const name = wishName.value.trim();
       const msg = wishText.value.trim();
@@ -1491,29 +1482,32 @@
         return;
       }
 
-      let userAddedWishes = [];
-      const stored = localStorage.getItem('lakshmi_wishes_saved_list');
+      let wishes = [];
+      const stored = localStorage.getItem(STORAGE_KEY);
       if (stored) {
-        try { userAddedWishes = JSON.parse(stored); } catch(e){}
+        try {
+          wishes = JSON.parse(stored);
+        } catch (e) {
+          wishes = [];
+        }
       }
 
-      // Add to top of list
-      userAddedWishes.unshift({
+      // Add the real user wish to the top
+      wishes.unshift({
         name: name + " ❤️",
         msg: msg,
         time: "Just now"
       });
 
-      // Save permanently in browser storage
-      localStorage.setItem('lakshmi_wishes_saved_list', JSON.stringify(userAddedWishes));
+      // Save permanently in storage
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(wishes));
 
-      // Re-render immediately
-      renderWishes([...userAddedWishes, ...PERMANENT_FAMILY_WISHES]);
+      // Update screen instantly
+      renderWishes(wishes);
 
       wishName.value = '';
       wishText.value = '';
 
-      // Confetti & Haptic
       if (navigator.vibrate) navigator.vibrate(60);
       confetti({
         particleCount: 80,
@@ -1522,7 +1516,6 @@
         colors: ['#ef233c', '#d90429', '#ffffff', '#ffbe0b']
       });
 
-      // Smooth scroll to newly added wish
       wishWall.scrollTo({ top: 0, behavior: 'smooth' });
     });
 
@@ -1532,7 +1525,7 @@
       );
     }
 
-    // Execute immediately on page load
+    // Load saved real wishes immediately
     loadAndDisplayAllWishes();
 
     /* ==========================================================
