@@ -3,26 +3,27 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>A Majestic Celebration for Royalty ✨👑</title>
+  <title>Happy Birthday, Birthday Girl! 💖✨</title>
 
-  <!-- Luxury & Calligraphy Fonts -->
+  <!-- Google Girly Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700;900&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@700&family=Outfit:wght@400;600;700;900&family=Shrikhand&display=swap" rel="stylesheet">
   
-  <!-- Canvas Confetti -->
+  <!-- Canvas Confetti CDN -->
   <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 
   <style>
     :root {
-      --imperial-bg: #07030e;
-      --royal-violet: #1a042e;
-      --majestic-magenta: #e60067;
-      --ethereal-rose: #ff4d88;
-      --regal-gold: #f5c563;
-      --champagne-glow: #ffe8b3;
-      --glass-surface: rgba(26, 7, 44, 0.65);
-      --gold-border: rgba(245, 197, 99, 0.35);
+      --hot-pink: #ff007f;
+      --barbie-pink: #ff1493;
+      --neon-magenta: #d900ff;
+      --candy-peach: #ff6f91;
+      --baby-pink: #ffe5ec;
+      --electric-purple: #7209b7;
+      --glow: 0 0 25px rgba(255, 0, 127, 0.6);
+      --glass: rgba(255, 255, 255, 0.12);
+      --glass-border: rgba(255, 255, 255, 0.28);
     }
 
     * {
@@ -33,16 +34,16 @@
     }
 
     body {
-      background: radial-gradient(circle at 50% 10%, #2e0847 0%, var(--royal-violet) 40%, var(--imperial-bg) 85%);
-      color: #fcebf0;
-      font-family: 'Cormorant Garamond', serif;
+      background: radial-gradient(circle at 50% 10%, #400030 0%, #1a0026 50%, #0d0014 100%);
+      color: #fff;
+      font-family: 'Outfit', sans-serif;
       overflow-x: hidden;
       min-height: 100vh;
       position: relative;
     }
 
-    /* Ambient Canvas */
-    #galaxy-canvas {
+    /* Floating Hearts Canvas */
+    #hearts-canvas {
       position: fixed;
       top: 0;
       left: 0;
@@ -53,1017 +54,1076 @@
     }
 
     /* =========================================================
-       THE 3D ROYAL BIRTHDAY CARD OVERLAY
+       1. VIVID BIRTHDAY CARD UNBOXING OVERLAY
        ========================================================= */
-    #card-portal {
+    #gift-portal {
       position: fixed;
       inset: 0;
-      background: radial-gradient(circle at center, #26063b 0%, #06020c 85%);
-      z-index: 9999;
+      background: radial-gradient(circle at center, #590044 0%, #15001f 85%);
+      z-index: 99999;
       display: flex;
       flex-direction: column;
-      justify-content: center;
       align-items: center;
+      justify-content: center;
       padding: 1.5rem;
-      transition: opacity 1s cubic-bezier(0.4, 0, 0.2, 1), visibility 1s;
+      transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
-    #card-portal.opened {
+    #gift-portal.unlocked {
       opacity: 0;
       visibility: hidden;
+      transform: scale(1.1);
       pointer-events: none;
     }
 
-    .card-scene {
+    .gift-box {
       width: 320px;
       height: 440px;
-      perspective: 1500px;
-      cursor: pointer;
-    }
-
-    @media (min-width: 600px) {
-      .card-scene {
-        width: 360px;
-        height: 480px;
-      }
-    }
-
-    .card-3d {
-      width: 100%;
-      height: 100%;
-      position: relative;
-      transform-style: preserve-3d;
-      transition: transform 1.2s cubic-bezier(0.2, 0.85, 0.4, 1.2);
-    }
-
-    .card-scene:hover .card-3d {
-      transform: rotateY(-10deg) scale(1.02);
-    }
-
-    .card-scene.open-action .card-3d {
-      transform: rotateY(-140deg) scale(0.95);
-    }
-
-    /* Outer Cover of the Birthday Card */
-    .card-front, .card-inside {
-      position: absolute;
-      inset: 0;
-      border-radius: 24px;
-      backface-visibility: hidden;
-    }
-
-    .card-front {
-      background: linear-gradient(145deg, #2b0542, #130222);
-      border: 2px solid var(--regal-gold);
-      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.85), 0 0 35px rgba(230, 0, 103, 0.35);
+      background: linear-gradient(135deg, #ff007f, #d900ff);
+      border: 3px solid #fff;
+      border-radius: 32px;
+      box-shadow: 0 25px 60px rgba(255, 0, 127, 0.5), inset 0 0 30px rgba(255, 255, 255, 0.4);
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
       text-align: center;
-      padding: 2.5rem 1.8rem;
-      z-index: 2;
+      padding: 2.2rem;
+      position: relative;
+      cursor: pointer;
+      transform-style: preserve-3d;
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+      animation: floatGift 3s infinite ease-in-out alternate;
     }
 
-    .card-front-crown {
-      font-size: 2.8rem;
-      filter: drop-shadow(0 0 15px var(--regal-gold));
-      margin-bottom: 0.8rem;
-      animation: heartBeat 2s infinite ease-in-out;
+    .gift-box:hover {
+      transform: scale(1.04) rotate(-1deg);
+      box-shadow: 0 35px 80px rgba(255, 0, 127, 0.8), 0 0 40px rgba(255, 255, 255, 0.6);
     }
 
-    .card-front h2 {
-      font-family: 'Cinzel Decorative', serif;
-      font-size: 1.6rem;
-      color: var(--champagne-glow);
-      letter-spacing: 2px;
-      margin-bottom: 0.5rem;
+    .gift-ribbon-v {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      width: 38px;
+      background: linear-gradient(to right, #ffd166, #fffcbb, #ffd166);
+      box-shadow: 0 0 15px rgba(255, 209, 102, 0.6);
+      z-index: 1;
     }
 
-    .card-front p {
-      font-size: 1.15rem;
-      color: #dfcaee;
-      font-style: italic;
-      margin-bottom: 2.2rem;
+    .gift-ribbon-h {
+      position: absolute;
+      left: 0;
+      right: 0;
+      height: 38px;
+      background: linear-gradient(to bottom, #ffd166, #fffcbb, #ffd166);
+      box-shadow: 0 0 15px rgba(255, 209, 102, 0.6);
+      z-index: 1;
     }
 
-    /* Royal Wax Seal */
-    .wax-seal {
-      width: 72px;
-      height: 72px;
+    .gift-badge {
+      position: relative;
+      z-index: 3;
+      background: #fff;
+      color: var(--hot-pink);
+      padding: 1.2rem 1.4rem;
       border-radius: 50%;
-      background: radial-gradient(circle at 35% 35%, #ff4d88, #b8004f);
-      border: 2px solid var(--regal-gold);
-      box-shadow: 0 0 25px rgba(230, 0, 103, 0.7), inset 0 2px 4px rgba(255,255,255,0.4);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.8rem;
-      color: #fff;
-      animation: sealGlow 2s infinite alternate;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3), 0 0 25px rgba(255, 0, 127, 0.5);
+      font-size: 2.8rem;
+      animation: pulseHeart 1.5s infinite;
     }
 
-    .tap-hint {
-      font-family: 'Montserrat', sans-serif;
-      font-size: 0.78rem;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-      color: var(--regal-gold);
+    .gift-title {
+      position: relative;
+      z-index: 3;
+      font-family: 'Shrikhand', cursive;
+      font-size: 1.7rem;
+      color: #fff;
       margin-top: 1.4rem;
+      text-shadow: 0 3px 15px rgba(0,0,0,0.5);
+      letter-spacing: 1px;
+    }
+
+    .gift-subtitle {
+      position: relative;
+      z-index: 3;
+      font-size: 0.95rem;
+      color: #ffe5ec;
+      margin-top: 6px;
       font-weight: 600;
     }
 
-    /* =========================================================
-       SUBTLE FLOATING MUTE BUTTON (Once Card is Opened)
-       ========================================================= */
-    .floating-mute {
-      position: fixed;
-      top: 20px;
-      right: 20px;
-      background: rgba(22, 6, 38, 0.8);
-      border: 1px solid var(--regal-gold);
-      backdrop-filter: blur(12px);
-      width: 44px;
-      height: 44px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.2rem;
-      color: var(--champagne-glow);
-      box-shadow: 0 0 15px rgba(245, 197, 99, 0.3);
-      cursor: pointer;
-      z-index: 100;
-      transition: all 0.3s ease;
-    }
-    .floating-mute:hover {
-      transform: scale(1.1);
-      box-shadow: 0 0 25px rgba(230, 0, 103, 0.6);
+    .tap-btn-pill {
+      position: relative;
+      z-index: 3;
+      margin-top: 1.8rem;
+      background: #fff;
+      color: var(--barbie-pink);
+      font-weight: 900;
+      font-size: 0.85rem;
+      letter-spacing: 2px;
+      padding: 0.65rem 1.6rem;
+      border-radius: 999px;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+      text-transform: uppercase;
     }
 
     /* =========================================================
-       MAIN SITE CONTENT
+       MAIN SITE CONTAINER
        ========================================================= */
-    .universe-container {
+    .app-container {
       position: relative;
       z-index: 1;
-      max-width: 1150px;
+      max-width: 1100px;
       margin: 0 auto;
-      padding: 3rem 1.4rem 7rem;
+      padding: 2.5rem 1.2rem 6rem;
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 6rem;
+      gap: 5rem;
     }
 
-    /* Hero */
-    .hero-crown {
+    /* Top Floating Music Pill (Minimal) */
+    .top-pill {
+      position: fixed;
+      top: 18px;
+      right: 18px;
+      background: rgba(255, 0, 127, 0.25);
+      border: 1.5px solid rgba(255, 255, 255, 0.4);
+      backdrop-filter: blur(15px);
+      padding: 0.55rem 1.2rem;
+      border-radius: 999px;
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+      z-index: 100;
+      box-shadow: var(--glow);
+      cursor: pointer;
+    }
+
+    .vinyl-dot {
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: #fff;
+      box-shadow: 0 0 10px #fff;
+      animation: spin 3s linear infinite;
+    }
+
+    .track-info {
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+    }
+
+    /* Hero Banner */
+    .hero-banner {
       text-align: center;
-      max-width: 880px;
-      position: relative;
+      margin-top: 1.5rem;
     }
 
-    .crown-emblem {
-      font-size: 2.5rem;
-      filter: drop-shadow(0 0 15px var(--regal-gold));
-      margin-bottom: 0.6rem;
-    }
-
-    .majesty-tag {
+    .sparkle-tag {
       display: inline-flex;
       align-items: center;
-      gap: 0.8rem;
-      padding: 0.45rem 1.8rem;
+      gap: 0.5rem;
+      background: linear-gradient(90deg, #ff007f, #d900ff);
+      padding: 0.45rem 1.4rem;
       border-radius: 999px;
-      background: rgba(245, 197, 99, 0.08);
-      border: 1px solid var(--regal-gold);
-      font-family: 'Montserrat', sans-serif;
-      font-size: 0.8rem;
-      letter-spacing: 3px;
+      font-size: 0.85rem;
+      letter-spacing: 2px;
       text-transform: uppercase;
-      color: var(--regal-gold);
-      box-shadow: 0 0 25px rgba(245, 197, 99, 0.25);
-      margin-bottom: 1.5rem;
+      font-weight: 800;
+      box-shadow: var(--glow);
+      margin-bottom: 1.2rem;
     }
 
-    .hero-crown h1 {
-      font-family: 'Cinzel Decorative', serif;
-      font-size: clamp(2.6rem, 6.5vw, 4.8rem);
-      font-weight: 900;
-      line-height: 1.18;
-      margin-bottom: 1.2rem;
-      background: linear-gradient(135deg, #fff 20%, var(--regal-gold) 50%, var(--majestic-magenta) 90%);
+    .hero-banner h1 {
+      font-family: 'Shrikhand', cursive;
+      font-size: clamp(2.8rem, 8vw, 5.2rem);
+      line-height: 1.1;
+      margin-bottom: 1rem;
+      background: linear-gradient(135deg, #fff 20%, #ff85a1 50%, #ff007f 90%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
-      filter: drop-shadow(0 0 35px rgba(230, 0, 103, 0.45));
+      filter: drop-shadow(0 0 35px rgba(255, 0, 127, 0.6));
     }
 
-    .hero-crown p {
-      font-size: clamp(1.25rem, 2.5vw, 1.55rem);
-      color: #dfceeb;
-      font-style: italic;
-      line-height: 1.7;
-      max-width: 680px;
+    .hero-banner p {
+      font-size: clamp(1.1rem, 2.4vw, 1.35rem);
+      color: #ffd6df;
+      max-width: 620px;
       margin: 0 auto;
+      font-weight: 400;
+      line-height: 1.6;
     }
 
     /* =========================================================
-       MAJESTIC 3D ROYAL STAGE (Cinematic Photo Transitions)
+       2. ANIMATED LYRICS REEL (Apple Music / Spotify Style)
        ========================================================= */
-    .stage-wrapper {
+    .lyrics-container {
       width: 100%;
-      max-width: 750px;
+      max-width: 720px;
+      background: rgba(255, 255, 255, 0.06);
+      border: 2px solid var(--glass-border);
+      backdrop-filter: blur(25px);
+      border-radius: 36px;
+      padding: 2.2rem 1.8rem;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), inset 0 0 30px rgba(255, 0, 127, 0.2);
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 2rem;
     }
 
-    .royal-arch {
+    .lyrics-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+      margin-bottom: 1rem;
+    }
+
+    .lyrics-header-title {
+      font-weight: 800;
+      font-size: 0.95rem;
+      letter-spacing: 1.5px;
+      color: #ffb3c6;
+      text-transform: uppercase;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .live-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #00ff88;
+      box-shadow: 0 0 10px #00ff88;
+      animation: pulseLive 1.5s infinite;
+    }
+
+    .lyrics-scroller {
+      width: 100%;
+      height: 220px;
+      overflow-y: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: relative;
+      mask-image: linear-gradient(to bottom, transparent 0%, black 25%, black 75%, transparent 100%);
+      -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 25%, black 75%, transparent 100%);
+    }
+
+    .lyrics-stream {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.4rem;
+      transition: transform 0.45s cubic-bezier(0.2, 0.8, 0.2, 1);
+      width: 100%;
+    }
+
+    .lyric-line {
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: rgba(255, 255, 255, 0.35);
+      text-align: center;
+      transition: all 0.35s ease;
+      cursor: pointer;
+      padding: 0.3rem 1.2rem;
+      border-radius: 16px;
+      width: fit-content;
+      max-width: 90%;
+    }
+
+    .lyric-line.active {
+      color: #fff;
+      font-size: 1.7rem;
+      background: linear-gradient(90deg, rgba(255, 0, 127, 0.4), rgba(217, 0, 255, 0.4));
+      border: 1px solid rgba(255, 255, 255, 0.4);
+      box-shadow: 0 0 25px rgba(255, 0, 127, 0.6);
+      transform: scale(1.08);
+      filter: drop-shadow(0 0 10px rgba(255, 0, 127, 0.8));
+    }
+
+    /* =========================================================
+       3. 3D VIVID PHOTO DECK (Seamless Zoom Transitions)
+       ========================================================= */
+    .photo-deck-wrapper {
+      width: 100%;
+      max-width: 650px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.6rem;
+    }
+
+    .deck-viewport {
       position: relative;
       width: 100%;
-      height: 560px;
-      perspective: 1400px;
+      height: 520px;
+      border-radius: 36px;
+      perspective: 1200px;
     }
 
-    .arch-glow {
-      position: absolute;
-      inset: -4px;
-      border-radius: 260px 260px 32px 32px;
-      background: linear-gradient(135deg, var(--regal-gold), var(--majestic-magenta), var(--regal-gold));
-      filter: blur(12px);
-      opacity: 0.6;
-      z-index: 1;
-    }
-
-    .slide {
+    .deck-slide {
       position: absolute;
       inset: 0;
-      border-radius: 250px 250px 28px 28px;
+      border-radius: 36px;
       overflow: hidden;
-      background: #110521;
-      border: 2px solid var(--regal-gold);
-      box-shadow: 0 30px 70px rgba(0,0,0,0.8);
+      background: #240033;
+      border: 3px solid rgba(255, 255, 255, 0.3);
+      box-shadow: 0 25px 60px rgba(255, 0, 127, 0.35);
       opacity: 0;
-      transform: scale(0.92) rotateY(-18deg);
-      transition: all 0.95s cubic-bezier(0.16, 1, 0.3, 1);
+      transform: scale(0.9) rotateY(12deg);
+      transition: all 0.75s cubic-bezier(0.2, 0.9, 0.3, 1.1);
       pointer-events: none;
-      z-index: 2;
     }
 
-    .slide.active {
+    .deck-slide.active {
       opacity: 1;
       transform: scale(1) rotateY(0deg);
       pointer-events: auto;
       z-index: 5;
     }
 
-    .slide img {
+    .deck-slide img {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      object-position: center 20%;
-      transition: transform 7s cubic-bezier(0.1, 1, 0.1, 1);
+      object-position: center top;
+      transition: transform 6s cubic-bezier(0.1, 1, 0.1, 1);
     }
 
-    .slide.active img {
-      transform: scale(1.08);
+    .deck-slide.active img {
+      transform: scale(1.07);
     }
 
-    .slide-veil {
+    /* Floating Y2K Tag on Photos */
+    .y2k-badge {
       position: absolute;
-      inset: 0;
-      background: linear-gradient(to top, rgba(7, 3, 14, 0.96) 12%, rgba(7, 3, 14, 0.3) 55%, transparent 100%);
+      top: 20px;
+      left: 20px;
+      background: #fff;
+      color: var(--hot-pink);
+      padding: 0.4rem 1.1rem;
+      border-radius: 999px;
+      font-weight: 900;
+      font-size: 0.82rem;
+      letter-spacing: 1px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+      z-index: 2;
     }
 
-    .slide-info {
+    .deck-caption-box {
       position: absolute;
       bottom: 0;
       left: 0;
       width: 100%;
-      padding: 2.5rem 2.2rem 2rem;
+      padding: 2.2rem 1.8rem 1.6rem;
+      background: linear-gradient(to top, rgba(13, 0, 20, 0.95) 20%, rgba(13, 0, 20, 0.3) 60%, transparent 100%);
       display: flex;
       justify-content: space-between;
       align-items: flex-end;
     }
 
-    .slide-title {
-      font-family: 'Cinzel Decorative', serif;
-      font-size: 1.65rem;
+    .deck-title {
+      font-family: 'Shrikhand', cursive;
+      font-size: 1.5rem;
       color: #fff;
-      text-shadow: 0 2px 10px rgba(0,0,0,0.9);
-      letter-spacing: 1px;
+      letter-spacing: 0.5px;
     }
 
-    .slide-lyric {
-      font-size: 1.15rem;
-      color: var(--champagne-glow);
-      font-style: italic;
-      margin-top: 5px;
+    .deck-sub {
+      font-family: 'Caveat', cursive;
+      font-size: 1.45rem;
+      color: #ff85a1;
+      margin-top: 4px;
     }
 
-    .slide-count {
-      font-family: 'Montserrat', sans-serif;
-      font-size: 0.9rem;
-      color: var(--ethereal-rose);
+    .deck-counter {
+      font-weight: 900;
+      font-size: 1.1rem;
+      color: var(--hot-pink);
       letter-spacing: 2px;
-      font-weight: 600;
+      background: #fff;
+      padding: 0.3rem 0.8rem;
+      border-radius: 12px;
     }
 
-    .stage-nav {
+    /* Controls */
+    .deck-nav {
       display: flex;
       align-items: center;
-      gap: 1.8rem;
+      gap: 1.5rem;
     }
 
     .nav-btn {
-      background: rgba(26, 4, 46, 0.7);
-      border: 1.5px solid var(--regal-gold);
-      color: var(--regal-gold);
-      width: 52px;
-      height: 52px;
+      background: linear-gradient(135deg, #ff007f, #d900ff);
+      border: 2px solid #fff;
+      color: #fff;
+      width: 48px;
+      height: 48px;
       border-radius: 50%;
+      font-size: 1.3rem;
+      cursor: pointer;
       display: flex;
       align-items: center;
       justify-content: center;
-      cursor: pointer;
-      font-size: 1.4rem;
-      box-shadow: 0 0 20px rgba(245, 197, 99, 0.25);
-      transition: all 0.35s ease;
+      box-shadow: var(--glow);
+      transition: all 0.3s ease;
     }
 
     .nav-btn:hover {
-      background: var(--regal-gold);
-      color: #07030e;
       transform: scale(1.15);
-      box-shadow: 0 0 35px rgba(245, 197, 99, 0.6);
+      background: #fff;
+      color: var(--hot-pink);
     }
 
-    .nav-dots {
+    .deck-dots {
       display: flex;
-      gap: 10px;
+      gap: 8px;
     }
 
-    .dot-node {
+    .dot {
       width: 10px;
       height: 10px;
+      background: rgba(255, 255, 255, 0.3);
       border-radius: 50%;
-      background: rgba(255, 255, 255, 0.25);
       cursor: pointer;
-      transition: all 0.4s ease;
+      transition: all 0.3s ease;
     }
 
-    .dot-node.active {
+    .dot.active {
       width: 32px;
       border-radius: 20px;
-      background: linear-gradient(90deg, var(--regal-gold), var(--majestic-magenta));
-      box-shadow: 0 0 15px var(--majestic-magenta);
+      background: var(--hot-pink);
+      box-shadow: var(--glow);
     }
 
     /* =========================================================
-       HEART-PLUCK ORACLE
+       4. INTERACTIVE BIRTHDAY CAKE
        ========================================================= */
-    .oracle-altar {
-      background: var(--glass-surface);
-      border: 1.5px solid var(--gold-border);
-      backdrop-filter: blur(24px);
-      border-radius: 36px;
-      padding: 3rem 2.2rem;
-      text-align: center;
-      max-width: 620px;
-      width: 100%;
-      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.6), inset 0 0 40px rgba(230, 0, 103, 0.15);
-    }
-
-    .oracle-title {
-      font-family: 'Cinzel Decorative', serif;
-      font-size: 1.8rem;
-      color: var(--champagne-glow);
-      margin-bottom: 0.5rem;
-    }
-
-    .oracle-sub {
-      font-size: 1.15rem;
-      color: #d1badb;
-      font-style: italic;
-      margin-bottom: 1.8rem;
-    }
-
-    .heart-oracle-btn {
-      background: linear-gradient(135deg, var(--majestic-magenta), var(--regal-gold));
-      border: none;
-      color: #fff;
-      font-family: 'Montserrat', sans-serif;
-      padding: 1rem 2.6rem;
-      border-radius: 999px;
-      font-size: 0.95rem;
-      font-weight: 600;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      cursor: pointer;
-      box-shadow: 0 0 35px rgba(230, 0, 103, 0.5);
-      transition: all 0.3s ease;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.7rem;
-    }
-
-    .heart-oracle-btn:hover {
-      transform: scale(1.08);
-      box-shadow: 0 0 50px rgba(245, 197, 99, 0.7);
-    }
-
-    .oracle-verdict {
-      font-size: 2.2rem;
-      color: var(--regal-gold);
-      font-style: italic;
-      min-height: 3.2rem;
-      margin-top: 1.5rem;
-      text-shadow: 0 0 20px rgba(245, 197, 99, 0.6);
-      transition: opacity 0.3s ease;
-    }
-
-    /* =========================================================
-       CAKE & GALLERY
-       ========================================================= */
-    .cake-sanctum {
+    .cake-zone {
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 1.4rem;
+      gap: 1.2rem;
     }
 
-    .cake-chant {
-      font-size: 1.6rem;
-      color: var(--champagne-glow);
-      font-style: italic;
-      letter-spacing: 1px;
+    .cake-prompt {
+      font-family: 'Shrikhand', cursive;
+      font-size: 1.5rem;
+      color: #ff85a1;
+      text-shadow: 0 0 15px rgba(255, 0, 127, 0.6);
     }
 
-    .imperial-cake {
+    .girly-cake {
       position: relative;
       width: 220px;
-      height: 180px;
+      height: 170px;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: flex-end;
       cursor: pointer;
-      user-select: none;
     }
 
-    .flame-heart {
+    .flame-core {
       position: absolute;
       top: -24px;
-      font-size: 1.8rem;
-      color: var(--regal-gold);
-      filter: drop-shadow(0 0 16px var(--regal-gold)) drop-shadow(0 0 25px var(--majestic-magenta));
-      animation: flameSway 0.2s infinite alternate ease-in-out;
-      transition: all 0.5s ease;
+      font-size: 2rem;
+      filter: drop-shadow(0 0 16px #ff007f) drop-shadow(0 0 25px #ffd166);
+      animation: heartPulse 1.2s infinite ease-in-out;
+      transition: all 0.4s ease;
     }
 
-    .flame-heart.quenched {
+    .flame-core.extinguished {
       opacity: 0;
-      transform: translateY(-25px) scale(0.3);
-      filter: blur(6px);
+      transform: translateY(-20px) scale(0.2);
     }
 
     .candle-pillar {
       width: 12px;
-      height: 48px;
-      background: repeating-linear-gradient(45deg, #fff, #fff 6px, var(--regal-gold) 6px, var(--regal-gold) 12px);
-      border-radius: 4px;
+      height: 44px;
+      background: repeating-linear-gradient(45deg, #fff, #fff 6px, #ff007f 6px, #ff007f 12px);
+      border-radius: 6px;
     }
 
-    .tier-crown {
-      width: 140px;
-      height: 45px;
-      background: linear-gradient(135deg, var(--majestic-magenta), #80003b);
-      border-radius: 18px 18px 4px 4px;
-      box-shadow: 0 0 25px rgba(230, 0, 103, 0.4);
+    .cake-tier-1 {
+      width: 130px;
+      height: 42px;
+      background: linear-gradient(135deg, #ff6f91, #ff007f);
+      border-radius: 16px 16px 4px 4px;
+      border: 2px solid #fff;
+      box-shadow: 0 0 25px rgba(255, 0, 127, 0.5);
     }
 
-    .tier-base {
-      width: 200px;
-      height: 56px;
-      background: linear-gradient(135deg, #2b0847, #130224);
-      border-radius: 14px;
+    .cake-tier-2 {
+      width: 190px;
+      height: 52px;
+      background: linear-gradient(135deg, #d900ff, #7209b7);
+      border-radius: 16px;
       margin-top: 3px;
-      border: 1.5px solid var(--gold-border);
-      box-shadow: 0 10px 30px rgba(0,0,0,0.7);
+      border: 2px solid #fff;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
     }
 
-    .gallery-heading {
-      font-family: 'Cinzel Decorative', serif;
-      font-size: clamp(2rem, 4.5vw, 2.6rem);
+    /* =========================================================
+       5. PHOTO GRID (All 6 Photos)
+       ========================================================= */
+    .grid-header {
+      font-family: 'Shrikhand', cursive;
+      font-size: 2.4rem;
       text-align: center;
-      background: linear-gradient(90deg, #fff, var(--regal-gold));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      margin-bottom: -3rem;
+      color: #fff;
+      text-shadow: 0 0 25px rgba(255, 0, 127, 0.8);
+      margin-bottom: -2.5rem;
     }
 
-    .regal-grid {
+    .girly-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 2.8rem;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2.5rem;
       width: 100%;
     }
 
-    .palace-frame {
-      background: rgba(22, 6, 38, 0.5);
-      border: 1px solid var(--gold-border);
-      backdrop-filter: blur(18px);
-      border-radius: 200px 200px 22px 22px;
-      padding: 16px 16px 24px;
-      box-shadow: 0 20px 45px rgba(0, 0, 0, 0.55);
-      transition: all 0.45s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    .photo-polaroid {
+      background: #fff;
+      padding: 14px 14px 22px;
+      border-radius: 24px;
+      color: #240033;
+      box-shadow: 0 20px 45px rgba(255, 0, 127, 0.25);
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      position: relative;
     }
 
-    .palace-frame:hover {
-      transform: translateY(-12px) scale(1.03);
-      border-color: var(--regal-gold);
-      box-shadow: 0 25px 60px rgba(230, 0, 103, 0.35), 0 0 30px rgba(245, 197, 99, 0.25);
+    .photo-polaroid:nth-child(even) { transform: rotate(1.5deg); }
+    .photo-polaroid:nth-child(odd) { transform: rotate(-1.5deg); }
+
+    .photo-polaroid:hover {
+      transform: translateY(-10px) rotate(0deg) scale(1.04);
+      box-shadow: 0 30px 60px rgba(255, 0, 127, 0.5);
+      z-index: 10;
     }
 
-    .photo-arch {
+    .polaroid-top-sticker {
+      position: absolute;
+      top: -10px;
+      right: 20px;
+      font-size: 1.4rem;
+    }
+
+    .polaroid-img-box {
       width: 100%;
-      height: 380px;
-      border-radius: 190px 190px 14px 14px;
+      height: 330px;
+      border-radius: 16px;
       overflow: hidden;
-      background: #090214;
+      background: #ffd6df;
     }
 
-    .photo-arch img {
+    .polaroid-img-box img {
       width: 100%;
       height: 100%;
       object-fit: cover;
       object-position: center top;
-      transition: transform 0.8s ease;
+      transition: transform 0.6s ease;
     }
 
-    .palace-frame:hover .photo-arch img {
+    .photo-polaroid:hover .polaroid-img-box img {
       transform: scale(1.08);
     }
 
-    .frame-title {
-      font-family: 'Cinzel Decorative', serif;
-      font-size: 1.35rem;
+    .polaroid-text {
+      font-family: 'Caveat', cursive;
+      font-size: 1.6rem;
       text-align: center;
-      margin-top: 18px;
-      color: #fff;
+      margin-top: 14px;
+      color: var(--hot-pink);
+      font-weight: 700;
     }
 
-    .frame-sub {
-      font-size: 1.1rem;
-      text-align: center;
-      color: var(--regal-gold);
-      font-style: italic;
-      margin-top: 4px;
-    }
-
-    .imperial-scroll {
-      background: linear-gradient(135deg, rgba(35, 8, 58, 0.75), rgba(14, 2, 26, 0.9));
-      border: 2px solid var(--gold-border);
+    /* Love Note */
+    .pink-letter {
+      background: linear-gradient(135deg, rgba(255, 0, 127, 0.2), rgba(217, 0, 255, 0.15));
+      border: 2px solid rgba(255, 255, 255, 0.3);
       backdrop-filter: blur(25px);
       border-radius: 36px;
-      padding: 3.5rem 2.8rem;
-      max-width: 760px;
+      padding: 3rem 2.2rem;
+      max-width: 680px;
       width: 100%;
-      box-shadow: 0 30px 80px rgba(0, 0, 0, 0.7), inset 0 0 50px rgba(230, 0, 103, 0.15);
-      position: relative;
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.5), inset 0 0 35px rgba(255, 0, 127, 0.25);
     }
 
-    .scroll-seal {
-      position: absolute;
-      top: -24px;
-      left: 50%;
-      transform: translateX(-50%);
-      background: linear-gradient(135deg, var(--majestic-magenta), var(--regal-gold));
-      width: 48px;
-      height: 48px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.4rem;
-      box-shadow: 0 0 25px var(--majestic-magenta);
+    .pink-letter h3 {
+      font-family: 'Shrikhand', cursive;
+      font-size: 2rem;
+      color: #fff;
+      margin-bottom: 1.2rem;
+      text-shadow: 0 0 15px var(--hot-pink);
     }
 
-    .imperial-scroll h3 {
-      font-family: 'Cinzel Decorative', serif;
-      font-size: 2.1rem;
-      color: var(--champagne-glow);
-      text-align: center;
-      margin-bottom: 1.8rem;
+    .letter-text {
+      font-size: 1.15rem;
+      line-height: 1.85;
+      color: #ffe5ec;
     }
 
-    .scroll-body {
-      font-size: 1.35rem;
-      line-height: 1.9;
-      color: #f1e1fb;
-      font-weight: 400;
-    }
-
-    .scroll-signature {
-      font-family: 'Cinzel Decorative', serif;
-      font-size: 1.6rem;
-      color: var(--regal-gold);
+    .letter-sign {
+      font-family: 'Caveat', cursive;
+      font-size: 2.2rem;
+      color: #ffd166;
       text-align: right;
-      margin-top: 2rem;
+      margin-top: 1.6rem;
     }
 
-    @keyframes sealGlow {
-      0% { box-shadow: 0 0 20px rgba(230, 0, 103, 0.6); }
-      100% { box-shadow: 0 0 35px rgba(245, 197, 99, 0.9); }
+    /* Keyframes */
+    @keyframes floatGift {
+      0% { transform: translateY(0); }
+      100% { transform: translateY(-12px); }
     }
-    @keyframes heartBeat {
+    @keyframes pulseHeart {
       0%, 100% { transform: scale(1); }
       50% { transform: scale(1.15); }
     }
-    @keyframes flameSway {
-      0% { transform: rotate(-4deg) scale(0.96); }
-      100% { transform: rotate(4deg) scale(1.04); }
+    @keyframes spin {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+    @keyframes pulseLive {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.4; transform: scale(0.85); }
     }
   </style>
 </head>
 <body>
 
-  <!-- Background Hearts Canvas -->
-  <canvas id="galaxy-canvas"></canvas>
+  <!-- Floating Hearts Background Canvas -->
+  <canvas id="hearts-canvas"></canvas>
 
   <!-- =========================================================
        AUDIO ELEMENT: Loaded with your exact song title!
        ========================================================= -->
-  <audio id="majestic-audio" loop preload="auto">
+  <audio id="main-audio" loop preload="auto">
     <source src="ravyn lenae - love me not [ slowed + reverb ] (lyrics).mp3" type="audio/mp3">
   </audio>
 
   <!-- =========================================================
-       THE BIRTHDAY CARD (TAP TO OPEN & PLAY SONG)
+       1. VIVID GIFT UNWRAPPING OVERLAY
        ========================================================= -->
-  <div id="card-portal">
-    <div class="card-scene" id="card-scene">
-      <div class="card-3d">
-        <div class="card-front">
-          <div class="card-front-crown">👑</div>
-          <h2>For Her Majesty</h2>
-          <p>A royal celebration prepared just for you...</p>
-          <div class="wax-seal">💌</div>
-          <div class="tap-hint">✦ Tap To Open Birthday Card ✦</div>
-        </div>
-      </div>
+  <div id="gift-portal">
+    <div class="gift-box" id="unwrap-card">
+      <div class="gift-ribbon-v"></div>
+      <div class="gift-ribbon-h"></div>
+      <div class="gift-badge">💖</div>
+      <h2 class="gift-title">For The Birthday Girl</h2>
+      <p class="gift-subtitle">A special musical surprise awaits inside...</p>
+      <div class="tap-btn-pill">✨ Tap To Open & Play ✨</div>
     </div>
   </div>
 
-  <!-- Discreet Floating Mute/Unmute Icon (Available after card is opened) -->
-  <div class="floating-mute" id="mute-toggle" title="Mute / Unmute" style="display: none;">
-    🔊
+  <!-- Subtle Music Status Pill -->
+  <div class="top-pill" id="pill-toggle">
+    <div class="vinyl-dot"></div>
+    <span class="track-info">Love Me Not [Slowed] 🎵</span>
   </div>
 
-  <div class="universe-container">
+  <div class="app-container">
     
-    <!-- Hero Crown Proclamation -->
-    <header class="hero-crown">
-      <div class="crown-emblem">👑</div>
-      <div class="majesty-tag">✨ Her Celestial Majesty ✨</div>
-      <h1>Happy Birthday, Queen</h1>
-      <p>"He loves me not, he loves me... he holds me tight then lets me go." Today, the whole universe revolves around the beauty, grace, and majesty that is you.</p>
+    <!-- Hero Banner -->
+    <header class="hero-banner">
+      <div class="sparkle-tag">✨ 100% IT GIRL • BIRTHDAY EDITION ✨</div>
+      <h1>Happy Birthday, Gorgeous! 💖</h1>
+      <p>A high-energy, candy-coated celebration made just for your beauty, radiant smile, and pure magic.</p>
     </header>
 
     <!-- ========================================================
-         MAJESTIC 3D ROYAL ARCH STAGE
+         2. LIVE SYNCHRONIZED ANIMATED LYRICS REEL
          ======================================================== -->
-    <div class="stage-wrapper">
-      <div class="royal-arch">
-        <div class="arch-glow"></div>
+    <div class="lyrics-container">
+      <div class="lyrics-header">
+        <span class="lyrics-header-title"><span class="live-dot"></span> Synchronized Lyrics</span>
+        <span style="font-size: 0.8rem; color: #ffb3c6; font-weight: 700;">Ravyn Lenae • Love Me Not</span>
+      </div>
+      <div class="lyrics-scroller" id="lyrics-scroller">
+        <div class="lyrics-stream" id="lyrics-stream">
+          <!-- Lyrics will be generated here by JavaScript -->
+        </div>
+      </div>
+    </div>
 
-        <!-- 1. Yellow & Royal Purple Saree -->
-        <div class="slide active">
+    <!-- ========================================================
+         3. VIVID 3D PHOTO DECK
+         ======================================================== -->
+    <div class="photo-deck-wrapper">
+      <div class="deck-viewport">
+
+        <!-- 1. Yellow & Purple Saree -->
+        <div class="deck-slide active">
+          <span class="y2k-badge">PURE SUNSHINE 💛</span>
           <img src="WhatsApp Image 2026-09-15 at 14.25.10.jpeg" alt="Saree Royalty" onerror="this.src='psl2.jpeg'" />
-          <div class="slide-veil"></div>
-          <div class="slide-info">
+          <div class="deck-caption-box">
             <div>
-              <div class="slide-title">Golden Hour Empress</div>
-              <div class="slide-lyric">Draped in solar silk & royal purple ✨</div>
+              <div class="deck-title">Saree Goddess</div>
+              <div class="deck-sub">That golden hour glow ✨</div>
             </div>
-            <div class="slide-count">01 / 06</div>
+            <div class="deck-counter">01 / 06</div>
           </div>
         </div>
 
         <!-- 2. Candid Stone Wall Laugh with Gajra -->
-        <div class="slide">
+        <div class="deck-slide">
+          <span class="y2k-badge">THAT SMILE 🌸</span>
           <img src="WhatsApp Image 2026-09-15 at 14.25.12.jpeg" alt="Candid Laughter" onerror="this.src='psl3.jpeg'" />
-          <div class="slide-veil"></div>
-          <div class="slide-info">
+          <div class="deck-caption-box">
             <div>
-              <div class="slide-title">Unfiltered Joy</div>
-              <div class="slide-lyric">That rare smile that softens stone walls 🌸</div>
+              <div class="deck-title">Unfiltered Joy</div>
+              <div class="deck-sub">The prettiest laugh in the room 💕</div>
             </div>
-            <div class="slide-count">02 / 06</div>
+            <div class="deck-counter">02 / 06</div>
           </div>
         </div>
 
         <!-- 3. Purple Silk by Temple Gate -->
-        <div class="slide">
+        <div class="deck-slide">
+          <span class="y2k-badge">ROYAL ENERGY 👑</span>
           <img src="WhatsApp Image 2026-09-15 at 14.25.11.jpeg" alt="Temple Gate" />
-          <div class="slide-veil"></div>
-          <div class="slide-info">
+          <div class="deck-caption-box">
             <div>
-              <div class="slide-title">Temple Heritage</div>
-              <div class="slide-lyric">Standing before ornate gates like royalty 🏛️</div>
+              <div class="deck-title">Silk & Heritage</div>
+              <div class="deck-sub">Standing tall like a queen 🏛️</div>
             </div>
-            <div class="slide-count">03 / 06</div>
+            <div class="deck-counter">03 / 06</div>
           </div>
         </div>
 
         <!-- 4. Yellow Kurti Ganesha Blessings -->
-        <div class="slide">
+        <div class="deck-slide">
+          <span class="y2k-badge">BLESSED VIBES ✨</span>
           <img src="WhatsApp Image 2026-09-15 at 14.25.08.jpeg" alt="Ganesha Blessings" />
-          <div class="slide-veil"></div>
-          <div class="slide-info">
+          <div class="deck-caption-box">
             <div>
-              <div class="slide-title">Blessed Aura</div>
-              <div class="slide-lyric">Showered in grace, joy, and divine beginnings 🙏</div>
+              <div class="deck-title">Shining Bright</div>
+              <div class="deck-sub">Big dreams and good fortune ahead 🙏</div>
             </div>
-            <div class="slide-count">04 / 06</div>
+            <div class="deck-counter">04 / 06</div>
           </div>
         </div>
 
         <!-- 5. Under the Tree -->
-        <div class="slide">
+        <div class="deck-slide">
+          <span class="y2k-badge">PEACEFUL DAYS 🌿</span>
           <img src="psl2.jpeg" alt="By the Tree" />
-          <div class="slide-veil"></div>
-          <div class="slide-info">
+          <div class="deck-caption-box">
             <div>
-              <div class="slide-title">Earthly Serenity</div>
-              <div class="slide-lyric">Peaceful footsteps and gentle breezes 🌿</div>
+              <div class="deck-title">Soft Nature Walks</div>
+              <div class="deck-sub">Effortless and serene 🍃</div>
             </div>
-            <div class="slide-count">05 / 06</div>
+            <div class="deck-counter">05 / 06</div>
           </div>
         </div>
 
         <!-- 6. Night Cafe Leaning on Table -->
-        <div class="slide">
+        <div class="deck-slide">
+          <span class="y2k-badge">MAIN CHARACTER ☕</span>
           <img src="psl3.jpeg" alt="Night Cafe" />
-          <div class="slide-veil"></div>
-          <div class="slide-info">
+          <div class="deck-caption-box">
             <div>
-              <div class="slide-title">Midnight Glow</div>
-              <div class="slide-lyric">Quiet night conversations & timeless eyes 🌙</div>
+              <div class="deck-title">Night Talks</div>
+              <div class="deck-sub">Warm coffee and endless memories 🌙</div>
             </div>
-            <div class="slide-count">06 / 06</div>
+            <div class="deck-counter">06 / 06</div>
           </div>
         </div>
 
       </div>
 
-      <!-- Controls -->
-      <div class="stage-nav">
-        <button class="nav-btn" id="prev-stage" aria-label="Previous">❮</button>
-        <div class="nav-dots" id="stage-dots"></div>
-        <button class="nav-btn" id="next-stage" aria-label="Next">❯</button>
+      <!-- Navigation -->
+      <div class="deck-nav">
+        <button class="nav-btn" id="deck-prev">❮</button>
+        <div class="deck-dots" id="deck-dots"></div>
+        <button class="nav-btn" id="deck-next">❯</button>
       </div>
     </div>
 
     <!-- ========================================================
-         HEART-PLUCK ORACLE
+         4. INTERACTIVE BIRTHDAY CAKE
          ======================================================== -->
-    <div class="oracle-altar">
-      <h3 class="oracle-title">The Heart Oracle 💖</h3>
-      <p class="oracle-sub">"He loves me not... he loves me... he holds me tight then lets me go..."</p>
-      <button class="heart-oracle-btn" id="oracle-btn">Pluck A Cosmic Heart ✨</button>
-      <div class="oracle-verdict" id="oracle-result">...</div>
-    </div>
-
-    <!-- The Imperial Birthday Cake -->
-    <div class="cake-sanctum">
-      <div class="cake-chant" id="wish-chant">Touch the heart flame to make your wish 🕯️</div>
-      <div class="imperial-cake" id="cake-shrine">
-        <div class="flame-heart" id="cake-flame">💖</div>
+    <div class="cake-zone">
+      <div class="cake-prompt" id="cake-hint">Touch the heart flame to make a wish! 🕯️</div>
+      <div class="girly-cake" id="cake-click">
+        <div class="flame-core" id="cake-flame">💖</div>
         <div class="candle-pillar"></div>
-        <div class="tier-crown"></div>
-        <div class="tier-base"></div>
+        <div class="cake-tier-1"></div>
+        <div class="cake-tier-2"></div>
       </div>
     </div>
 
     <!-- ========================================================
-         THE ROYAL ARCH GALLERY GRID
+         5. FULL PHOTO SCRAPBOOK (All 6 Photos)
          ======================================================== -->
-    <h2 class="gallery-heading">The Imperial Pantheon of Frames</h2>
+    <h2 class="grid-header">A Scrapbook of You 🎀</h2>
 
-    <div class="regal-grid">
-      <div class="palace-frame">
-        <div class="photo-arch">
-          <img src="WhatsApp Image 2026-09-15 at 14.25.10.jpeg" alt="Empress" onerror="this.src='psl2.jpeg'" />
+    <div class="girly-grid">
+      <!-- 1 -->
+      <div class="photo-polaroid">
+        <span class="polaroid-top-sticker">✨</span>
+        <div class="polaroid-img-box">
+          <img src="WhatsApp Image 2026-09-15 at 14.25.10.jpeg" alt="Photo 1" onerror="this.src='psl2.jpeg'" />
         </div>
-        <div class="frame-title">Solar Splendor</div>
-        <div class="frame-sub">Traditional silk woven in gold & violet</div>
+        <div class="polaroid-text">Golden Hour Royalty 💛</div>
       </div>
 
-      <div class="palace-frame">
-        <div class="photo-arch">
-          <img src="WhatsApp Image 2026-09-15 at 14.25.12.jpeg" alt="Laughter" onerror="this.src='psl3.jpeg'" />
+      <!-- 2 -->
+      <div class="photo-polaroid">
+        <span class="polaroid-top-sticker">🌸</span>
+        <div class="polaroid-img-box">
+          <img src="WhatsApp Image 2026-09-15 at 14.25.12.jpeg" alt="Photo 2" onerror="this.src='psl3.jpeg'" />
         </div>
-        <div class="frame-title">Sweet Laughter</div>
-        <div class="frame-sub">Stone temple corridors & jasmine flowers</div>
+        <div class="polaroid-text">Unfiltered Laughter & Gajra 💕</div>
       </div>
 
-      <div class="palace-frame">
-        <div class="photo-arch">
-          <img src="WhatsApp Image 2026-09-15 at 14.25.11.jpeg" alt="Gates" />
+      <!-- 3 -->
+      <div class="photo-polaroid">
+        <span class="polaroid-top-sticker">👑</span>
+        <div class="polaroid-img-box">
+          <img src="WhatsApp Image 2026-09-15 at 14.25.11.jpeg" alt="Photo 3" />
         </div>
-        <div class="frame-title">Palace Guardian</div>
-        <div class="frame-sub">Carved bronze gates and regal purple silk</div>
+        <div class="polaroid-text">Temple Gate Splendor 💜</div>
       </div>
 
-      <div class="palace-frame">
-        <div class="photo-arch">
-          <img src="WhatsApp Image 2026-09-15 at 14.25.08.jpeg" alt="Blessings" />
+      <!-- 4 -->
+      <div class="photo-polaroid">
+        <span class="polaroid-top-sticker">🙏</span>
+        <div class="polaroid-img-box">
+          <img src="WhatsApp Image 2026-09-15 at 14.25.08.jpeg" alt="Photo 4" />
         </div>
-        <div class="frame-title">Sacred Beginnings</div>
-        <div class="frame-sub">Warm smiles and divine blessings</div>
+        <div class="polaroid-text">Sunshine & Blessings 🌻</div>
       </div>
 
-      <div class="palace-frame">
-        <div class="photo-arch">
-          <img src="psl2.jpeg" alt="Tree" />
+      <!-- 5 -->
+      <div class="photo-polaroid">
+        <span class="polaroid-top-sticker">🌿</span>
+        <div class="polaroid-img-box">
+          <img src="psl2.jpeg" alt="Photo 5" />
         </div>
-        <div class="frame-title">Quiet Harmony</div>
-        <div class="frame-sub">Under ancient roots and quiet sunlight</div>
+        <div class="polaroid-text">Serene & Beautiful 🍃</div>
       </div>
 
-      <div class="palace-frame">
-        <div class="photo-arch">
-          <img src="psl3.jpeg" alt="Night" />
+      <!-- 6 -->
+      <div class="photo-polaroid">
+        <span class="polaroid-top-sticker">☕</span>
+        <div class="polaroid-img-box">
+          <img src="psl3.jpeg" alt="Photo 6" />
         </div>
-        <div class="frame-title">Starlit Elegance</div>
-        <div class="frame-sub">Gentle shadows and evening reflections</div>
+        <div class="polaroid-text">Night-Time Magic ✨</div>
       </div>
     </div>
 
-    <!-- The Imperial Decree -->
-    <div class="imperial-scroll">
-      <div class="scroll-seal">👑</div>
-      <h3>To The One Who Outshines The Stars,</h3>
-      <div class="scroll-body">
-        <p>May this new chapter bring you peace as deep as temple corridors, victories as golden as morning sunlight, and countless moments that make your heart beat with effortless joy.</p>
+    <!-- Letter Note -->
+    <div class="pink-letter">
+      <h3>To The Prettiest Soul,</h3>
+      <div class="letter-text">
+        <p>You have this rare, bright energy that instantly lights up everywhere you go. Whether draped in beautiful silk sarees, laughing against ancient temple walls, or sharing quiet evening conversations, you are completely unforgettable.</p>
         <br>
-        <p>You carry a majestic balance of grace and warmth—making everyone around you feel seen, lifted, and cherished. Never forget how truly extraordinary you are.</p>
+        <p>May your new year be overflowing with endless laughter, answered prayers, sweet treats, good music on repeat, and all the love in the world.</p>
       </div>
-      <div class="scroll-signature">Forever In Awe,<br>Happy Birthday ✨💖</div>
+      <div class="letter-sign">Happy Birthday, Queen 💖✨</div>
     </div>
 
   </div>
 
   <script>
     /* ==========================================================
-       1. CARD OPENING & AUDIO PLAYBACK (BROWSER-SAFE)
+       1. TIMED LYRICS DATABASE
        ========================================================== */
-    const cardScene = document.getElementById('card-scene');
-    const cardPortal = document.getElementById('card-portal');
-    const audio = document.getElementById('majestic-audio');
-    const muteToggle = document.getElementById('mute-toggle');
-    let isOpened = false;
+    const lyricsData = [
+      { time: 0, text: "🎵 [Intro - Slowed + Reverb] 🎵" },
+      { time: 18, text: "See, right now, I need you, I'll meet you somewhere now" },
+      { time: 22, text: "You were now, I see you, I get you, take care now" },
+      { time: 27, text: "Slow down, be cool, I miss you, come here now" },
+      { time: 31, text: "In yours now, keep it, I'll hold on until now" },
+      { time: 36, text: "I need you right now, once I leave you, I'm strung out" },
+      { time: 41, text: "If I get you, I'm slowly breaking down" },
+      { time: 45, text: "And, oh, it's hard to see you, but I wish you were right here ✨" },
+      { time: 50, text: "Always hard to leave you when I get you everywhere" },
+      { time: 54, text: "All this time, I'm thinking we could never be a pair" },
+      { time: 59, text: "Oh, no, I don't need you, but I miss you, come here" },
+      { time: 63, text: "And, oh, it's hard to see you, but I wish you were right here 💕" },
+      { time: 68, text: "Always hard to leave you when I get you everywhere" },
+      { time: 73, text: "All this time, I'm thinking I'm strong enough to sink in" },
+      { time: 77, text: "Oh, no, I don't need you, but I miss you, come here" },
+      { time: 81, text: "But he love me not, he loves me 🌸" },
+      { time: 84, text: "He holds me tight, then lets me go 💔" },
+      { time: 86, text: "He love me not, he loves me 🌸" },
+      { time: 88, text: "He holds me tight, then lets me go 💖" },
+      { time: 91, text: "Soon as you leave me, we always lose connection" },
+      { time: 95, text: "It's getting messy, I feel for your affection" },
+      { time: 100, text: "Don't loosen your grip, gotta hold on me now forever" },
+      { time: 106, text: "Let's get back together..." },
+      { time: 110, text: "Though we're taking so far away..." },
+      { time: 120, text: "I want you to take me up and down and round and round again" },
+      { time: 126, text: "And, oh, it's hard to see you, but I wish you were right here ✨" },
+      { time: 131, text: "Always hard to leave you when I get you everywhere" },
+      { time: 140, text: "Oh, no, I don't need you, but I miss you, come here" },
+      { time: 145, text: "And, oh, it's hard to see you, but I wish you were right here 💖" },
+      { time: 163, text: "He love me not, he loves me... He holds me tight, then lets me go..." },
+      { time: 182, text: "You gotta say that you're sorry at the end of the night..." },
+      { time: 200, text: "And, oh, it's hard to see you, but I wish you were right here 💕" }
+    ];
 
-    cardScene.addEventListener('click', () => {
-      if (isOpened) return;
-      isOpened = true;
+    const lyricsStream = document.getElementById('lyrics-stream');
+    const lyricsScroller = document.getElementById('lyrics-scroller');
 
-      // 1. Play the slowed + reverb song immediately upon opening
-      audio.play().catch(e => console.log("Audio play allowed:", e));
-
-      // 2. Animate the card open
-      cardScene.classList.add('open-action');
-
-      // 3. Launch royal gold and pink hearts confetti explosion
-      confetti({
-        particleCount: 100,
-        spread: 100,
-        origin: { y: 0.5 },
-        colors: ['#f5c563', '#e60067', '#ff4d88', '#ffffff']
+    // Build the lyric elements
+    lyricsData.forEach((item, index) => {
+      const line = document.createElement('div');
+      line.className = 'lyric-line';
+      line.innerText = item.text;
+      line.id = `lyric-${index}`;
+      line.addEventListener('click', () => {
+        audio.currentTime = item.time;
       });
-
-      // 4. Reveal the main majestic site
-      setTimeout(() => {
-        cardPortal.classList.add('opened');
-        muteToggle.style.display = 'flex';
-      }, 900);
+      lyricsStream.appendChild(line);
     });
 
-    // Mute/Unmute Toggle
-    muteToggle.addEventListener('click', () => {
+    /* ==========================================================
+       2. UNBOXING / AUDIO PLAYBACK
+       ========================================================= */
+    const unwrapCard = document.getElementById('unwrap-card');
+    const giftPortal = document.getElementById('gift-portal');
+    const audio = document.getElementById('main-audio');
+    const pillToggle = document.getElementById('pill-toggle');
+
+    unwrapCard.addEventListener('click', () => {
+      audio.play().catch(e => console.log(e));
+      giftPortal.classList.add('unlocked');
+
+      confetti({
+        particleCount: 120,
+        spread: 100,
+        origin: { y: 0.5 },
+        colors: ['#ff007f', '#ff1493', '#ffd166', '#ffffff', '#d900ff']
+      });
+    });
+
+    pillToggle.addEventListener('click', () => {
       if (audio.paused) {
         audio.play();
-        muteToggle.innerText = '🔊';
       } else {
         audio.pause();
-        muteToggle.innerText = '🔇';
       }
     });
 
     /* ==========================================================
-       2. CINEMATIC 3D SLIDE TRANSITIONS
-       ========================================================== */
-    const slides = document.querySelectorAll('.slide');
-    const prevBtn = document.getElementById('prev-stage');
-    const nextBtn = document.getElementById('next-stage');
-    const dotsContainer = document.getElementById('stage-dots');
-    let currentIndex = 0;
-    let autoSlide;
+       3. SYNCHRONIZED LYRIC SCROLLER ENGINE
+       ========================================================= */
+    let currentActiveIdx = -1;
+
+    audio.addEventListener('timeupdate', () => {
+      const curTime = audio.currentTime;
+      let activeIndex = -1;
+
+      for (let i = 0; i < lyricsData.length; i++) {
+        if (curTime >= lyricsData[i].time) {
+          activeIndex = i;
+        } else {
+          break;
+        }
+      }
+
+      if (activeIndex !== currentActiveIdx && activeIndex !== -1) {
+        currentActiveIdx = activeIndex;
+
+        // Update CSS classes
+        document.querySelectorAll('.lyric-line').forEach((el, idx) => {
+          el.classList.toggle('active', idx === currentActiveIdx);
+        });
+
+        // Scroll to active line in center
+        const activeElem = document.getElementById(`lyric-${currentActiveIdx}`);
+        if (activeElem) {
+          const offsetTop = activeElem.offsetTop;
+          const containerHeight = lyricsScroller.clientHeight;
+          const lineMiddle = offsetTop - (containerHeight / 2) + (activeElem.clientHeight / 2);
+          lyricsStream.style.transform = `translateY(-${Math.max(0, lineMiddle)}px)`;
+        }
+      }
+    });
+
+    /* ==========================================================
+       4. 3D PHOTO DECK
+       ========================================================= */
+    const slides = document.querySelectorAll('.deck-slide');
+    const prevBtn = document.getElementById('deck-prev');
+    const nextBtn = document.getElementById('deck-next');
+    const dotsBox = document.getElementById('deck-dots');
+    let currentSlide = 0;
+    let slideTimer;
 
     slides.forEach((_, i) => {
       const dot = document.createElement('div');
-      dot.className = `dot-node ${i === 0 ? 'active' : ''}`;
-      dot.addEventListener('click', () => switchSlide(i));
-      dotsContainer.appendChild(dot);
+      dot.className = `dot ${i === 0 ? 'active' : ''}`;
+      dot.addEventListener('click', () => jumpSlide(i));
+      dotsBox.appendChild(dot);
     });
-    const dots = document.querySelectorAll('.dot-node');
+    const dots = document.querySelectorAll('.dot');
 
-    function switchSlide(idx) {
-      currentIndex = idx;
-      slides.forEach((s, i) => s.classList.toggle('active', i === currentIndex));
-      dots.forEach((d, i) => d.classList.toggle('active', i === currentIndex));
-      resetTimer();
+    function showSlide(idx) {
+      currentSlide = idx;
+      slides.forEach((s, i) => s.classList.toggle('active', i === currentSlide));
+      dots.forEach((d, i) => d.classList.toggle('active', i === currentSlide));
+      resetAuto();
     }
 
-    function nextSlide() { switchSlide((currentIndex + 1) % slides.length); }
-    function prevSlide() { switchSlide((currentIndex - 1 + slides.length) % slides.length); }
+    function nextSlide() { showSlide((currentSlide + 1) % slides.length); }
+    function prevSlide() { showSlide((currentSlide - 1 + slides.length) % slides.length); }
+    function jumpSlide(i) { showSlide(i); }
 
     nextBtn.addEventListener('click', nextSlide);
     prevBtn.addEventListener('click', prevSlide);
 
-    function resetTimer() {
-      clearInterval(autoSlide);
-      autoSlide = setInterval(nextSlide, 5500);
+    function resetAuto() {
+      clearInterval(slideTimer);
+      slideTimer = setInterval(nextSlide, 5000);
     }
-    resetTimer();
+    resetAuto();
 
     /* ==========================================================
-       3. HEART-PLUCK ORACLE
-       ========================================================== */
-    const oracleBtn = document.getElementById('oracle-btn');
-    const verdictBox = document.getElementById('oracle-result');
-    const answers = [
-      "He loves me not... 🥀",
-      "He loves me! 💖",
-      "He loves me not... 💭",
-      "He holds me tight then lets me go... 🎶",
-      "He loves you with his whole soul, unconditionally and forever! 👑✨"
-    ];
-    let pick = 0;
+       5. CAKE BLOW-OUT
+       ========================================================= */
+    const cake = document.getElementById('cake-click');
+    const flame = document.getElementById('cake-flame');
+    const cakeHint = document.getElementById('cake-hint');
+    let blownOut = false;
 
-    oracleBtn.addEventListener('click', () => {
-      verdictBox.style.opacity = '0';
-      setTimeout(() => {
-        verdictBox.innerText = answers[pick % answers.length];
-        verdictBox.style.opacity = '1';
-        pick++;
-
-        if (pick >= answers.length) {
-          confetti({
-            particleCount: 80,
-            spread: 80,
-            origin: { y: 0.7 },
-            colors: ['#e60067', '#f5c563', '#ff4d88', '#ffffff']
-          });
-        }
-      }, 200);
-    });
-
-    /* ==========================================================
-       4. CAKE & HEART CONFETTI
-       ========================================================== */
-    const cakeShrine = document.getElementById('cake-shrine');
-    const cakeFlame = document.getElementById('cake-flame');
-    const chantText = document.getElementById('wish-chant');
-    let blown = false;
-
-    cakeShrine.addEventListener('click', () => {
-      if (!blown) {
-        cakeFlame.classList.add('quenched');
-        chantText.innerText = "Wish Granted to the Queen! 👑💖";
-        blown = true;
+    cake.addEventListener('click', () => {
+      if (!blownOut) {
+        flame.classList.add('extinguished');
+        cakeHint.innerText = "Wish Granted to the Birthday Queen! 💖✨";
+        blownOut = true;
 
         confetti({
           particleCount: 130,
           spread: 90,
           origin: { y: 0.65 },
-          colors: ['#f5c563', '#e60067', '#ff4d88', '#fff']
+          colors: ['#ff007f', '#ffd166', '#ff1493', '#fff']
         });
       } else {
-        cakeFlame.classList.remove('quenched');
-        chantText.innerText = "Touch the heart flame to make your wish 🕯️";
-        blown = false;
+        flame.classList.remove('extinguished');
+        cakeHint.innerText = "Touch the heart flame to make a wish! 🕯️";
+        blownOut = false;
       }
     });
 
     /* ==========================================================
-       5. FLOATING HEARTS & STARDUST CANVAS
-       ========================================================== */
-    const canvas = document.getElementById('galaxy-canvas');
+       6. FLOATING VIVID HEARTS CANVAS
+       ========================================================= */
+    const canvas = document.getElementById('hearts-canvas');
     const ctx = canvas.getContext('2d');
-    let celestialParticles = [];
+    let heartParticles = [];
 
     function resize() {
       canvas.width = window.innerWidth;
@@ -1072,16 +1132,16 @@
     window.addEventListener('resize', resize);
     resize();
 
-    class CelestialHeart {
+    class GlowingHeart {
       constructor() { this.init(); }
       init() {
         this.x = Math.random() * canvas.width;
         this.y = canvas.height + 20;
-        this.size = Math.random() * 14 + 10;
-        this.speedY = -(Math.random() * 0.9 + 0.4);
-        this.speedX = Math.sin(Math.random() * 10) * 0.5;
-        this.opacity = Math.random() * 0.6 + 0.2;
-        this.color = Math.random() > 0.4 ? '#f5c563' : '#e60067';
+        this.size = Math.random() * 16 + 10;
+        this.speedY = -(Math.random() * 1.2 + 0.6);
+        this.speedX = Math.sin(Math.random() * 10) * 0.8;
+        this.opacity = Math.random() * 0.6 + 0.3;
+        this.color = Math.random() > 0.5 ? '#ff007f' : '#d900ff';
       }
       update() {
         this.y += this.speedY;
@@ -1094,28 +1154,28 @@
         ctx.globalAlpha = this.opacity;
         ctx.fillStyle = this.color;
         ctx.beginPath();
-        const topCurveHeight = this.size * 0.3;
-        ctx.moveTo(0, topCurveHeight);
-        ctx.bezierCurveTo(0, 0, -this.size / 2, 0, -this.size / 2, topCurveHeight);
-        ctx.bezierCurveTo(-this.size / 2, (this.size + topCurveHeight) / 2, 0, this.size, 0, this.size);
-        ctx.bezierCurveTo(0, this.size, this.size / 2, (this.size + topCurveHeight) / 2, this.size / 2, topCurveHeight);
-        ctx.bezierCurveTo(this.size / 2, 0, 0, 0, 0, topCurveHeight);
+        const top = this.size * 0.3;
+        ctx.moveTo(0, top);
+        ctx.bezierCurveTo(0, 0, -this.size / 2, 0, -this.size / 2, top);
+        ctx.bezierCurveTo(-this.size / 2, (this.size + top) / 2, 0, this.size, 0, this.size);
+        ctx.bezierCurveTo(0, this.size, this.size / 2, (this.size + top) / 2, this.size / 2, top);
+        ctx.bezierCurveTo(this.size / 2, 0, 0, 0, 0, top);
         ctx.fill();
         ctx.restore();
       }
     }
 
-    for (let i = 0; i < 35; i++) celestialParticles.push(new CelestialHeart());
+    for (let i = 0; i < 35; i++) heartParticles.push(new GlowingHeart());
 
-    function renderGalaxy() {
+    function animateHearts() {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
-      celestialParticles.forEach(p => {
-        p.update();
-        p.draw();
+      heartParticles.forEach(h => {
+        h.update();
+        h.draw();
       });
-      requestAnimationFrame(renderGalaxy);
+      requestAnimationFrame(animateHearts);
     }
-    renderGalaxy();
+    animateHearts();
   </script>
 </body>
 </html>
