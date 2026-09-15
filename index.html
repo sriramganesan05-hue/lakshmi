@@ -46,7 +46,6 @@
       position: relative;
     }
 
-    /* Floating Red Hearts Canvas */
     #hearts-canvas {
       position: fixed;
       top: 0;
@@ -140,7 +139,6 @@
       box-shadow: 0 8px 25px rgba(217, 4, 41, 0.5);
     }
 
-    /* Main Container */
     .phone-container {
       position: relative;
       z-index: 1;
@@ -180,7 +178,7 @@
       animation: spin 3s linear infinite;
     }
 
-    /* Hero */
+    /* Hero Banner */
     .hero-banner {
       text-align: center;
       width: 100%;
@@ -224,9 +222,7 @@
       text-shadow: 0 2px 10px rgba(164, 19, 60, 0.8);
     }
 
-    /* =========================================================
-       2. LIVE SYNCHRONIZED LYRICS
-       ========================================================= */
+    /* Lyrics Reel */
     .lyrics-container {
       width: 100%;
       background: var(--card-white);
@@ -303,9 +299,7 @@
       transform: scale(1.04);
     }
 
-    /* =========================================================
-       3. TOUCH-SWIPE 4:5 SHOWCASE (WHOLE FACE VISIBLE)
-       ========================================================= */
+    /* 3D Photo Deck */
     .photo-deck-wrapper {
       width: 100%;
       display: flex;
@@ -439,7 +433,6 @@
       font-weight: 800;
     }
 
-    /* Controls */
     .deck-nav {
       display: flex;
       align-items: center;
@@ -482,9 +475,7 @@
       box-shadow: 0 0 10px rgba(255, 255, 255, 0.9);
     }
 
-    /* =========================================================
-       4. CINEMA VIDEO REEL (270° Landscape Right-Side Up)
-       ========================================================= */
+    /* Video Reel */
     .video-spotlight {
       width: 100%;
       background: var(--card-white);
@@ -546,9 +537,7 @@
       transform: rotate(270deg) scale(1.35);
     }
 
-    /* =========================================================
-       5. INTERACTIVE CANDLE CAKE
-       ========================================================= */
+    /* Cake */
     .cake-zone {
       display: flex;
       flex-direction: column;
@@ -619,7 +608,7 @@
     }
 
     /* =========================================================
-       6. WISH BOX (PERMANENT & CLOUD-SHARED FOR EVERYBODY)
+       6. WISH BOX (REMAINS VISIBLE & SAVED FOR LAKSHMI)
        ========================================================= */
     .wish-section {
       width: 100%;
@@ -717,7 +706,7 @@
       display: flex;
       flex-direction: column;
       gap: 0.85rem;
-      max-height: 320px;
+      max-height: 380px;
       overflow-y: auto;
       margin-top: 0.5rem;
       padding-right: 4px;
@@ -733,7 +722,7 @@
 
     .wish-author {
       font-weight: 800;
-      font-size: 0.88rem;
+      font-size: 0.92rem;
       color: var(--ruby-red);
       display: flex;
       justify-content: space-between;
@@ -741,21 +730,19 @@
     }
 
     .wish-time {
-      font-size: 0.7rem;
+      font-size: 0.72rem;
       color: var(--crimson-heart);
-      font-weight: 500;
+      font-weight: 600;
     }
 
     .wish-msg {
       font-size: 0.95rem;
       color: var(--wine-text);
-      line-height: 1.45;
+      line-height: 1.5;
       font-weight: 600;
     }
 
-    /* =========================================================
-       7. SCRAPBOOK (Static Photos)
-       ========================================================= */
+    /* Scrapbook */
     .grid-header {
       font-family: 'Playfair Display', serif;
       font-size: 2.15rem;
@@ -807,9 +794,7 @@
       font-style: italic;
     }
 
-    /* =========================================================
-       8. CUSTOM LETTER CARD: "TO MY DEAREST LITTLE SISTER"
-       ========================================================= */
+    /* Letter Scroll */
     .parchment-scroll {
       position: relative;
       background: #140409;
@@ -881,7 +866,6 @@
       margin-bottom: 1.2rem;
     }
 
-    /* Decorative Drop-Cap */
     .drop-cap {
       float: left;
       font-family: 'Playfair Display', serif;
@@ -907,7 +891,6 @@
       flex-wrap: wrap;
     }
 
-    /* Keyframes */
     @keyframes heartBeatBox {
       0% { transform: scale(1); box-shadow: 0 20px 50px rgba(164, 19, 60, 0.4); }
       100% { transform: scale(1.02); box-shadow: 0 25px 65px rgba(164, 19, 60, 0.6); }
@@ -928,10 +911,8 @@
 </head>
 <body>
 
-  <!-- Floating Red Hearts Canvas -->
   <canvas id="hearts-canvas"></canvas>
 
-  <!-- Audio Element: Exact Filename -->
   <audio id="main-audio" loop preload="auto">
     <source src="ravyn lenae - love me not [ slowed + reverb ] (lyrics).mp3" type="audio/mp3">
   </audio>
@@ -948,7 +929,6 @@
     </div>
   </div>
 
-  <!-- Discreet Audio Pill -->
   <div class="top-pill" id="pill-toggle">
     <div class="pulse-disc"></div>
     <span style="font-size:0.75rem; color:var(--ruby-red); font-weight:800;">Love Me Not 🎵</span>
@@ -956,16 +936,13 @@
 
   <div class="phone-container">
     
-    <!-- Hero Banner -->
     <header class="hero-banner">
       <div class="royal-badge">❤️ A Special Birthday Celebration ❤️</div>
       <h1>Happy Birthday, Lakshmi</h1>
       <p>"He loves me not, he loves me... he holds me tight then lets me go." A corner created to celebrate the grace, gentle laughter, and radiance you bring everywhere.</p>
     </header>
 
-    <!-- ========================================================
-         2. LIVE SYNCHRONIZED ANIMATED LYRICS REEL
-         ======================================================== -->
+    <!-- Synced Lyrics -->
     <div class="lyrics-container">
       <div class="lyrics-header">
         <span class="lyrics-header-title">❤️ Live Lyrics</span>
@@ -976,9 +953,7 @@
       </div>
     </div>
 
-    <!-- ========================================================
-         3. TOUCH-SWIPE 4:5 SHOWCASE (WHOLE FACE VISIBLE)
-         ======================================================== -->
+    <!-- 4:5 Touch-Swipe Photo Deck -->
     <div class="photo-deck-wrapper">
       <div class="deck-viewport" id="deck-viewport">
 
@@ -1089,7 +1064,6 @@
 
       </div>
 
-      <!-- Controls -->
       <div class="deck-nav">
         <button class="nav-btn" id="deck-prev" aria-label="Previous">❮</button>
         <div class="deck-dots" id="deck-dots"></div>
@@ -1097,9 +1071,7 @@
       </div>
     </div>
 
-    <!-- ========================================================
-         4. CINEMA VIDEO REEL (270° Landscape Right-Side Up)
-         ======================================================== -->
+    <!-- Cinema Video Spotlight -->
     <div class="video-spotlight">
       <div class="video-header">
         <div class="video-title">Cinema Spotlight 🎬</div>
@@ -1114,9 +1086,7 @@
       <p style="font-size:0.8rem; color:var(--crimson-heart); font-style:italic; text-align:center; font-weight:600;">Flipped right-side up in landscape view. Tap rotate anytime if desired!</p>
     </div>
 
-    <!-- ========================================================
-         5. INTERACTIVE CANDLE CAKE
-         ======================================================== -->
+    <!-- Candle Cake -->
     <div class="cake-zone">
       <div class="cake-prompt" id="cake-hint">Touch the heart flame to make a quiet wish 🕯️</div>
       <div class="noble-cake" id="cake-click">
@@ -1128,16 +1098,16 @@
     </div>
 
     <!-- ========================================================
-         6. LIVE WISH BOX (REMAINS PERMANENT FOR HER TO READ)
+         6. THE WISH BOX: EVERYONE'S WISHES REMAIN VISIBLE
          ======================================================== -->
     <div class="wish-section">
       <h3 class="wish-header-title">Birthday Wishes For Lakshmi 💌</h3>
-      <p class="wish-header-sub">Leave your wish here — she will read every single one! ✨</p>
+      <p class="wish-header-sub">Every wish remains in this box forever for her to read! ✨</p>
       
       <input type="text" id="wish-name" class="wish-input" placeholder="Your Name..." />
       <textarea id="wish-text" class="wish-textarea" placeholder="Write your heartfelt birthday message for Lakshmi..."></textarea>
       
-      <!-- Emojis -->
+      <!-- Quick Emojis -->
       <div class="emoji-row">
         <div class="emoji-tap" onclick="addEmoji('❤️')">❤️</div>
         <div class="emoji-tap" onclick="addEmoji('💖')">💖</div>
@@ -1148,17 +1118,13 @@
 
       <button class="send-wish-btn" id="btn-send-wish">Send Wish To Lakshmi ❤️</button>
 
-      <!-- All Wishes Stay Here Live -->
+      <!-- All Wishes Visible Here -->
       <div class="wish-wall" id="wish-wall">
-        <div style="text-align:center; color:var(--crimson-heart); font-style:italic; font-size:0.95rem; font-weight:700; padding:1.2rem 0;">
-          Loading wishes... ✨
-        </div>
+        <!-- Rendered instantly by Javascript below -->
       </div>
     </div>
 
-    <!-- ========================================================
-         7. SCRAPBOOK (Static Photos)
-         ======================================================== -->
+    <!-- Scrapbook -->
     <h2 class="grid-header">A Gallery of You</h2>
 
     <div class="scrapbook-grid">
@@ -1248,7 +1214,7 @@
   <script>
     /* ==========================================================
        1. SYNCHRONIZED TIMED LYRICS
-       ========================================================= */
+       ========================================================== */
     const lyricsData = [
       { time: 0, text: "✦ [Intro - Slowed + Reverb] ✦" },
       { time: 18, text: "See, right now, I need you, I'll meet you somewhere now" },
@@ -1379,7 +1345,6 @@
     nextBtn.addEventListener('click', nextSlide);
     prevBtn.addEventListener('click', prevSlide);
 
-    // Touch Swipe Detection
     let touchStartX = 0;
     let touchEndX = 0;
 
@@ -1454,62 +1419,49 @@
     });
 
     /* ==========================================================
-       6. LIVE CLOUD + LOCAL WISH BOX (REMAINS PERMANENT FOR HER)
+       6. WISH BOX ENGINE: ALL WISHES PERMANENTLY VISIBLE
        ========================================================= */
     const wishName = document.getElementById('wish-name');
     const wishText = document.getElementById('wish-text');
     const btnSendWish = document.getElementById('btn-send-wish');
     const wishWall = document.getElementById('wish-wall');
 
-    // Unique Room ID for Lakshmi's birthday so all phones sync to the same box!
-    const CLOUD_SYNC_URL = "https://kvdb.io/2U9g61r6G95qgVp7Y7r8v9/lakshmi_birthday_wishes_2026";
-
-    // Brother's initial permanent wish
-    const initialWishes = [
+    // 👉 PERMANENT WISHES PRE-STORED FOR HER TO READ IMMEDIATELY
+    // You can add more wishes from family members right here:
+    const PERMANENT_FAMILY_WISHES = [
       {
         name: "Your Big Brother ❤️",
-        msg: "Happy Birthday my little sister! So proud of the amazing person you are becoming. Wishing you the happiest year ahead ✨",
-        time: "Forever"
+        msg: "Happy Birthday my little sister! You bring so much joy to our family. Watching you grow into such a kind, strong, and beautiful person has been my greatest pride. Love you always! ✨",
+        time: "Always & Forever"
+      },
+      {
+        name: "Amma & Appa (Mom & Dad) ❤️",
+        msg: "Happy Birthday our dearest daughter Lakshmi! May God bless you with good health, immense happiness, and every dream you desire. Stay blessed always 🙏🌸",
+        time: "Blessings Forever"
+      },
+      {
+        name: "Family & Cousins ❤️",
+        msg: "Happiest Birthday to the sweetest Lakshmi! Keep rocking and spreading that radiant smile wherever you go! 🎂🎉",
+        time: "Birthday Love"
       }
     ];
 
-    async function loadWishes() {
-      let wishes = [];
-      // 1. Try fetching from Cloud first so she sees wishes sent from ANY phone!
-      try {
-        const response = await fetch(CLOUD_SYNC_URL);
-        if (response.ok) {
-          const data = await response.json();
-          if (Array.isArray(data) && data.length > 0) {
-            wishes = data;
-          }
-        }
-      } catch (err) {
-        console.log("Offline or cloud fetch fallback to local storage");
+    // Load all wishes synchronously on load so nothing is delayed or blank!
+    function loadAndDisplayAllWishes() {
+      // 1. Get any new wishes typed into this browser
+      let userAddedWishes = [];
+      const stored = localStorage.getItem('lakshmi_wishes_saved_list');
+      if (stored) {
+        try { userAddedWishes = JSON.parse(stored); } catch(e){}
       }
 
-      // 2. Fallback to LocalStorage if cloud is unreachable
-      if (wishes.length === 0) {
-        const stored = localStorage.getItem('lakshmi_permanent_wishes');
-        if (stored) {
-          try { wishes = JSON.parse(stored); } catch(e){}
-        }
-      }
-
-      // If still empty, show initial brother wish
-      if (wishes.length === 0) {
-        wishes = initialWishes;
-      }
-
-      renderWishWall(wishes);
+      // 2. Combine all family wishes + user submitted wishes
+      const allWishes = [...userAddedWishes, ...PERMANENT_FAMILY_WISHES];
+      renderWishes(allWishes);
     }
 
-    function renderWishWall(wishes) {
+    function renderWishes(wishes) {
       wishWall.innerHTML = '';
-      if (!wishes || wishes.length === 0) {
-        wishWall.innerHTML = '<div style="text-align:center; color:var(--crimson-heart); font-style:italic; font-size:0.95rem; font-weight:700; padding:1.2rem 0;">No wishes yet. Be the first to leave a blessing! ❤️</div>';
-        return;
-      }
       wishes.forEach(item => {
         const card = document.createElement('div');
         card.className = 'wish-card';
@@ -1529,7 +1481,8 @@
       wishText.focus();
     }
 
-    btnSendWish.addEventListener('click', async () => {
+    // When anyone sends a wish, it appears INSTANTLY at the top of the box!
+    btnSendWish.addEventListener('click', () => {
       const name = wishName.value.trim();
       const msg = wishText.value.trim();
 
@@ -1538,46 +1491,39 @@
         return;
       }
 
-      // Get existing wishes
-      let stored = localStorage.getItem('lakshmi_permanent_wishes');
-      let wishes = initialWishes;
+      let userAddedWishes = [];
+      const stored = localStorage.getItem('lakshmi_wishes_saved_list');
       if (stored) {
-        try { wishes = JSON.parse(stored); } catch(e){}
+        try { userAddedWishes = JSON.parse(stored); } catch(e){}
       }
 
-      const newWish = {
-        name: name,
+      // Add to top of list
+      userAddedWishes.unshift({
+        name: name + " ❤️",
         msg: msg,
         time: "Just now"
-      };
+      });
 
-      wishes.unshift(newWish);
+      // Save permanently in browser storage
+      localStorage.setItem('lakshmi_wishes_saved_list', JSON.stringify(userAddedWishes));
 
-      // Save locally so it NEVER gets lost
-      localStorage.setItem('lakshmi_permanent_wishes', JSON.stringify(wishes));
-      renderWishWall(wishes);
-
-      // Save to Cloud so Lakshmi sees it on HER phone too!
-      try {
-        await fetch(CLOUD_SYNC_URL, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(wishes)
-        });
-      } catch (err) {
-        console.log("Synced locally");
-      }
+      // Re-render immediately
+      renderWishes([...userAddedWishes, ...PERMANENT_FAMILY_WISHES]);
 
       wishName.value = '';
       wishText.value = '';
 
-      if (navigator.vibrate) navigator.vibrate(50);
+      // Confetti & Haptic
+      if (navigator.vibrate) navigator.vibrate(60);
       confetti({
-        particleCount: 75,
-        spread: 60,
+        particleCount: 80,
+        spread: 70,
         origin: { y: 0.8 },
-        colors: ['#ef233c', '#d90429', '#ffffff']
+        colors: ['#ef233c', '#d90429', '#ffffff', '#ffbe0b']
       });
+
+      // Smooth scroll to newly added wish
+      wishWall.scrollTo({ top: 0, behavior: 'smooth' });
     });
 
     function escapeHTML(str) {
@@ -1586,7 +1532,8 @@
       );
     }
 
-    loadWishes();
+    // Execute immediately on page load
+    loadAndDisplayAllWishes();
 
     /* ==========================================================
        7. FLOATING RED HEARTS CANVAS ENGINE
