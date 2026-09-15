@@ -3,25 +3,25 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Happy Birthday, My Favorite Human ✨</title>
+  <title>Happy Birthday, Beautiful Soul ✨</title>
   
-  <!-- Fonts -->
+  <!-- Aesthetic Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600&family=Outfit:wght@300;400;600;700&family=Playfair+Display:ital,wght@0,600;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Caveat:wght@600&family=Outfit:wght@300;400;600;700&family=Playfair+Display:ital,wght@0,500;0,700;1,400&display=swap" rel="stylesheet">
   
-  <!-- Canvas Confetti -->
+  <!-- Canvas Confetti CDN -->
   <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 
   <style>
     :root {
-      --bg-dark: #0b0d19;
-      --accent-gold: #ffd166;
-      --accent-rose: #ff758c;
-      --accent-pink: #ff7eb3;
-      --glass-bg: rgba(255, 255, 255, 0.05);
-      --glass-border: rgba(255, 255, 255, 0.12);
-      --glass-glow: rgba(255, 117, 140, 0.2);
+      --bg-dark: #0b0914;
+      --royal-purple: #30174e;
+      --accent-gold: #ffc83b;
+      --warm-amber: #ff8008;
+      --rose-pink: #ff6b8b;
+      --glass-card: rgba(255, 255, 255, 0.05);
+      --glass-border: rgba(255, 215, 0, 0.18);
     }
 
     * {
@@ -32,588 +32,649 @@
     }
 
     body {
-      background: radial-gradient(circle at 50% 20%, #1c1538, var(--bg-dark) 80%);
-      color: #f1f3f9;
+      background: radial-gradient(circle at 50% 10%, #201335 0%, var(--bg-dark) 75%);
+      color: #f7f6fb;
       font-family: 'Outfit', sans-serif;
       overflow-x: hidden;
       min-height: 100vh;
-      cursor: default;
     }
 
-    /* Star Canvas */
-    #space-canvas {
+    /* Ambient Canvases */
+    #ambient-canvas {
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      z-index: -1;
       pointer-events: none;
+      z-index: 0;
     }
 
-    /* Container */
-    .container {
-      max-width: 950px;
+    .wrapper {
+      position: relative;
+      z-index: 1;
+      max-width: 1100px;
       margin: 0 auto;
-      padding: 4rem 1.5rem 6rem;
+      padding: 3.5rem 1.5rem 6rem;
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 5rem;
+      gap: 5.5rem;
     }
 
-    /* Hero Section */
+    /* Fairy Light Garland */
+    .fairy-string {
+      width: 100%;
+      max-width: 900px;
+      display: flex;
+      justify-content: space-around;
+      position: relative;
+      margin-bottom: -2rem;
+    }
+    .fairy-light {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: #ffeaa7;
+      box-shadow: 0 0 15px 5px rgba(255, 234, 167, 0.8), 0 0 35px rgba(255, 200, 59, 0.6);
+      animation: glowTwinkle 1.8s infinite alternate ease-in-out;
+    }
+    .fairy-light:nth-child(2n) { animation-delay: 0.4s; background: #ff9ff3; box-shadow: 0 0 15px 5px rgba(255, 159, 243, 0.8); }
+    .fairy-light:nth-child(3n) { animation-delay: 0.8s; background: #ffd32a; box-shadow: 0 0 15px 5px rgba(255, 211, 42, 0.8); }
+
+    /* Hero */
     .hero {
       text-align: center;
-      position: relative;
-      animation: fadeInDown 1.4s ease forwards;
+      max-width: 800px;
+      animation: fadeInDown 1.2s cubic-bezier(0.2, 0.9, 0.3, 1) forwards;
     }
 
     .badge {
       display: inline-flex;
       align-items: center;
       gap: 0.5rem;
-      padding: 0.45rem 1.2rem;
+      padding: 0.45rem 1.4rem;
       border-radius: 999px;
-      background: var(--glass-bg);
-      border: 1px solid var(--glass-border);
-      backdrop-filter: blur(10px);
+      background: rgba(255, 200, 59, 0.1);
+      border: 1px solid rgba(255, 200, 59, 0.35);
+      color: var(--accent-gold);
       font-size: 0.85rem;
       letter-spacing: 2px;
       text-transform: uppercase;
-      color: var(--accent-gold);
-      box-shadow: 0 0 20px rgba(255, 209, 102, 0.15);
-      margin-bottom: 1.5rem;
+      margin-bottom: 1.4rem;
+      box-shadow: 0 0 25px rgba(255, 200, 59, 0.18);
     }
 
     .hero h1 {
       font-family: 'Playfair Display', serif;
-      font-size: clamp(2.8rem, 7vw, 4.8rem);
-      line-height: 1.1;
-      margin-bottom: 1rem;
-      background: linear-gradient(135deg, #ffffff 30%, var(--accent-pink) 70%, var(--accent-gold) 100%);
+      font-size: clamp(2.8rem, 7vw, 4.6rem);
+      line-height: 1.15;
+      margin-bottom: 1.2rem;
+      background: linear-gradient(135deg, #ffffff 10%, #ffd166 50%, #ff8008 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
 
     .hero p {
-      font-size: clamp(1.1rem, 2.5vw, 1.35rem);
-      color: #b5bdd4;
-      max-width: 620px;
-      margin: 0 auto;
+      font-size: clamp(1.1rem, 2.2vw, 1.3rem);
+      color: #cbcfdf;
+      line-height: 1.7;
       font-weight: 300;
-      line-height: 1.6;
     }
 
-    /* Cake Section */
-    .cake-section {
+    /* Cake Stage */
+    .cake-box {
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 1.5rem;
+      gap: 1.2rem;
     }
 
-    .cake-instruction {
+    .cake-hint {
       font-size: 0.95rem;
       color: var(--accent-gold);
-      letter-spacing: 1px;
+      letter-spacing: 1.5px;
       text-transform: uppercase;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      animation: pulseText 2s infinite ease-in-out;
+      font-weight: 600;
+      animation: pulse 1.6s infinite ease-in-out;
     }
 
-    /* CSS Cake */
-    .cake-stage {
+    .cake {
       position: relative;
-      width: 250px;
-      height: 220px;
+      width: 220px;
+      height: 180px;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: flex-end;
       cursor: pointer;
+      user-select: none;
     }
 
     .candle {
       position: relative;
-      width: 14px;
-      height: 50px;
-      background: repeating-linear-gradient(45deg, #fff, #fff 6px, var(--accent-rose) 6px, var(--accent-rose) 12px);
+      width: 12px;
+      height: 48px;
+      background: repeating-linear-gradient(45deg, #fff, #fff 5px, var(--warm-amber) 5px, var(--warm-amber) 10px);
       border-radius: 6px 6px 0 0;
       z-index: 10;
     }
 
-    .wick {
-      position: absolute;
-      top: -9px;
-      left: 5px;
-      width: 4px;
-      height: 10px;
-      background: #444;
-      border-radius: 2px;
-    }
-
     .flame {
       position: absolute;
-      top: -28px;
-      left: -4px;
+      top: -26px;
+      left: -5px;
       width: 22px;
       height: 32px;
-      background: radial-gradient(ellipse at bottom, #fff 0%, #ffd166 40%, #ff5252 80%);
+      background: radial-gradient(ellipse at bottom, #fff 10%, var(--accent-gold) 45%, #ff3838 85%);
       border-radius: 50% 50% 35% 35% / 60% 60% 40% 40%;
-      filter: drop-shadow(0 0 14px rgba(255, 209, 102, 0.9));
+      filter: drop-shadow(0 0 16px rgba(255, 200, 59, 0.95));
       animation: flicker 0.15s infinite alternate ease-in-out;
       transition: all 0.4s ease;
     }
 
-    .flame.extinguished {
+    .flame.off {
       opacity: 0;
-      transform: translateY(-20px) scale(0.3);
-      filter: blur(4px);
+      transform: translateY(-25px) scale(0.2);
     }
 
     .smoke {
       position: absolute;
-      top: -30px;
-      left: 3px;
+      top: -20px;
       width: 8px;
       height: 8px;
-      background: rgba(255,255,255,0.7);
+      background: rgba(255, 255, 255, 0.8);
       border-radius: 50%;
       opacity: 0;
-      pointer-events: none;
     }
 
-    .cake-top {
-      width: 160px;
-      height: 50px;
-      background: linear-gradient(to right, #ff8da1, #ff758c);
-      border-radius: 18px 18px 6px 6px;
+    .layer-top {
+      width: 150px;
+      height: 45px;
+      background: linear-gradient(135deg, #ff8008, #ffc83b);
+      border-radius: 16px 16px 6px 6px;
+      box-shadow: 0 4px 15px rgba(255, 128, 8, 0.3);
       position: relative;
-      box-shadow: inset 0 -6px 0 rgba(0,0,0,0.1), 0 5px 20px rgba(255, 117, 140, 0.3);
     }
 
-    .frosting-drips {
-      position: absolute;
-      bottom: -10px;
-      width: 100%;
-      height: 14px;
-      background: radial-gradient(circle at 10px 0, #ff8da1 10px, transparent 11px) repeat-x;
-      background-size: 20px 20px;
-    }
-
-    .cake-bottom {
-      width: 220px;
-      height: 65px;
-      background: linear-gradient(to right, #6b432a, #855335);
+    .layer-bottom {
+      width: 200px;
+      height: 55px;
+      background: linear-gradient(135deg, #441052, #290833);
       border-radius: 12px;
-      position: relative;
       margin-top: 4px;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+      border: 1px solid rgba(255, 200, 59, 0.2);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.5);
     }
 
     .plate {
-      width: 260px;
-      height: 14px;
+      width: 240px;
+      height: 12px;
       background: #e2e8f0;
-      border-radius: 10px;
-      margin-top: -3px;
-      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
+      border-radius: 8px;
+      margin-top: -2px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.4);
     }
 
-    /* Interactive Letter Section */
-    .letter-wrapper {
+    /* Polaroid Gallery */
+    .gallery-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 4vw, 2.7rem);
+      text-align: center;
+      color: #fff;
+      margin-bottom: -2.5rem;
+    }
+    
+    .gallery-sub {
+      color: var(--accent-gold);
+      font-family: 'Caveat', cursive;
+      font-size: 1.6rem;
+      text-align: center;
+      margin-top: -4.5rem;
+    }
+
+    .polaroid-grid {
       width: 100%;
-      max-width: 650px;
-      perspective: 1200px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2.5rem;
+      padding-top: 1rem;
     }
 
-    .envelope {
+    .polaroid {
+      background: #fff;
+      padding: 14px 14px 24px;
+      border-radius: 8px;
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5), 0 3px 10px rgba(0, 0, 0, 0.3);
+      color: #2d3436;
+      cursor: pointer;
+      position: relative;
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    /* Slight playful tilt */
+    .polaroid:nth-child(1) { transform: rotate(-2deg); }
+    .polaroid:nth-child(2) { transform: rotate(2.5deg); }
+    .polaroid:nth-child(3) { transform: rotate(-1.5deg); }
+    .polaroid:nth-child(4) { transform: rotate(2deg); }
+    .polaroid:nth-child(5) { transform: rotate(-3deg); }
+    .polaroid:nth-child(6) { transform: rotate(1.5deg); }
+
+    .polaroid:hover {
+      transform: translateY(-12px) scale(1.04) rotate(0deg) !important;
+      box-shadow: 0 25px 45px rgba(255, 200, 59, 0.25), 0 8px 20px rgba(0,0,0,0.6);
+      z-index: 10;
+    }
+
+    /* Pin icon on polaroid */
+    .polaroid::before {
+      content: '';
+      position: absolute;
+      top: -8px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 14px;
+      height: 14px;
+      background: radial-gradient(circle at 30% 30%, #ff7675, #d63031);
+      border-radius: 50%;
+      box-shadow: 0 3px 6px rgba(0,0,0,0.4);
+      z-index: 2;
+    }
+
+    .photo-frame {
+      width: 100%;
+      height: 330px;
+      border-radius: 4px;
+      overflow: hidden;
+      background: #1e1b2e;
+    }
+
+    .photo-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      transition: transform 0.5s ease;
+    }
+
+    .polaroid:hover .photo-frame img {
+      transform: scale(1.06);
+    }
+
+    .caption {
+      font-family: 'Caveat', cursive;
+      font-size: 1.55rem;
+      text-align: center;
+      margin-top: 14px;
+      color: #2d3436;
+      font-weight: 600;
+    }
+
+    /* Letter / Envelope Section */
+    .letter-card {
+      width: 100%;
+      max-width: 720px;
       background: rgba(255, 255, 255, 0.04);
       border: 1px solid var(--glass-border);
-      backdrop-filter: blur(16px);
+      backdrop-filter: blur(18px);
       border-radius: 24px;
-      padding: 3rem 2.5rem;
+      padding: 3.2rem 2.8rem;
       position: relative;
-      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4), inset 0 0 30px var(--glass-glow);
-      transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), inset 0 0 35px rgba(255, 200, 59, 0.06);
     }
 
-    .envelope:hover {
-      transform: translateY(-5px);
-    }
-
-    .letter-tag {
-      font-family: 'Caveat', cursive;
-      font-size: 1.7rem;
+    .letter-salutation {
+      font-family: 'Alex Brush', cursive;
+      font-size: 2.8rem;
       color: var(--accent-gold);
-      margin-bottom: 1rem;
+      margin-bottom: 1.2rem;
       display: block;
     }
 
-    .letter-body {
+    .letter-content {
       font-size: 1.15rem;
-      line-height: 1.8;
-      color: #e6e9f2;
-      margin-bottom: 2rem;
+      line-height: 1.85;
+      color: #e5e8f4;
       font-weight: 300;
     }
 
-    .letter-signature {
+    .letter-content p {
+      margin-bottom: 1.2rem;
+    }
+
+    .signature {
       font-family: 'Caveat', cursive;
-      font-size: 2rem;
-      color: var(--accent-rose);
+      font-size: 2.2rem;
+      color: var(--warm-amber);
       text-align: right;
+      margin-top: 2rem;
     }
 
-    /* Floating Wishes / Memory Grid */
-    .memories-title {
-      font-family: 'Playfair Display', serif;
-      font-size: 2.2rem;
-      text-align: center;
-      margin-bottom: -2rem;
-      color: #fff;
-    }
-
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 2rem;
-      width: 100%;
-    }
-
-    .card {
-      background: rgba(255, 255, 255, 0.03);
-      border: 1px solid var(--glass-border);
-      border-radius: 20px;
-      padding: 1.5rem;
-      backdrop-filter: blur(10px);
-      transition: all 0.35s ease;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .card::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 3px;
-      background: linear-gradient(90deg, transparent, var(--accent-gold), transparent);
-      opacity: 0;
-      transition: opacity 0.3s ease;
-    }
-
-    .card:hover {
-      transform: translateY(-8px) scale(1.02);
-      border-color: rgba(255, 209, 102, 0.3);
-      box-shadow: 0 15px 35px rgba(0,0,0,0.3), 0 0 25px rgba(255, 209, 102, 0.1);
-    }
-
-    .card:hover::before {
-      opacity: 1;
-    }
-
-    .card-icon {
-      font-size: 2.2rem;
-      margin-bottom: 1rem;
-      display: inline-block;
-    }
-
-    .card h3 {
-      font-size: 1.25rem;
-      margin-bottom: 0.6rem;
-      color: #fff;
-    }
-
-    .card p {
-      font-size: 0.95rem;
-      color: #a4adc5;
-      line-height: 1.6;
-    }
-
-    /* Interactive Sparkle Click Effect */
-    .sparkle-dot {
+    /* Lightbox Modal */
+    .modal {
       position: fixed;
-      width: 6px;
-      height: 6px;
-      background: var(--accent-gold);
-      border-radius: 50%;
+      inset: 0;
+      background: rgba(0,0,0,0.85);
+      backdrop-filter: blur(10px);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 1.5rem;
+      opacity: 0;
       pointer-events: none;
-      z-index: 9999;
-      animation: sparkle 0.7s linear forwards;
+      transition: opacity 0.3s ease;
+      z-index: 100;
+    }
+
+    .modal.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .modal-content {
+      max-width: 500px;
+      width: 100%;
+      background: #fff;
+      padding: 16px 16px 26px;
+      border-radius: 12px;
+      text-align: center;
+      transform: scale(0.9);
+      transition: transform 0.3s ease;
+    }
+
+    .modal.active .modal-content {
+      transform: scale(1);
+    }
+
+    .modal-img {
+      width: 100%;
+      max-height: 70vh;
+      object-fit: cover;
+      border-radius: 6px;
+    }
+
+    .modal-caption {
+      font-family: 'Caveat', cursive;
+      font-size: 1.8rem;
+      color: #222;
+      margin-top: 14px;
     }
 
     /* Animations */
     @keyframes flicker {
-      0% { transform: rotate(-2deg) scale(0.98); }
-      100% { transform: rotate(2deg) scale(1.05); }
+      0% { transform: rotate(-2deg) scale(0.96); }
+      100% { transform: rotate(2deg) scale(1.04); }
     }
-
-    @keyframes pulseText {
-      0%, 100% { opacity: 0.7; transform: scale(0.98); }
+    @keyframes pulse {
+      0%, 100% { opacity: 0.75; transform: scale(0.98); }
       50% { opacity: 1; transform: scale(1.02); }
     }
-
+    @keyframes glowTwinkle {
+      0% { transform: scale(0.85); opacity: 0.5; }
+      100% { transform: scale(1.15); opacity: 1; }
+    }
     @keyframes fadeInDown {
       from { opacity: 0; transform: translateY(-30px); }
       to { opacity: 1; transform: translateY(0); }
-    }
-
-    @keyframes sparkle {
-      0% { transform: scale(1) translateY(0); opacity: 1; }
-      100% { transform: scale(0) translateY(-30px); opacity: 0; }
-    }
-
-    /* Wish Button */
-    .btn-wish {
-      background: linear-gradient(135deg, var(--accent-rose), var(--accent-pink));
-      border: none;
-      color: #fff;
-      font-family: 'Outfit', sans-serif;
-      font-weight: 600;
-      font-size: 1rem;
-      padding: 0.9rem 2.2rem;
-      border-radius: 999px;
-      cursor: pointer;
-      box-shadow: 0 8px 25px rgba(255, 117, 140, 0.35);
-      transition: all 0.3s ease;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
-
-    .btn-wish:hover {
-      transform: scale(1.06);
-      box-shadow: 0 12px 35px rgba(255, 117, 140, 0.55);
     }
   </style>
 </head>
 <body>
 
-  <!-- Star Background Canvas -->
-  <canvas id="space-canvas"></canvas>
+  <canvas id="ambient-canvas"></canvas>
 
-  <div class="container">
+  <div class="wrapper">
     
-    <!-- Hero Title -->
+    <!-- Fairy Light Garland -->
+    <div class="fairy-string">
+      <div class="fairy-light"></div>
+      <div class="fairy-light"></div>
+      <div class="fairy-light"></div>
+      <div class="fairy-light"></div>
+      <div class="fairy-light"></div>
+      <div class="fairy-light"></div>
+      <div class="fairy-light"></div>
+    </div>
+
+    <!-- Header Section -->
     <header class="hero">
-      <div class="badge">✨ Celebrating a Special Soul ✨</div>
-      <!-- CHANGE THIS TO THEIR NAME -->
-      <h1>Happy Birthday, Emma!</h1>
-      <p>The universe became a whole lot brighter and gentler the day you arrived. Here's a quiet little corner of the internet made just to celebrate you.</p>
+      <div class="badge">🌸 To Someone Truly Rare & Wonderful 🌸</div>
+      <h1>Happy Birthday, Gorgeous!</h1>
+      <p>A celebration of your infectious laugh, pure heart, and the effortless warmth you bring wherever you walk.</p>
     </header>
 
     <!-- Interactive Birthday Cake -->
-    <section class="cake-section">
-      <div class="cake-instruction" id="cake-hint">Tap flame to blow out the candle 🕯️</div>
-      <div class="cake-stage" id="cake" title="Click to blow out!">
+    <div class="cake-box">
+      <div class="cake-hint" id="cake-text">Touch flame to blow out the candle 🕯️</div>
+      <div class="cake" id="cake">
         <div class="candle">
-          <div class="wick"></div>
           <div class="flame" id="flame"></div>
           <div class="smoke" id="smoke"></div>
         </div>
-        <div class="cake-top">
-          <div class="frosting-drips"></div>
-        </div>
-        <div class="cake-bottom"></div>
+        <div class="layer-top"></div>
+        <div class="layer-bottom"></div>
         <div class="plate"></div>
-      </div>
-      <button class="btn-wish" id="btn-burst">Send Shower of Love 💖</button>
-    </section>
-
-    <!-- Handwritten Love Letter -->
-    <div class="letter-wrapper">
-      <div class="envelope">
-        <span class="letter-tag">Dearest You,</span>
-        <div class="letter-body">
-          <!-- CUSTOMIZE YOUR PERSONAL MESSAGE HERE -->
-          I hope your year ahead is packed with gut-laughing moments, cups of coffee that are always the exact right temperature, sudden adventures, and all the warm, quiet joy you constantly bring into the lives of everyone around you.<br><br>
-          Thank you for simply being your genuine, radiant self. You make everyday things feel lighter and miraculous. Don't ever forget how deeply loved and appreciated you are.
-        </div>
-        <div class="letter-signature">Always with love, <br>— Julian</div>
       </div>
     </div>
 
-    <!-- Memory / Affirmation Cards -->
-    <h2 class="memories-title">A Few Reminders for Your New Year</h2>
-    <div class="grid">
-      <div class="card">
-        <span class="card-icon">🌟</span>
-        <h3>Your Gentle Magic</h3>
-        <p>You have a rare way of making people feel seen and valued in a busy world. Never underestimate the ripple of your kindness.</p>
+    <!-- Polaroid Moments Gallery -->
+    <h2 class="gallery-title">Frames of Your Magic</h2>
+    <div class="gallery-sub">Tap any photograph to cherish the memory ✨</div>
+
+    <div class="polaroid-grid">
+      <!-- 1. Yellow & Purple Saree Portrait -->
+      <div class="polaroid" onclick="openPhoto('photo2.jpg', 'Radiance & unmatched grace ✨')">
+        <div class="photo-frame">
+          <img src="photo2.jpg" alt="Pure Grace" onerror="this.src='https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=600'" />
+        </div>
+        <div class="caption">Pure Radiance & Grace 💛</div>
       </div>
 
-      <div class="card">
-        <span class="card-icon">🚀</span>
-        <h3>Wild, Fearless Dreams</h3>
-        <p>May this chapter unlock all the doors you've been softly knocking on. The world needs what you have to give.</p>
+      <!-- 2. Candid Stone Wall Laugh -->
+      <div class="polaroid" onclick="openPhoto('photo4.jpg', 'That quiet, beautiful laughter that melts hearts 🌸')">
+        <div class="photo-frame">
+          <img src="photo4.jpg" alt="Unfiltered Joy" onerror="this.src='https://images.unsplash.com/photo-1517841905240-472988babdf9?w=600'" />
+        </div>
+        <div class="caption">Unfiltered Laughs & Gajra 🌸</div>
       </div>
 
-      <div class="card">
-        <span class="card-icon">☕</span>
-        <h3>Peace & Simple Days</h3>
-        <p>May you find cozy stillness whenever life gets noisy, and always remember to be as compassionate to yourself as you are to others.</p>
+      <!-- 3. Purple Silk Saree by Temple Gate -->
+      <div class="polaroid" onclick="openPhoto('photo3.jpg', 'Royalty, tradition, and timeless elegance 👑')">
+        <div class="photo-frame">
+          <img src="photo3.jpg" alt="Royal Tradition" onerror="this.src='https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=600'" />
+        </div>
+        <div class="caption">Royal Purple & Heritage 👑</div>
       </div>
+
+      <!-- 4. Yellow Kurti Ganesha Idol Blessings -->
+      <div class="polaroid" onclick="openPhoto('photo1.jpg', 'May this year be showered with endless blessings 🙏')">
+        <div class="photo-frame">
+          <img src="photo1.jpg" alt="Blessed Beginnings" onerror="this.src='https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600'" />
+        </div>
+        <div class="caption">Smiles & Divine Blessings 🙏</div>
+      </div>
+
+      <!-- 5. Under the Tree -->
+      <div class="polaroid" onclick="openPhoto('photo5.jpg', 'Simple sunny walks and calming peaceful energy 🌿')">
+        <div class="photo-frame">
+          <img src="photo5.jpg" alt="Peaceful Moments" onerror="this.src='https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=600'" />
+        </div>
+        <div class="caption">Peaceful Everyday Beauty 🌿</div>
+      </div>
+
+      <!-- 6. Evening Cafe / Long Braid -->
+      <div class="polaroid" onclick="openPhoto('photo6.jpg', 'Cosy evening chats and that gentle serene gaze ☕')">
+        <div class="photo-frame">
+          <img src="photo6.jpg" alt="Quiet Evenings" onerror="this.src='https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?w=600'" />
+        </div>
+        <div class="caption">Warm Evening Glow ☕</div>
+      </div>
+    </div>
+
+    <!-- Letter From The Heart -->
+    <div class="letter-card">
+      <span class="letter-salutation">Dearest You,</span>
+      <div class="letter-content">
+        <p>Whether you're draped in royal silks, sharing a spontaneous laugh against an old stone wall, or simply smiling on a quiet evening, you carry a rare grace that makes the whole world feel softer and kinder.</p>
+        <p>May this new year bring you the quiet peace of temple bells, fearless steps toward every big dream you hold, and thousands of little moments that make your eyes crinkle with pure laughter.</p>
+        <p>Thank you for being the wonderful, radiant soul that you are. Stay blessed, always.</p>
+      </div>
+      <div class="signature">Forever cheering for you,<br>— With all my heart ✨</div>
     </div>
 
   </div>
 
-  <script>
-    /* ==========================================================
-       1. STARFIELD BACKGROUND (CANVAS)
-       ========================================================== */
-    const canvas = document.getElementById('space-canvas');
-    const ctx = canvas.getContext('2d');
-    let stars = [];
+  <!-- Image Lightbox Modal -->
+  <div class="modal" id="modal" onclick="closePhoto()">
+    <div class="modal-content" onclick="event.stopPropagation()">
+      <img id="modal-img" class="modal-img" src="" alt="Memory" />
+      <div id="modal-caption" class="modal-caption"></div>
+    </div>
+  </div>
 
-    function resizeCanvas() {
+  <script>
+    /* 1. Ambient Floating Rose & Gold Petals */
+    const canvas = document.getElementById('ambient-canvas');
+    const ctx = canvas.getContext('2d');
+    let petals = [];
+
+    function resize() {
       canvas.width = window.innerWidth;
       canvas.height = window.innerHeight;
-      createStars();
     }
+    window.addEventListener('resize', resize);
+    resize();
 
-    function createStars() {
-      stars = [];
-      const count = Math.floor((canvas.width * canvas.height) / 5000);
-      for (let i = 0; i < count; i++) {
-        stars.push({
-          x: Math.random() * canvas.width,
-          y: Math.random() * canvas.height,
-          radius: Math.random() * 1.4 + 0.3,
-          alpha: Math.random(),
-          speed: Math.random() * 0.015 + 0.005
-        });
+    class Petal {
+      constructor() {
+        this.reset();
       }
-    }
-
-    function drawStars() {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      for (let star of stars) {
-        star.alpha += star.speed;
-        const currentAlpha = Math.abs(Math.sin(star.alpha));
+      reset() {
+        this.x = Math.random() * canvas.width;
+        this.y = -20;
+        this.size = Math.random() * 8 + 6;
+        this.speedY = Math.random() * 1.2 + 0.6;
+        this.speedX = Math.random() * 1 - 0.5;
+        this.angle = Math.random() * 360;
+        this.spin = Math.random() * 0.04 - 0.02;
+        this.color = Math.random() > 0.4 ? 'rgba(255, 200, 59, 0.4)' : 'rgba(255, 107, 139, 0.35)';
+      }
+      update() {
+        this.y += this.speedY;
+        this.x += Math.sin(this.y * 0.02) + this.speedX;
+        this.angle += this.spin;
+        if (this.y > canvas.height + 20) this.reset();
+      }
+      draw() {
+        ctx.save();
+        ctx.translate(this.x, this.y);
+        ctx.rotate(this.angle);
+        ctx.fillStyle = this.color;
         ctx.beginPath();
-        ctx.arc(star.x, star.y, star.radius, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(255, 235, 240, ${currentAlpha})`;
+        ctx.ellipse(0, 0, this.size, this.size / 2, 0, 0, Math.PI * 2);
         ctx.fill();
+        ctx.restore();
       }
-      requestAnimationFrame(drawStars);
     }
 
-    window.addEventListener('resize', resizeCanvas);
-    resizeCanvas();
-    drawStars();
+    for(let i = 0; i < 35; i++) petals.push(new Petal());
 
-    /* ==========================================================
-       2. SYNTHESIZED WEB AUDIO (No external MP3 dependencies!)
-       ========================================================== */
+    function animatePetals() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      petals.forEach(p => {
+        p.update();
+        p.draw();
+      });
+      requestAnimationFrame(animatePetals);
+    }
+    animatePetals();
+
+    /* 2. Web Audio Synthesizer (Celebration Chime) */
     const AudioContext = window.AudioContext || window.webkitAudioContext;
     let audioCtx = null;
 
-    function playNote(freq, type, duration, delay) {
+    function playBell(freq, delay) {
       setTimeout(() => {
         try {
           if (!audioCtx) audioCtx = new AudioContext();
           const osc = audioCtx.createOscillator();
           const gain = audioCtx.createGain();
-
-          osc.type = type;
+          osc.type = 'sine';
           osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
-
           gain.gain.setValueAtTime(0.08, audioCtx.currentTime);
-          gain.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + duration);
-
+          gain.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + 1.5);
           osc.connect(gain);
           gain.connect(audioCtx.destination);
-
           osc.start();
-          osc.stop(audioCtx.currentTime + duration);
-        } catch(e) {
-          // Audio fallback for restricted browsers
-        }
+          osc.stop(audioCtx.currentTime + 1.5);
+        } catch(e) {}
       }, delay);
     }
 
-    function playCelebrationChord() {
-      // Warm sparkling pentatonic chime
-      const notes = [523.25, 659.25, 783.99, 1046.50, 1318.51]; // C5, E5, G5, C6, E6
-      notes.forEach((freq, idx) => {
-        playNote(freq, 'sine', 1.8, idx * 80);
-      });
+    function playHappyChimes() {
+      // Cheerful ascending arpeggio (C Major / A minor Pentatonic)
+      const melody = [523.25, 659.25, 783.99, 880.00, 1046.50];
+      melody.forEach((note, idx) => playBell(note, idx * 90));
     }
 
-    /* ==========================================================
-       3. INTERACTIVE CANDLE & CONFETTI
-       ========================================================== */
+    /* 3. Interactive Candle Extinguish & Confetti Shower */
     const cake = document.getElementById('cake');
     const flame = document.getElementById('flame');
-    const cakeHint = document.getElementById('cake-hint');
-    const wishBtn = document.getElementById('btn-burst');
-    let candleBlown = false;
+    const cakeText = document.getElementById('cake-text');
+    let blownOut = false;
 
-    function launchConfetti(originX = 0.5, originY = 0.6) {
-      if (typeof confetti === 'function') {
+    cake.addEventListener('click', () => {
+      if (!blownOut) {
+        flame.classList.add('off');
+        cakeText.innerText = "Wish Granted! Happy Birthday! ✨";
+        blownOut = true;
+        playHappyChimes();
+
+        // Confetti burst themed with her saree colors (Gold, Deep Purple, Rose Pink)
         confetti({
-          particleCount: 80,
+          particleCount: 110,
           spread: 80,
-          origin: { x: originX, y: originY },
-          colors: ['#ffd166', '#ff758c', '#ff7eb3', '#ffffff', '#b388ff'],
-          disableForReducedMotion: true
+          origin: { y: 0.65 },
+          colors: ['#ffd166', '#ff8008', '#9b59b6', '#ffffff', '#ff6b8b']
         });
+        setTimeout(() => {
+          confetti({
+            particleCount: 60,
+            angle: 60,
+            spread: 55,
+            origin: { x: 0.2, y: 0.65 },
+            colors: ['#ffd166', '#9b59b6']
+          });
+          confetti({
+            particleCount: 60,
+            angle: 120,
+            spread: 55,
+            origin: { x: 0.8, y: 0.65 },
+            colors: ['#ff8008', '#ff6b8b']
+          });
+        }, 300);
+      } else {
+        flame.classList.remove('off');
+        cakeText.innerText = "Touch flame to blow out the candle 🕯️";
+        blownOut = false;
       }
+    });
+
+    /* 4. Photo Lightbox */
+    const modal = document.getElementById('modal');
+    const modalImg = document.getElementById('modal-img');
+    const modalCaption = document.getElementById('modal-caption');
+
+    function openPhoto(src, caption) {
+      modalImg.src = src;
+      modalCaption.innerText = caption;
+      modal.classList.add('active');
+      playBell(880, 0); // gentle bell sound on open
     }
 
-    cake.addEventListener('click', (e) => {
-      if (!candleBlown) {
-        flame.classList.add('extinguished');
-        cakeHint.innerText = 'Wish granted! ✨ Happy Birthday!';
-        candleBlown = true;
-
-        playCelebrationChord();
-
-        // Confetti explosion from cake position
-        const rect = cake.getBoundingClientRect();
-        const x = (rect.left + rect.width / 2) / window.innerWidth;
-        const y = (rect.top + rect.height / 3) / window.innerHeight;
-        
-        launchConfetti(x, y);
-
-        // Multiple bursts
-        setTimeout(() => launchConfetti(x - 0.1, y), 250);
-        setTimeout(() => launchConfetti(x + 0.1, y), 500);
-      } else {
-        // Relight candle
-        flame.classList.remove('extinguished');
-        cakeHint.innerText = 'Tap flame to blow out the candle 🕯️';
-        candleBlown = false;
-      }
-    });
-
-    wishBtn.addEventListener('click', (e) => {
-      playCelebrationChord();
-      launchConfetti(0.5, 0.5);
-    });
-
-    /* ==========================================================
-       4. CURSOR TRAIL SPARKLES
-       ========================================================== */
-    let lastSparkle = 0;
-    window.addEventListener('pointermove', (e) => {
-      const now = Date.now();
-      if (now - lastSparkle > 60) {
-        lastSparkle = now;
-        const dot = document.createElement('div');
-        dot.className = 'sparkle-dot';
-        dot.style.left = `${e.clientX}px`;
-        dot.style.top = `${e.clientY}px`;
-        dot.style.background = ['#ffd166', '#ff758c', '#fff'][Math.floor(Math.random() * 3)];
-        document.body.appendChild(dot);
-        setTimeout(() => dot.remove(), 700);
-      }
-    });
+    function closePhoto() {
+      modal.classList.remove('active');
+    }
   </script>
 </body>
 </html>
