@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
-  <title>Happy Birthday, Gorgeous ❤️✨</title>
+  <title>Happy Birthday, Lakshmi ❤️✨</title>
 
   <!-- Google Luxury & Calligraphy Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -19,12 +19,10 @@
       --crimson-heart: #ef233c;
       --vivid-rose: #ff4d6d;
       --candy-blush: #ff758f;
-      --soft-peach: #ffb3c1;
       --pure-gold: #ffbe0b;
-      --card-white: rgba(255, 255, 255, 0.94);
+      --card-white: rgba(255, 255, 255, 0.95);
       --card-border: rgba(239, 35, 60, 0.35);
       --wine-text: #4a001a;
-      --sub-text: #6b1432;
     }
 
     * {
@@ -36,7 +34,6 @@
     }
 
     body {
-      /* Bright, Loving, Non-Dim Pink Ambient Gradient */
       background: 
         radial-gradient(circle at 20% 15%, #ffd1dc 0%, transparent 45%),
         radial-gradient(circle at 80% 25%, #ffb3c1 0%, transparent 50%),
@@ -49,7 +46,7 @@
       position: relative;
     }
 
-    /* Red Hearts Canvas */
+    /* Floating Red Hearts Canvas */
     #hearts-canvas {
       position: fixed;
       top: 0;
@@ -183,9 +180,7 @@
       animation: spin 3s linear infinite;
     }
 
-    /* =========================================================
-       HERO: CRISP & HIGH VISIBILITY
-       ========================================================= */
+    /* Hero */
     .hero-banner {
       text-align: center;
       width: 100%;
@@ -488,7 +483,7 @@
     }
 
     /* =========================================================
-       4. CINEMA VIDEO REEL (270° Landscape)
+       4. CINEMA VIDEO REEL (270° Landscape Right-Side Up)
        ========================================================= */
     .video-spotlight {
       width: 100%;
@@ -624,7 +619,7 @@
     }
 
     /* =========================================================
-       6. WISH BOX (CLEAN START)
+       6. WISH BOX (PERMANENT & CLOUD-SHARED FOR EVERYBODY)
        ========================================================= */
     .wish-section {
       width: 100%;
@@ -722,7 +717,7 @@
       display: flex;
       flex-direction: column;
       gap: 0.85rem;
-      max-height: 280px;
+      max-height: 320px;
       overflow-y: auto;
       margin-top: 0.5rem;
       padding-right: 4px;
@@ -813,93 +808,103 @@
     }
 
     /* =========================================================
-       8. PRESENTABLE & DECORATIVE ROYAL LETTER SCROLL
+       8. CUSTOM LETTER CARD: "TO MY DEAREST LITTLE SISTER"
        ========================================================= */
     .parchment-scroll {
       position: relative;
-      background: #ffffff;
-      border: 3px solid var(--ruby-red);
+      background: #140409;
+      border: 2.5px solid var(--ruby-red);
       border-radius: 28px;
       padding: 3rem 1.6rem 2.5rem;
       width: 100%;
-      box-shadow: 0 25px 60px rgba(164, 19, 60, 0.45);
+      box-shadow: 0 25px 60px rgba(164, 19, 60, 0.5), inset 0 0 40px rgba(217, 4, 41, 0.15);
       text-align: left;
     }
 
     .corner-decor {
       position: absolute;
       font-size: 1.3rem;
-      color: var(--ruby-red);
+      color: var(--candy-blush);
       line-height: 1;
     }
-    .top-left { top: 12px; left: 14px; }
-    .top-right { top: 12px; right: 14px; }
-    .bottom-left { bottom: 12px; left: 14px; }
-    .bottom-right { bottom: 12px; right: 14px; }
+    .top-left { top: 14px; left: 16px; }
+    .top-right { top: 14px; right: 16px; }
+    .bottom-left { bottom: 14px; left: 16px; }
+    .bottom-right { bottom: 14px; right: 16px; }
 
     .scroll-wax {
       position: absolute;
-      top: -24px;
+      top: -26px;
       left: 50%;
       transform: translateX(-50%);
-      width: 50px;
-      height: 50px;
+      width: 52px;
+      height: 52px;
       border-radius: 50%;
       background: radial-gradient(circle at 35% 35%, #ff4d6d, #d90429);
       border: 2px solid #ffffff;
-      box-shadow: 0 0 20px rgba(217, 4, 41, 0.6);
+      box-shadow: 0 0 20px rgba(217, 4, 41, 0.8);
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 1.4rem;
+      font-size: 1.6rem;
     }
 
     .scroll-header {
       font-family: 'Playfair Display', serif;
-      font-size: 1.8rem;
+      font-size: 1.85rem;
       font-weight: 900;
-      color: var(--wine-text);
+      color: #ffffff;
       text-align: center;
+      line-height: 1.3;
       margin-bottom: 0.8rem;
+      text-shadow: 0 2px 10px rgba(0,0,0,0.8);
     }
 
     .scroll-divider {
       text-align: center;
       color: var(--crimson-heart);
-      font-size: 1rem;
-      letter-spacing: 4px;
+      font-size: 1.2rem;
+      letter-spacing: 6px;
       margin-bottom: 1.4rem;
     }
 
     .scroll-body {
       font-family: 'Cormorant Garamond', serif;
-      font-size: 1.3rem;
-      font-weight: 700;
+      font-size: 1.32rem;
+      font-weight: 600;
       line-height: 1.8;
-      color: var(--wine-text);
+      color: #ffffff;
       font-style: italic;
+    }
+
+    .scroll-body p {
+      margin-bottom: 1.2rem;
     }
 
     /* Decorative Drop-Cap */
     .drop-cap {
       float: left;
       font-family: 'Playfair Display', serif;
-      font-size: 3.4rem;
+      font-size: 3.6rem;
       line-height: 0.8;
       padding-top: 4px;
       padding-right: 8px;
-      color: var(--ruby-red);
+      color: var(--candy-blush);
       font-weight: 900;
       font-style: normal;
     }
 
     .scroll-sign {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.4rem;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 1.05rem;
       font-weight: 800;
-      color: var(--ruby-red);
-      text-align: right;
-      margin-top: 1.8rem;
+      color: #ffffff;
+      text-align: left;
+      margin-top: 2rem;
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+      flex-wrap: wrap;
     }
 
     /* Keyframes */
@@ -937,7 +942,7 @@
   <div id="gift-portal">
     <div class="gift-box" id="unwrap-card">
       <div class="gift-seal">❤️</div>
-      <h2 class="gift-title">For You, Today</h2>
+      <h2 class="gift-title">For Lakshmi ❤️</h2>
       <p class="gift-subtitle">A special celebration prepared with all my love...</p>
       <div class="tap-btn-pill">✨ Tap To Open ✨</div>
     </div>
@@ -951,10 +956,10 @@
 
   <div class="phone-container">
     
-    <!-- Hero Banner (HIGH CONTRAST & BRIGHT) -->
+    <!-- Hero Banner -->
     <header class="hero-banner">
       <div class="royal-badge">❤️ A Special Birthday Celebration ❤️</div>
-      <h1>Happy Birthday, Beautiful</h1>
+      <h1>Happy Birthday, Lakshmi</h1>
       <p>"He loves me not, he loves me... he holds me tight then lets me go." A corner created to celebrate the grace, gentle laughter, and radiance you bring everywhere.</p>
     </header>
 
@@ -1123,14 +1128,14 @@
     </div>
 
     <!-- ========================================================
-         6. REAL WISH BOX (CLEAN START)
+         6. LIVE WISH BOX (REMAINS PERMANENT FOR HER TO READ)
          ======================================================== -->
     <div class="wish-section">
-      <h3 class="wish-header-title">Leave a Birthday Wish 💌</h3>
-      <p class="wish-header-sub">Send your personal blessing to her special day ✨</p>
+      <h3 class="wish-header-title">Birthday Wishes For Lakshmi 💌</h3>
+      <p class="wish-header-sub">Leave your wish here — she will read every single one! ✨</p>
       
       <input type="text" id="wish-name" class="wish-input" placeholder="Your Name..." />
-      <textarea id="wish-text" class="wish-textarea" placeholder="Write your heartfelt birthday message..."></textarea>
+      <textarea id="wish-text" class="wish-textarea" placeholder="Write your heartfelt birthday message for Lakshmi..."></textarea>
       
       <!-- Emojis -->
       <div class="emoji-row">
@@ -1141,10 +1146,14 @@
         <div class="emoji-tap" onclick="addEmoji('🌸')">🌸</div>
       </div>
 
-      <button class="send-wish-btn" id="btn-send-wish">Send Wish ❤️</button>
+      <button class="send-wish-btn" id="btn-send-wish">Send Wish To Lakshmi ❤️</button>
 
-      <!-- Live Wall of Wishes (No Fake Wishes) -->
-      <div class="wish-wall" id="wish-wall"></div>
+      <!-- All Wishes Stay Here Live -->
+      <div class="wish-wall" id="wish-wall">
+        <div style="text-align:center; color:var(--crimson-heart); font-style:italic; font-size:0.95rem; font-weight:700; padding:1.2rem 0;">
+          Loading wishes... ✨
+        </div>
+      </div>
     </div>
 
     <!-- ========================================================
@@ -1211,7 +1220,7 @@
     </div>
 
     <!-- ========================================================
-         8. PRESENTABLE & DECORATIVE ROYAL LETTER SCROLL
+         8. EXACT CUSTOM LETTER: TO MY DEAREST LITTLE SISTER
          ======================================================== -->
     <div class="parchment-scroll">
       <div class="scroll-wax">❤️</div>
@@ -1220,16 +1229,18 @@
       <div class="corner-decor bottom-left">❦</div>
       <div class="corner-decor bottom-right">❦</div>
 
-      <h3 class="scroll-header">To Someone Truly Remarkable</h3>
-      <div class="scroll-divider">❤️ ❤️ ❤️</div>
+      <h3 class="scroll-header">To My Dearest Little<br>Sister</h3>
+      <div class="scroll-divider">❤️❤️❤️</div>
 
       <div class="scroll-body">
-        <span class="drop-cap">Y</span>ou carry an effortless blend of elegance and warmth that makes every space feel gentler. Whether captured in woven silk, smiling beside ancient stone corridors, or enjoying a quiet evening, you are genuinely unforgettable.
-        <br><br>
-        May this year greet you with deep peace, endless laughter, and the quiet fulfillment of every dream close to your heart.
+        <p><span class="drop-cap">Y</span>ou carry so much light, love, and laughter wherever you go. Watching you grow into such a kind, beautiful, and strong person has been my greatest joy as your big brother. You make every moment brighter and every family memory more special.</p>
+        
+        <p>Wishing you endless smiles, big dreams coming true, and all the happiness you so deserve.</p>
       </div>
 
-      <div class="scroll-sign">Happy Birthday, Always ❤️✨</div>
+      <div class="scroll-sign">
+        Happy Birthday, My Little Princess Lakshmi ❤️✨
+      </div>
     </div>
 
   </div>
@@ -1427,7 +1438,7 @@
       if (!blownOut) {
         if (navigator.vibrate) navigator.vibrate(60);
         flame.classList.add('extinguished');
-        cakeHint.innerText = "Wish Granted ✨ Happy Birthday!";
+        cakeHint.innerText = "Wish Granted to Lakshmi ✨ Happy Birthday!";
         blownOut = true;
         confetti({
           particleCount: 95,
@@ -1443,19 +1454,53 @@
     });
 
     /* ==========================================================
-       6. WISH BOX (CLEAN START)
+       6. LIVE CLOUD + LOCAL WISH BOX (REMAINS PERMANENT FOR HER)
        ========================================================= */
     const wishName = document.getElementById('wish-name');
     const wishText = document.getElementById('wish-text');
     const btnSendWish = document.getElementById('btn-send-wish');
     const wishWall = document.getElementById('wish-wall');
 
-    function loadWishes() {
-      const stored = localStorage.getItem('user_birthday_wishes_clean');
-      let wishes = [];
-      if (stored) {
-        try { wishes = JSON.parse(stored); } catch(e){}
+    // Unique Room ID for Lakshmi's birthday so all phones sync to the same box!
+    const CLOUD_SYNC_URL = "https://kvdb.io/2U9g61r6G95qgVp7Y7r8v9/lakshmi_birthday_wishes_2026";
+
+    // Brother's initial permanent wish
+    const initialWishes = [
+      {
+        name: "Your Big Brother ❤️",
+        msg: "Happy Birthday my little sister! So proud of the amazing person you are becoming. Wishing you the happiest year ahead ✨",
+        time: "Forever"
       }
+    ];
+
+    async function loadWishes() {
+      let wishes = [];
+      // 1. Try fetching from Cloud first so she sees wishes sent from ANY phone!
+      try {
+        const response = await fetch(CLOUD_SYNC_URL);
+        if (response.ok) {
+          const data = await response.json();
+          if (Array.isArray(data) && data.length > 0) {
+            wishes = data;
+          }
+        }
+      } catch (err) {
+        console.log("Offline or cloud fetch fallback to local storage");
+      }
+
+      // 2. Fallback to LocalStorage if cloud is unreachable
+      if (wishes.length === 0) {
+        const stored = localStorage.getItem('lakshmi_permanent_wishes');
+        if (stored) {
+          try { wishes = JSON.parse(stored); } catch(e){}
+        }
+      }
+
+      // If still empty, show initial brother wish
+      if (wishes.length === 0) {
+        wishes = initialWishes;
+      }
+
       renderWishWall(wishes);
     }
 
@@ -1484,36 +1529,51 @@
       wishText.focus();
     }
 
-    btnSendWish.addEventListener('click', () => {
+    btnSendWish.addEventListener('click', async () => {
       const name = wishName.value.trim();
       const msg = wishText.value.trim();
 
       if (!name || !msg) {
-        alert("Please write your name and a birthday wish! ❤️");
+        alert("Please write your name and a birthday wish for Lakshmi! ❤️");
         return;
       }
 
-      let stored = localStorage.getItem('user_birthday_wishes_clean');
-      let wishes = [];
+      // Get existing wishes
+      let stored = localStorage.getItem('lakshmi_permanent_wishes');
+      let wishes = initialWishes;
       if (stored) {
         try { wishes = JSON.parse(stored); } catch(e){}
       }
 
-      wishes.unshift({
+      const newWish = {
         name: name,
         msg: msg,
         time: "Just now"
-      });
+      };
 
-      localStorage.setItem('user_birthday_wishes_clean', JSON.stringify(wishes));
+      wishes.unshift(newWish);
+
+      // Save locally so it NEVER gets lost
+      localStorage.setItem('lakshmi_permanent_wishes', JSON.stringify(wishes));
       renderWishWall(wishes);
+
+      // Save to Cloud so Lakshmi sees it on HER phone too!
+      try {
+        await fetch(CLOUD_SYNC_URL, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(wishes)
+        });
+      } catch (err) {
+        console.log("Synced locally");
+      }
 
       wishName.value = '';
       wishText.value = '';
 
       if (navigator.vibrate) navigator.vibrate(50);
       confetti({
-        particleCount: 70,
+        particleCount: 75,
         spread: 60,
         origin: { y: 0.8 },
         colors: ['#ef233c', '#d90429', '#ffffff']
@@ -1564,7 +1624,6 @@
         ctx.globalAlpha = this.opacity;
         ctx.fillStyle = this.color;
         
-        // Exact Bezier Heart Shape
         ctx.beginPath();
         const top = this.size * 0.3;
         ctx.moveTo(0, top);
