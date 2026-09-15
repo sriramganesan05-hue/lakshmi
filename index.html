@@ -5,26 +5,26 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
   <title>Happy Birthday, Gorgeous ✨</title>
 
-  <!-- Google Luxury Fonts (with robust fallbacks) -->
+  <!-- Google Luxury Fonts (High Legibility & Decorative) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;1,400;1,600&family=Playfair+Display:ital,wght@0,700;1,600&family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;900&family=Cormorant+Garamond:ital,wght@0,600;0,700;1,600&family=Playfair+Display:ital,wght@0,700;0,900;1,600&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
   
   <!-- Canvas Confetti CDN -->
   <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 
   <style>
     :root {
-      --bg-dark: #080312;
-      --velvet-plum: #1c082e;
-      --vivid-gold: #ffde8a;
-      --rich-gold: #ffb703;
-      --sunset-amber: #f77f00;
-      --rose-pearl: #f3b6c6;
-      --ivory: #ffffff;
-      --glass-surface: rgba(30, 10, 48, 0.85);
-      --glass-border: rgba(255, 222, 138, 0.4);
-      --gold-glow: 0 0 25px rgba(255, 192, 56, 0.4);
+      --bg-vivid-core: #13031f;
+      --aurora-plum: #420857;
+      --aurora-violet: #6b1487;
+      --aurora-amber: #e85d04;
+      --vivid-gold: #ffe49e;
+      --pure-gold: #ffbe0b;
+      --rose-pearl: #f7cad0;
+      --card-bg: rgba(22, 6, 36, 0.94);
+      --card-border: rgba(255, 228, 158, 0.45);
+      --gold-glow: 0 0 25px rgba(255, 190, 11, 0.45);
     }
 
     * {
@@ -36,8 +36,13 @@
     }
 
     body {
-      background: radial-gradient(circle at 50% 8%, #2e0847 0%, var(--velvet-plum) 40%, var(--bg-dark) 90%);
-      color: var(--ivory);
+      /* Vivid Living Aurora Gradient Background */
+      background: 
+        radial-gradient(circle at 50% 0%, #680d85 0%, transparent 45%),
+        radial-gradient(circle at 100% 30%, #50085a 0%, transparent 50%),
+        radial-gradient(circle at 0% 70%, #7b1274 0%, transparent 50%),
+        linear-gradient(180deg, #1b042b 0%, #2f0842 35%, #180326 70%, #0d0117 100%);
+      color: #ffffff;
       font-family: 'Plus Jakarta Sans', sans-serif;
       overflow-x: hidden;
       min-height: 100vh;
@@ -61,7 +66,7 @@
     #gift-portal {
       position: fixed;
       inset: 0;
-      background: radial-gradient(circle at center, #2e0847 0%, #06020c 90%);
+      background: radial-gradient(circle at center, #420b57 0%, #0a0114 90%);
       z-index: 99999;
       display: flex;
       flex-direction: column;
@@ -81,10 +86,10 @@
     .gift-box {
       width: 100%;
       max-width: 330px;
-      background: linear-gradient(150deg, #2b0b42, #140421);
+      background: linear-gradient(150deg, #370c4f, #150324);
       border: 2px solid var(--vivid-gold);
       border-radius: 28px;
-      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.9), 0 0 35px rgba(255, 192, 56, 0.35);
+      box-shadow: 0 25px 65px rgba(0, 0, 0, 0.95), 0 0 35px rgba(255, 190, 11, 0.4);
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -98,43 +103,45 @@
       width: 76px;
       height: 76px;
       border-radius: 50%;
-      background: radial-gradient(circle at 35% 35%, #ffd460, #b27b00);
-      box-shadow: 0 0 25px rgba(255, 192, 56, 0.7);
+      background: radial-gradient(circle at 35% 35%, #ffe49e, #c78d06);
+      box-shadow: 0 0 28px rgba(255, 228, 158, 0.8);
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 2rem;
+      font-size: 2.1rem;
       margin-bottom: 1.4rem;
     }
 
     .gift-title {
       font-family: 'Playfair Display', serif;
-      font-size: 1.85rem;
+      font-size: 1.95rem;
+      font-weight: 700;
       color: #ffffff;
       line-height: 1.2;
       margin-bottom: 0.6rem;
-      text-shadow: 0 2px 10px rgba(0,0,0,0.8);
+      text-shadow: 0 2px 12px rgba(0,0,0,0.9);
     }
 
     .gift-subtitle {
       font-family: 'Cormorant Garamond', serif;
       font-size: 1.25rem;
-      color: var(--rose-pearl);
+      font-weight: 600;
+      color: var(--vivid-gold);
       font-style: italic;
       line-height: 1.5;
     }
 
     .tap-btn-pill {
       margin-top: 1.8rem;
-      background: linear-gradient(135deg, var(--rich-gold), var(--sunset-amber));
-      color: #0d0217;
-      font-size: 0.85rem;
+      background: linear-gradient(135deg, var(--pure-gold), var(--aurora-amber));
+      color: #0b0114;
+      font-size: 0.88rem;
       letter-spacing: 2px;
-      padding: 0.8rem 1.8rem;
+      padding: 0.85rem 1.9rem;
       border-radius: 999px;
       text-transform: uppercase;
       font-weight: 800;
-      box-shadow: 0 8px 25px rgba(255, 192, 56, 0.5);
+      box-shadow: 0 8px 25px rgba(255, 190, 11, 0.6);
     }
 
     /* Main Phone Container */
@@ -144,11 +151,11 @@
       width: 100%;
       max-width: 500px;
       margin: 0 auto;
-      padding: 5.2rem 1.1rem 6rem; /* Top padding prevents overlap with music pill */
+      padding: 5.5rem 1.15rem 6.5rem;
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 3.8rem;
+      gap: 4rem;
     }
 
     /* Top Audio Pill (Mobile) */
@@ -156,7 +163,7 @@
       position: fixed;
       top: 14px;
       right: 14px;
-      background: rgba(16, 5, 26, 0.95);
+      background: rgba(18, 4, 30, 0.96);
       border: 1.5px solid var(--vivid-gold);
       backdrop-filter: blur(16px);
       padding: 0.45rem 1rem;
@@ -165,21 +172,21 @@
       align-items: center;
       gap: 0.6rem;
       z-index: 100;
-      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.8);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.85);
       cursor: pointer;
     }
 
     .pulse-disc {
-      width: 14px;
-      height: 14px;
+      width: 15px;
+      height: 15px;
       border-radius: 50%;
-      background: var(--vivid-gold);
-      box-shadow: 0 0 10px var(--vivid-gold);
+      background: var(--pure-gold);
+      box-shadow: 0 0 12px var(--pure-gold);
       animation: spin 3s linear infinite;
     }
 
     /* =========================================================
-       HERO: HIGH VISIBILITY BOLD SOLID TEXT
+       HERO: HIGH CONTRAST & VISIBILITY (NO BLENDING)
        ========================================================= */
     .hero-banner {
       text-align: center;
@@ -190,9 +197,9 @@
       display: inline-flex;
       align-items: center;
       gap: 0.5rem;
-      padding: 0.45rem 1.4rem;
+      padding: 0.5rem 1.4rem;
       border-radius: 999px;
-      background: rgba(255, 222, 138, 0.15);
+      background: rgba(255, 228, 158, 0.18);
       border: 1.5px solid var(--vivid-gold);
       font-size: 0.78rem;
       letter-spacing: 2px;
@@ -205,22 +212,23 @@
 
     .hero-banner h1 {
       font-family: 'Playfair Display', serif;
-      font-size: clamp(2.3rem, 9.5vw, 3.2rem);
-      font-weight: 700;
+      font-size: clamp(2.4rem, 9.8vw, 3.3rem);
+      font-weight: 900;
       line-height: 1.2;
       margin-bottom: 0.8rem;
-      color: var(--vivid-gold); /* Solid color guarantees visibility */
-      text-shadow: 0 3px 25px rgba(0, 0, 0, 0.9), 0 0 30px rgba(255, 192, 56, 0.4);
+      color: var(--vivid-gold);
+      text-shadow: 0 4px 20px rgba(0, 0, 0, 0.95), 0 0 30px rgba(255, 190, 11, 0.5);
     }
 
     .hero-banner p {
       font-family: 'Cormorant Garamond', serif;
-      font-size: 1.3rem;
+      font-size: 1.35rem;
+      font-weight: 600;
       color: #ffffff;
       line-height: 1.6;
       font-style: italic;
-      padding: 0 0.4rem;
-      text-shadow: 0 2px 10px rgba(0,0,0,0.8);
+      padding: 0 0.5rem;
+      text-shadow: 0 2px 12px rgba(0,0,0,0.9);
     }
 
     /* =========================================================
@@ -228,12 +236,12 @@
        ========================================================= */
     .lyrics-container {
       width: 100%;
-      background: var(--glass-surface);
-      border: 1.5px solid var(--glass-border);
+      background: var(--card-bg);
+      border: 1.5px solid var(--card-border);
       backdrop-filter: blur(20px);
       border-radius: 26px;
       padding: 1.6rem 1.2rem;
-      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6);
+      box-shadow: 0 20px 45px rgba(0, 0, 0, 0.75);
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -281,12 +289,13 @@
     .lyric-line {
       font-family: 'Cormorant Garamond', serif;
       font-size: 1.3rem;
+      font-weight: 600;
       font-style: italic;
       color: rgba(255, 255, 255, 0.45);
       text-align: center;
       transition: all 0.35s ease;
       cursor: pointer;
-      padding: 0.3rem 0.8rem;
+      padding: 0.35rem 0.85rem;
       border-radius: 12px;
       width: fit-content;
       max-width: 95%;
@@ -296,9 +305,9 @@
       color: #ffffff;
       font-size: 1.55rem;
       font-weight: 700;
-      background: linear-gradient(135deg, rgba(255, 222, 138, 0.25), rgba(247, 127, 0, 0.25));
+      background: linear-gradient(135deg, rgba(255, 228, 158, 0.3), rgba(232, 93, 4, 0.3));
       border: 1.5px solid var(--vivid-gold);
-      box-shadow: 0 0 20px rgba(255, 192, 56, 0.4);
+      box-shadow: 0 0 20px rgba(255, 190, 11, 0.45);
       transform: scale(1.04);
     }
 
@@ -328,9 +337,9 @@
       inset: 0;
       border-radius: 28px;
       overflow: hidden;
-      background: #090312;
-      border: 2px solid var(--glass-border);
-      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7);
+      background: #0d0118;
+      border: 2px solid var(--card-border);
+      box-shadow: 0 22px 55px rgba(0, 0, 0, 0.85);
       opacity: 0;
       transform: scale(0.95);
       transition: all 0.65s cubic-bezier(0.2, 0.9, 0.25, 1);
@@ -346,11 +355,11 @@
 
     .deck-slide .bg-blur {
       position: absolute;
-      inset: -10px;
-      width: calc(100% + 20px);
-      height: calc(100% + 20px);
+      inset: -12px;
+      width: calc(100% + 24px);
+      height: calc(100% + 24px);
       object-fit: cover;
-      filter: blur(24px) brightness(0.45);
+      filter: blur(26px) brightness(0.4);
       z-index: 1;
     }
 
@@ -368,7 +377,7 @@
       position: absolute;
       top: 16px;
       left: 16px;
-      background: rgba(16, 5, 26, 0.9);
+      background: rgba(18, 4, 30, 0.92);
       border: 1.5px solid var(--vivid-gold);
       color: #ffffff;
       padding: 0.35rem 0.9rem;
@@ -376,16 +385,16 @@
       font-size: 0.75rem;
       letter-spacing: 1.5px;
       text-transform: uppercase;
-      font-weight: 700;
+      font-weight: 800;
       z-index: 5;
-      text-shadow: 0 1px 4px rgba(0,0,0,0.8);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.8);
     }
 
     .swipe-hint {
       position: absolute;
       top: 16px;
       right: 16px;
-      background: rgba(255, 255, 255, 0.2);
+      background: rgba(255, 255, 255, 0.22);
       color: #fff;
       padding: 0.35rem 0.8rem;
       border-radius: 999px;
@@ -393,7 +402,7 @@
       letter-spacing: 1px;
       z-index: 5;
       backdrop-filter: blur(8px);
-      font-weight: 700;
+      font-weight: 800;
     }
 
     .deck-caption-box {
@@ -402,7 +411,7 @@
       left: 0;
       width: 100%;
       padding: 2.2rem 1.4rem 1.4rem;
-      background: linear-gradient(to top, rgba(9, 3, 20, 0.98) 30%, rgba(9, 3, 20, 0.2) 80%, transparent 100%);
+      background: linear-gradient(to top, rgba(10, 2, 22, 0.98) 32%, rgba(10, 2, 22, 0.25) 85%, transparent 100%);
       display: flex;
       justify-content: space-between;
       align-items: flex-end;
@@ -412,13 +421,15 @@
     .deck-title {
       font-family: 'Playfair Display', serif;
       font-size: 1.45rem;
+      font-weight: 700;
       color: #ffffff;
-      text-shadow: 0 2px 10px rgba(0,0,0,0.9);
+      text-shadow: 0 2px 10px rgba(0,0,0,0.95);
     }
 
     .deck-sub {
       font-family: 'Cormorant Garamond', serif;
-      font-size: 1.15rem;
+      font-size: 1.18rem;
+      font-weight: 600;
       color: var(--vivid-gold);
       font-style: italic;
       margin-top: 2px;
@@ -429,7 +440,7 @@
       font-size: 1rem;
       color: var(--rose-pearl);
       letter-spacing: 1px;
-      font-weight: 700;
+      font-weight: 800;
     }
 
     /* Controls */
@@ -441,7 +452,7 @@
     }
 
     .nav-btn {
-      background: rgba(36, 12, 56, 0.9);
+      background: rgba(42, 11, 64, 0.95);
       border: 1.5px solid var(--vivid-gold);
       color: var(--vivid-gold);
       width: 44px;
@@ -452,7 +463,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.7);
     }
 
     .deck-dots {
@@ -463,7 +474,7 @@
     .dot {
       width: 8px;
       height: 8px;
-      background: rgba(255, 255, 255, 0.3);
+      background: rgba(255, 255, 255, 0.35);
       border-radius: 50%;
       transition: all 0.3s ease;
     }
@@ -472,6 +483,7 @@
       width: 24px;
       border-radius: 12px;
       background: var(--vivid-gold);
+      box-shadow: 0 0 10px var(--vivid-gold);
     }
 
     /* =========================================================
@@ -479,12 +491,12 @@
        ========================================================= */
     .video-spotlight {
       width: 100%;
-      background: var(--glass-surface);
-      border: 1.5px solid var(--glass-border);
+      background: var(--card-bg);
+      border: 1.5px solid var(--card-border);
       backdrop-filter: blur(20px);
       border-radius: 26px;
       padding: 1.6rem 1.2rem;
-      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6);
+      box-shadow: 0 20px 45px rgba(0, 0, 0, 0.75);
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -501,11 +513,12 @@
     .video-title {
       font-family: 'Playfair Display', serif;
       font-size: 1.45rem;
+      font-weight: 700;
       color: #ffffff;
     }
 
     .rotate-btn {
-      background: rgba(255, 222, 138, 0.15);
+      background: rgba(255, 228, 158, 0.18);
       border: 1.5px solid var(--vivid-gold);
       color: var(--vivid-gold);
       padding: 0.45rem 1rem;
@@ -513,7 +526,7 @@
       font-size: 0.75rem;
       letter-spacing: 1px;
       text-transform: uppercase;
-      font-weight: 700;
+      font-weight: 800;
       cursor: pointer;
     }
 
@@ -523,7 +536,7 @@
       border-radius: 18px;
       overflow: hidden;
       background: #000;
-      border: 1px solid rgba(255, 255, 255, 0.2);
+      border: 1px solid rgba(255, 255, 255, 0.25);
       position: relative;
       display: flex;
       align-items: center;
@@ -551,10 +564,12 @@
 
     .cake-prompt {
       font-family: 'Cormorant Garamond', serif;
-      font-size: 1.4rem;
+      font-size: 1.45rem;
+      font-weight: 600;
       color: var(--vivid-gold);
       font-style: italic;
       text-align: center;
+      text-shadow: 0 2px 10px rgba(0,0,0,0.8);
     }
 
     .noble-cake {
@@ -574,9 +589,9 @@
       top: -20px;
       width: 18px;
       height: 28px;
-      background: radial-gradient(ellipse at bottom, #fff 15%, var(--vivid-gold) 45%, var(--sunset-amber) 85%);
+      background: radial-gradient(ellipse at bottom, #fff 15%, var(--pure-gold) 45%, var(--aurora-amber) 85%);
       border-radius: 50% 50% 35% 35%;
-      filter: drop-shadow(0 0 16px var(--vivid-gold));
+      filter: drop-shadow(0 0 18px var(--pure-gold));
       animation: flameWobble 0.16s infinite alternate;
       transition: all 0.4s ease;
     }
@@ -589,39 +604,39 @@
     .candle-pillar {
       width: 10px;
       height: 40px;
-      background: repeating-linear-gradient(45deg, #fff, #fff 5px, var(--vivid-gold) 5px, var(--vivid-gold) 10px);
+      background: repeating-linear-gradient(45deg, #fff, #fff 5px, var(--pure-gold) 5px, var(--pure-gold) 10px);
       border-radius: 4px;
     }
 
     .cake-tier-1 {
       width: 110px;
       height: 36px;
-      background: linear-gradient(135deg, #3d1454, #210730);
+      background: linear-gradient(135deg, #4d156b, #2a093d);
       border-radius: 12px 12px 4px 4px;
-      border: 1px solid var(--glass-border);
+      border: 1.5px solid var(--card-border);
     }
 
     .cake-tier-2 {
       width: 165px;
       height: 45px;
-      background: linear-gradient(135deg, #2a0b3d, #140321);
+      background: linear-gradient(135deg, #370c4f, #1b032b);
       border-radius: 14px;
       margin-top: 3px;
-      border: 1px solid var(--glass-border);
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.7);
+      border: 1.5px solid var(--card-border);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.8);
     }
 
     /* =========================================================
-       6. WISH BOX / GUESTBOOK SECTION (NEW!)
+       6. REAL WISH BOX (CLEAN START)
        ========================================================= */
     .wish-section {
       width: 100%;
-      background: var(--glass-surface);
-      border: 2px solid var(--glass-border);
+      background: var(--card-bg);
+      border: 2px solid var(--card-border);
       backdrop-filter: blur(20px);
       border-radius: 28px;
       padding: 1.8rem 1.4rem;
-      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.7);
+      box-shadow: 0 20px 45px rgba(0, 0, 0, 0.8);
       display: flex;
       flex-direction: column;
       gap: 1.2rem;
@@ -629,7 +644,8 @@
 
     .wish-header-title {
       font-family: 'Playfair Display', serif;
-      font-size: 1.6rem;
+      font-size: 1.65rem;
+      font-weight: 700;
       color: #ffffff;
       text-align: center;
       margin-bottom: 0.2rem;
@@ -637,7 +653,8 @@
 
     .wish-header-sub {
       font-family: 'Cormorant Garamond', serif;
-      font-size: 1.15rem;
+      font-size: 1.2rem;
+      font-weight: 600;
       color: var(--vivid-gold);
       font-style: italic;
       text-align: center;
@@ -645,8 +662,8 @@
 
     .wish-input, .wish-textarea {
       width: 100%;
-      background: rgba(16, 5, 26, 0.85);
-      border: 1.5px solid rgba(255, 222, 138, 0.3);
+      background: rgba(14, 3, 24, 0.95);
+      border: 1.5px solid rgba(255, 228, 158, 0.35);
       border-radius: 14px;
       padding: 0.75rem 1rem;
       color: #fff;
@@ -658,7 +675,7 @@
 
     .wish-input:focus, .wish-textarea:focus {
       border-color: var(--vivid-gold);
-      box-shadow: 0 0 15px rgba(255, 222, 138, 0.35);
+      box-shadow: 0 0 15px rgba(255, 228, 158, 0.4);
     }
 
     .wish-textarea {
@@ -674,11 +691,11 @@
 
     .emoji-tap {
       font-size: 1.4rem;
-      background: rgba(255, 255, 255, 0.08);
-      border: 1px solid rgba(255, 255, 255, 0.2);
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.25);
       border-radius: 50%;
-      width: 40px;
-      height: 40px;
+      width: 42px;
+      height: 42px;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -686,25 +703,24 @@
     }
 
     .send-wish-btn {
-      background: linear-gradient(135deg, var(--rich-gold), var(--sunset-amber));
+      background: linear-gradient(135deg, var(--pure-gold), var(--aurora-amber));
       border: none;
-      color: #0d0217;
+      color: #0b0114;
       font-family: 'Plus Jakarta Sans', sans-serif;
       font-weight: 800;
       font-size: 0.95rem;
       letter-spacing: 1.5px;
       text-transform: uppercase;
-      padding: 0.85rem;
+      padding: 0.9rem;
       border-radius: 14px;
       cursor: pointer;
-      box-shadow: 0 5px 20px rgba(255, 183, 3, 0.4);
+      box-shadow: 0 5px 20px rgba(255, 190, 11, 0.5);
       display: flex;
       align-items: center;
       justify-content: center;
       gap: 0.5rem;
     }
 
-    /* Wish Wall Display */
     .wish-wall {
       display: flex;
       flex-direction: column;
@@ -715,25 +731,17 @@
       padding-right: 4px;
     }
 
-    .wish-wall::-webkit-scrollbar {
-      width: 4px;
-    }
-    .wish-wall::-webkit-scrollbar-thumb {
-      background: var(--vivid-gold);
-      border-radius: 4px;
-    }
-
     .wish-card {
-      background: rgba(16, 5, 26, 0.7);
-      border: 1px solid rgba(255, 222, 138, 0.25);
+      background: rgba(14, 3, 24, 0.85);
+      border: 1px solid rgba(255, 228, 158, 0.3);
       border-radius: 14px;
       padding: 0.85rem 1rem;
       animation: fadeIn 0.4s ease forwards;
     }
 
     .wish-author {
-      font-weight: 700;
-      font-size: 0.85rem;
+      font-weight: 800;
+      font-size: 0.88rem;
       color: var(--vivid-gold);
       display: flex;
       justify-content: space-between;
@@ -743,24 +751,26 @@
     .wish-time {
       font-size: 0.7rem;
       color: var(--rose-pearl);
-      font-weight: 400;
+      font-weight: 500;
     }
 
     .wish-msg {
-      font-size: 0.92rem;
+      font-size: 0.95rem;
       color: #ffffff;
       line-height: 1.45;
     }
 
     /* =========================================================
-       7. SCRAPBOOK (Static Gallery)
+       7. SCRAPBOOK (Static Photos)
        ========================================================= */
     .grid-header {
       font-family: 'Playfair Display', serif;
-      font-size: 2.1rem;
+      font-size: 2.15rem;
+      font-weight: 700;
       text-align: center;
       color: #ffffff;
       margin-bottom: -2rem;
+      text-shadow: 0 2px 10px rgba(0,0,0,0.8);
     }
 
     .scrapbook-grid {
@@ -771,12 +781,12 @@
     }
 
     .photo-card {
-      background: rgba(28, 10, 46, 0.75);
-      border: 1.5px solid var(--glass-border);
+      background: var(--card-bg);
+      border: 1.5px solid var(--card-border);
       backdrop-filter: blur(14px);
       border-radius: 24px;
       padding: 14px 14px 18px;
-      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6);
+      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.7);
     }
 
     .photo-frame-box {
@@ -784,7 +794,7 @@
       height: 380px;
       border-radius: 16px;
       overflow: hidden;
-      background: #0d0317;
+      background: #0d0118;
       position: relative;
     }
 
@@ -797,51 +807,111 @@
 
     .photo-card-text {
       font-family: 'Cormorant Garamond', serif;
-      font-size: 1.35rem;
+      font-size: 1.4rem;
+      font-weight: 600;
       text-align: center;
       margin-top: 12px;
       color: var(--vivid-gold);
       font-style: italic;
     }
 
-    /* Heartfelt Letter */
-    .parchment-letter {
-      background: linear-gradient(145deg, rgba(38, 12, 61, 0.8), rgba(16, 4, 28, 0.95));
-      border: 1.5px solid var(--glass-border);
-      backdrop-filter: blur(24px);
+    /* =========================================================
+       8. PRESENTABLE & DECORATIVE ROYAL LETTER SCROLL
+       ========================================================= */
+    .parchment-scroll {
+      position: relative;
+      background: linear-gradient(145deg, rgba(38, 9, 58, 0.96), rgba(16, 3, 28, 0.98));
+      border: 2px solid var(--vivid-gold);
       border-radius: 28px;
-      padding: 2.5rem 1.6rem;
+      padding: 3rem 1.6rem 2.5rem;
       width: 100%;
-      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7);
-      text-align: center;
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.85), inset 0 0 30px rgba(255, 190, 11, 0.15);
+      text-align: left;
     }
 
-    .parchment-letter h3 {
+    /* Filigree Ornamental Corners */
+    .corner-decor {
+      position: absolute;
+      font-size: 1.2rem;
+      color: var(--vivid-gold);
+      line-height: 1;
+    }
+    .top-left { top: 12px; left: 14px; }
+    .top-right { top: 12px; right: 14px; }
+    .bottom-left { bottom: 12px; left: 14px; }
+    .bottom-right { bottom: 12px; right: 14px; }
+
+    .scroll-wax {
+      position: absolute;
+      top: -24px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 35% 35%, #ffd56b, #b27b00);
+      border: 2px solid #ffffff;
+      box-shadow: 0 0 20px rgba(255, 190, 11, 0.7);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+    }
+
+    .scroll-header {
       font-family: 'Playfair Display', serif;
-      font-size: 1.85rem;
+      font-size: 1.75rem;
+      font-weight: 700;
       color: #ffffff;
-      margin-bottom: 1rem;
+      text-align: center;
+      margin-bottom: 1.2rem;
+      text-shadow: 0 2px 10px rgba(0,0,0,0.8);
     }
 
-    .letter-body {
+    .scroll-divider {
+      text-align: center;
+      color: var(--vivid-gold);
+      font-size: 1rem;
+      letter-spacing: 4px;
+      margin-bottom: 1.4rem;
+    }
+
+    .scroll-body {
       font-family: 'Cormorant Garamond', serif;
-      font-size: 1.25rem;
-      line-height: 1.75;
-      color: #eadcf8;
+      font-size: 1.3rem;
+      font-weight: 600;
+      line-height: 1.8;
+      color: #ffffff;
       font-style: italic;
     }
 
-    .letter-signature {
+    /* Decorative Drop-Cap */
+    .drop-cap {
+      float: left;
       font-family: 'Playfair Display', serif;
-      font-size: 1.5rem;
+      font-size: 3.4rem;
+      line-height: 0.8;
+      padding-top: 4px;
+      padding-right: 8px;
       color: var(--vivid-gold);
-      margin-top: 1.6rem;
+      font-weight: 900;
+      font-style: normal;
+      text-shadow: 0 2px 10px rgba(255, 190, 11, 0.5);
+    }
+
+    .scroll-sign {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--vivid-gold);
+      text-align: right;
+      margin-top: 1.8rem;
     }
 
     /* Keyframes */
     @keyframes phonePulse {
-      0% { transform: scale(1); box-shadow: 0 20px 50px rgba(0,0,0,0.9), 0 0 25px rgba(255, 192, 56, 0.25); }
-      100% { transform: scale(1.02); box-shadow: 0 25px 60px rgba(0,0,0,0.9), 0 0 35px rgba(255, 192, 56, 0.45); }
+      0% { transform: scale(1); box-shadow: 0 20px 50px rgba(0,0,0,0.9), 0 0 25px rgba(255, 190, 11, 0.25); }
+      100% { transform: scale(1.02); box-shadow: 0 25px 65px rgba(0,0,0,0.9), 0 0 35px rgba(255, 190, 11, 0.5); }
     }
     @keyframes spin {
       from { transform: rotate(0deg); }
@@ -887,7 +957,7 @@
 
   <div class="phone-container">
     
-    <!-- Hero Banner (HIGH VISIBILITY SOLID TEXT) -->
+    <!-- Hero Banner (100% VISIBLE SOLID TEXT) -->
     <header class="hero-banner">
       <div class="royal-badge">✦ A Special Birthday Celebration ✦</div>
       <h1>Happy Birthday, Beautiful</h1>
@@ -913,7 +983,7 @@
     <div class="photo-deck-wrapper">
       <div class="deck-viewport" id="deck-viewport">
 
-        <!-- 1. WhatsApp Image 2026-09-15 at 15.21.50.jpeg (Birthday Glow) -->
+        <!-- 1. Birthday Glow -->
         <div class="deck-slide active">
           <span class="deck-badge">Birthday Glow</span>
           <span class="swipe-hint">Swipe ⇄</span>
@@ -1020,7 +1090,7 @@
 
       </div>
 
-      <!-- Controls -->
+      <!-- Thumb Nav Controls -->
       <div class="deck-nav">
         <button class="nav-btn" id="deck-prev" aria-label="Previous">❮</button>
         <div class="deck-dots" id="deck-dots"></div>
@@ -1059,11 +1129,11 @@
     </div>
 
     <!-- ========================================================
-         6. INTERACTIVE BIRTHDAY WISH BOX & WALL (NEW!)
+         6. REAL WISH BOX (NO FAKE WISHES)
          ======================================================== -->
     <div class="wish-section">
       <h3 class="wish-header-title">Leave a Birthday Wish 💌</h3>
-      <p class="wish-header-sub">Send your blessing to her special day ✨</p>
+      <p class="wish-header-sub">Send your personal blessing to her special day ✨</p>
       
       <input type="text" id="wish-name" class="wish-input" placeholder="Your Name..." />
       <textarea id="wish-text" class="wish-textarea" placeholder="Write your heartfelt birthday message..."></textarea>
@@ -1079,7 +1149,7 @@
 
       <button class="send-wish-btn" id="btn-send-wish">Send Wish ✨</button>
 
-      <!-- Live Wall of Wishes -->
+      <!-- Live Wall of Wishes (Starts Clean) -->
       <div class="wish-wall" id="wish-wall">
         <!-- Rendered dynamically -->
       </div>
@@ -1148,15 +1218,26 @@
       </div>
     </div>
 
-    <!-- Letter -->
-    <div class="parchment-letter">
-      <h3>To Someone Truly Remarkable,</h3>
-      <div class="letter-body">
-        <p>You carry an effortless blend of elegance and warmth that makes every space feel gentler. Whether captured in woven silk, smiling beside ancient stone corridors, or enjoying a quiet evening, you are genuinely unforgettable.</p>
-        <br>
-        <p>May this year greet you with deep peace, endless laughter, and the quiet fulfillment of every dream close to your heart.</p>
+    <!-- ========================================================
+         8. PRESENTABLE & DECORATIVE ROYAL LETTER SCROLL
+         ======================================================== -->
+    <div class="parchment-scroll">
+      <div class="scroll-wax">👑</div>
+      <div class="corner-decor top-left">❦</div>
+      <div class="corner-decor top-right">❦</div>
+      <div class="corner-decor bottom-left">❦</div>
+      <div class="corner-decor bottom-right">❦</div>
+
+      <h3 class="scroll-header">To Someone Truly Remarkable</h3>
+      <div class="scroll-divider">✦ ✦ ✦</div>
+
+      <div class="scroll-body">
+        <span class="drop-cap">Y</span>ou carry an effortless blend of elegance and warmth that makes every space feel gentler. Whether captured in woven silk, smiling beside ancient stone corridors, or enjoying a quiet evening, you are genuinely unforgettable.
+        <br><br>
+        May this year greet you with deep peace, endless laughter, and the quiet fulfillment of every dream close to your heart.
       </div>
-      <div class="letter-signature">Happy Birthday, Always ✨</div>
+
+      <div class="scroll-sign">Happy Birthday, Always ✨</div>
     </div>
 
   </div>
@@ -1225,10 +1306,10 @@
       audio.play().catch(e => console.log(e));
       giftPortal.classList.add('unlocked');
       confetti({
-        particleCount: 85,
-        spread: 80,
+        particleCount: 95,
+        spread: 85,
         origin: { y: 0.5 },
-        colors: ['#ffde8a', '#f3b6c6', '#ffffff', '#f77f00']
+        colors: ['#ffe49e', '#f7cad0', '#ffffff', '#e85d04']
       });
     });
 
@@ -1263,7 +1344,7 @@
     });
 
     /* ==========================================================
-       3. TOUCH-SWIPE SLIDER ENGINE (MOBILE-FIRST)
+       3. TOUCH-SWIPE SLIDER ENGINE
        ========================================================= */
     const deckViewport = document.getElementById('deck-viewport');
     const slides = document.querySelectorAll('.deck-slide');
@@ -1360,7 +1441,7 @@
           particleCount: 95,
           spread: 80,
           origin: { y: 0.65 },
-          colors: ['#ffde8a', '#f3b6c6', '#ffffff', '#f77f00']
+          colors: ['#ffe49e', '#f7cad0', '#ffffff', '#e85d04']
         });
       } else {
         flame.classList.remove('extinguished');
@@ -1370,23 +1451,16 @@
     });
 
     /* ==========================================================
-       6. WISH BOX & LOCAL STORAGE ENGINE
+       6. WISH BOX (CLEAN START - NO FAKE WISHES)
        ========================================================= */
     const wishName = document.getElementById('wish-name');
     const wishText = document.getElementById('wish-text');
     const btnSendWish = document.getElementById('btn-send-wish');
     const wishWall = document.getElementById('wish-wall');
 
-    // Pre-populated default wishes so the wall is never empty
-    const defaultWishes = [
-      { name: "Ananya", msg: "Happy Birthday to the most radiant human! Keep shining that million-dollar smile! 🌸✨", time: "Just now" },
-      { name: "Rahul", msg: "May this year bring endless peace, laughter, and success to your life! Stay blessed always 👑", time: "A moment ago" },
-      { name: "Sneha", msg: "You look so stunning in sarees and always light up every room! Have the happiest day 💛", time: "Today" }
-    ];
-
     function loadWishes() {
-      const stored = localStorage.getItem('birthday_wishes');
-      let wishes = defaultWishes;
+      const stored = localStorage.getItem('user_birthday_wishes_clean');
+      let wishes = [];
       if (stored) {
         try { wishes = JSON.parse(stored); } catch(e){}
       }
@@ -1395,6 +1469,10 @@
 
     function renderWishWall(wishes) {
       wishWall.innerHTML = '';
+      if (!wishes || wishes.length === 0) {
+        wishWall.innerHTML = '<div style="text-align:center; color:var(--rose-pearl); font-style:italic; font-size:0.95rem; font-weight:600; padding:1.2rem 0;">No wishes yet. Be the first to leave a blessing! ✨</div>';
+        return;
+      }
       wishes.forEach(item => {
         const card = document.createElement('div');
         card.className = 'wish-card';
@@ -1423,8 +1501,8 @@
         return;
       }
 
-      let stored = localStorage.getItem('birthday_wishes');
-      let wishes = defaultWishes;
+      let stored = localStorage.getItem('user_birthday_wishes_clean');
+      let wishes = [];
       if (stored) {
         try { wishes = JSON.parse(stored); } catch(e){}
       }
@@ -1435,7 +1513,7 @@
         time: "Just now"
       });
 
-      localStorage.setItem('birthday_wishes', JSON.stringify(wishes));
+      localStorage.setItem('user_birthday_wishes_clean', JSON.stringify(wishes));
       renderWishWall(wishes);
 
       wishName.value = '';
@@ -1443,10 +1521,10 @@
 
       if (navigator.vibrate) navigator.vibrate(50);
       confetti({
-        particleCount: 60,
+        particleCount: 70,
         spread: 60,
         origin: { y: 0.8 },
-        colors: ['#ffde8a', '#ffb703', '#ffffff']
+        colors: ['#ffe49e', '#ffbe0b', '#ffffff']
       });
     });
 
@@ -1477,11 +1555,11 @@
       init() {
         this.x = Math.random() * canvas.width;
         this.y = canvas.height + 15;
-        this.radius = Math.random() * 2 + 0.8;
+        this.radius = Math.random() * 2.2 + 0.8;
         this.speedY = -(Math.random() * 0.7 + 0.3);
         this.speedX = Math.sin(Math.random() * 8) * 0.4;
-        this.opacity = Math.random() * 0.6 + 0.2;
-        this.color = Math.random() > 0.4 ? '255, 222, 138' : '243, 182, 198';
+        this.opacity = Math.random() * 0.7 + 0.3;
+        this.color = Math.random() > 0.4 ? '255, 228, 158' : '247, 202, 208';
       }
       update() {
         this.y += this.speedY;
@@ -1492,14 +1570,14 @@
         ctx.beginPath();
         ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
         ctx.fillStyle = `rgba(${this.color}, ${this.opacity})`;
-        ctx.shadowBlur = 8;
-        ctx.shadowColor = `rgba(${this.color}, 0.6)`;
+        ctx.shadowBlur = 10;
+        ctx.shadowColor = `rgba(${this.color}, 0.8)`;
         ctx.fill();
         ctx.shadowBlur = 0;
       }
     }
 
-    for (let i = 0; i < 35; i++) particles.push(new StardustParticle());
+    for (let i = 0; i < 40; i++) particles.push(new StardustParticle());
 
     function animate() {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
