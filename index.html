@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Happy Birthday, Birthday Girl! 💖✨</title>
+  <title>Happy Birthday, Gorgeous! 💖✨</title>
 
-  <!-- Google Girly Fonts -->
+  <!-- Google Aesthetic Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@700&family=Outfit:wght@400;600;700;900&family=Shrikhand&display=swap" rel="stylesheet">
@@ -20,7 +20,6 @@
       --neon-magenta: #d900ff;
       --candy-peach: #ff6f91;
       --baby-pink: #ffe5ec;
-      --electric-purple: #7209b7;
       --glow: 0 0 25px rgba(255, 0, 127, 0.6);
       --glass: rgba(255, 255, 255, 0.12);
       --glass-border: rgba(255, 255, 255, 0.28);
@@ -54,7 +53,7 @@
     }
 
     /* =========================================================
-       1. VIVID BIRTHDAY CARD UNBOXING OVERLAY
+       1. UNBOXING CARD OVERLAY
        ========================================================= */
     #gift-portal {
       position: fixed;
@@ -91,14 +90,7 @@
       padding: 2.2rem;
       position: relative;
       cursor: pointer;
-      transform-style: preserve-3d;
-      transition: transform 0.4s ease, box-shadow 0.4s ease;
       animation: floatGift 3s infinite ease-in-out alternate;
-    }
-
-    .gift-box:hover {
-      transform: scale(1.04) rotate(-1deg);
-      box-shadow: 0 35px 80px rgba(255, 0, 127, 0.8), 0 0 40px rgba(255, 255, 255, 0.6);
     }
 
     .gift-ribbon-v {
@@ -141,7 +133,6 @@
       color: #fff;
       margin-top: 1.4rem;
       text-shadow: 0 3px 15px rgba(0,0,0,0.5);
-      letter-spacing: 1px;
     }
 
     .gift-subtitle {
@@ -168,9 +159,7 @@
       text-transform: uppercase;
     }
 
-    /* =========================================================
-       MAIN SITE CONTAINER
-       ========================================================= */
+    /* Main Container */
     .app-container {
       position: relative;
       z-index: 1;
@@ -183,7 +172,7 @@
       gap: 5rem;
     }
 
-    /* Top Floating Music Pill (Minimal) */
+    /* Top Audio Pill */
     .top-pill {
       position: fixed;
       top: 18px;
@@ -206,17 +195,10 @@
       height: 20px;
       border-radius: 50%;
       background: #fff;
-      box-shadow: 0 0 10px #fff;
       animation: spin 3s linear infinite;
     }
 
-    .track-info {
-      font-size: 0.8rem;
-      font-weight: 700;
-      letter-spacing: 0.5px;
-    }
-
-    /* Hero Banner */
+    /* Hero */
     .hero-banner {
       text-align: center;
       margin-top: 1.5rem;
@@ -253,12 +235,11 @@
       color: #ffd6df;
       max-width: 620px;
       margin: 0 auto;
-      font-weight: 400;
       line-height: 1.6;
     }
 
     /* =========================================================
-       2. ANIMATED LYRICS REEL (Apple Music / Spotify Style)
+       2. ANIMATED SYNCHRONIZED LYRICS
        ========================================================= */
     .lyrics-container {
       width: 100%;
@@ -301,7 +282,6 @@
       border-radius: 50%;
       background: #00ff88;
       box-shadow: 0 0 10px #00ff88;
-      animation: pulseLive 1.5s infinite;
     }
 
     .lyrics-scroller {
@@ -340,20 +320,19 @@
 
     .lyric-line.active {
       color: #fff;
-      font-size: 1.7rem;
+      font-size: 1.65rem;
       background: linear-gradient(90deg, rgba(255, 0, 127, 0.4), rgba(217, 0, 255, 0.4));
       border: 1px solid rgba(255, 255, 255, 0.4);
       box-shadow: 0 0 25px rgba(255, 0, 127, 0.6);
-      transform: scale(1.08);
-      filter: drop-shadow(0 0 10px rgba(255, 0, 127, 0.8));
+      transform: scale(1.06);
     }
 
     /* =========================================================
-       3. 3D VIVID PHOTO DECK (Seamless Zoom Transitions)
+       3. WHOLE FACE VISIBLE SHOWCASE (Dual-Layer Ambient Blur)
        ========================================================= */
     .photo-deck-wrapper {
       width: 100%;
-      max-width: 650px;
+      max-width: 720px;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -363,7 +342,7 @@
     .deck-viewport {
       position: relative;
       width: 100%;
-      height: 520px;
+      height: 560px;
       border-radius: 36px;
       perspective: 1200px;
     }
@@ -373,11 +352,11 @@
       inset: 0;
       border-radius: 36px;
       overflow: hidden;
-      background: #240033;
+      background: #11001a;
       border: 3px solid rgba(255, 255, 255, 0.3);
       box-shadow: 0 25px 60px rgba(255, 0, 127, 0.35);
       opacity: 0;
-      transform: scale(0.9) rotateY(12deg);
+      transform: scale(0.92) rotateY(12deg);
       transition: all 0.75s cubic-bezier(0.2, 0.9, 0.3, 1.1);
       pointer-events: none;
     }
@@ -389,19 +368,33 @@
       z-index: 5;
     }
 
-    .deck-slide img {
+    /* Ambient Blur layer fills space behind */
+    .deck-slide .bg-blur {
+      position: absolute;
+      inset: -10px;
+      width: calc(100% + 20px);
+      height: calc(100% + 20px);
+      object-fit: cover;
+      filter: blur(25px) brightness(0.5);
+      z-index: 1;
+    }
+
+    /* Foreground image fits cleanly with whole face visible! */
+    .deck-slide .fg-main {
+      position: absolute;
+      inset: 0;
       width: 100%;
       height: 100%;
-      object-fit: cover;
-      object-position: center top;
+      object-fit: contain;
+      object-position: center center;
+      z-index: 2;
       transition: transform 6s cubic-bezier(0.1, 1, 0.1, 1);
     }
 
-    .deck-slide.active img {
-      transform: scale(1.07);
+    .deck-slide.active .fg-main {
+      transform: scale(1.03);
     }
 
-    /* Floating Y2K Tag on Photos */
     .y2k-badge {
       position: absolute;
       top: 20px;
@@ -414,7 +407,7 @@
       font-size: 0.82rem;
       letter-spacing: 1px;
       box-shadow: 0 8px 20px rgba(0,0,0,0.4);
-      z-index: 2;
+      z-index: 5;
     }
 
     .deck-caption-box {
@@ -423,17 +416,17 @@
       left: 0;
       width: 100%;
       padding: 2.2rem 1.8rem 1.6rem;
-      background: linear-gradient(to top, rgba(13, 0, 20, 0.95) 20%, rgba(13, 0, 20, 0.3) 60%, transparent 100%);
+      background: linear-gradient(to top, rgba(13, 0, 20, 0.95) 25%, rgba(13, 0, 20, 0.2) 65%, transparent 100%);
       display: flex;
       justify-content: space-between;
       align-items: flex-end;
+      z-index: 5;
     }
 
     .deck-title {
       font-family: 'Shrikhand', cursive;
       font-size: 1.5rem;
       color: #fff;
-      letter-spacing: 0.5px;
     }
 
     .deck-sub {
@@ -447,7 +440,6 @@
       font-weight: 900;
       font-size: 1.1rem;
       color: var(--hot-pink);
-      letter-spacing: 2px;
       background: #fff;
       padding: 0.3rem 0.8rem;
       border-radius: 12px;
@@ -504,7 +496,84 @@
     }
 
     /* =========================================================
-       4. INTERACTIVE BIRTHDAY CAKE
+       4. LANDSCAPE SPOTLIGHT VIDEO REEL (With 90° Rotate Option)
+       ========================================================= */
+    .video-spotlight {
+      width: 100%;
+      max-width: 780px;
+      background: rgba(255, 255, 255, 0.07);
+      border: 2px solid var(--glass-border);
+      backdrop-filter: blur(25px);
+      border-radius: 36px;
+      padding: 2.2rem 1.8rem;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), inset 0 0 35px rgba(255, 0, 127, 0.2);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.2rem;
+    }
+
+    .video-header {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .video-title {
+      font-family: 'Shrikhand', cursive;
+      font-size: 1.6rem;
+      color: #fff;
+    }
+
+    .rotate-btn {
+      background: linear-gradient(135deg, #ff007f, #d900ff);
+      border: 1.5px solid #fff;
+      color: #fff;
+      padding: 0.45rem 1.2rem;
+      border-radius: 999px;
+      font-weight: 700;
+      font-size: 0.82rem;
+      cursor: pointer;
+      box-shadow: var(--glow);
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      transition: all 0.3s ease;
+    }
+
+    .rotate-btn:hover {
+      transform: scale(1.08);
+      background: #fff;
+      color: var(--hot-pink);
+    }
+
+    /* Video Frame in Landscape */
+    .video-landscape-box {
+      width: 100%;
+      height: 420px;
+      border-radius: 24px;
+      overflow: hidden;
+      background: #000;
+      border: 2px solid rgba(255, 255, 255, 0.3);
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Rotated to Landscape as requested */
+    .spotlight-video {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      transition: transform 0.5s cubic-bezier(0.2, 0.9, 0.3, 1);
+      /* Default 90 deg rotation to make portrait video landscape */
+      transform: rotate(90deg) scale(1.35);
+    }
+
+    /* =========================================================
+       5. INTERACTIVE CAKE & FULL SCRAPBOOK
        ========================================================= */
     .cake-zone {
       display: flex;
@@ -517,7 +586,6 @@
       font-family: 'Shrikhand', cursive;
       font-size: 1.5rem;
       color: #ff85a1;
-      text-shadow: 0 0 15px rgba(255, 0, 127, 0.6);
     }
 
     .girly-cake {
@@ -536,7 +604,7 @@
       top: -24px;
       font-size: 2rem;
       filter: drop-shadow(0 0 16px #ff007f) drop-shadow(0 0 25px #ffd166);
-      animation: heartPulse 1.2s infinite ease-in-out;
+      animation: pulseHeart 1.2s infinite ease-in-out;
       transition: all 0.4s ease;
     }
 
@@ -558,7 +626,6 @@
       background: linear-gradient(135deg, #ff6f91, #ff007f);
       border-radius: 16px 16px 4px 4px;
       border: 2px solid #fff;
-      box-shadow: 0 0 25px rgba(255, 0, 127, 0.5);
     }
 
     .cake-tier-2 {
@@ -571,15 +638,11 @@
       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
     }
 
-    /* =========================================================
-       5. PHOTO GRID (All 6 Photos)
-       ========================================================= */
+    /* Scrapbook */
     .grid-header {
       font-family: 'Shrikhand', cursive;
       font-size: 2.4rem;
       text-align: center;
-      color: #fff;
-      text-shadow: 0 0 25px rgba(255, 0, 127, 0.8);
       margin-bottom: -2.5rem;
     }
 
@@ -622,9 +685,10 @@
       border-radius: 16px;
       overflow: hidden;
       background: #ffd6df;
+      position: relative;
     }
 
-    .polaroid-img-box img {
+    .polaroid-img-box img, .polaroid-img-box video {
       width: 100%;
       height: 100%;
       object-fit: cover;
@@ -633,7 +697,7 @@
     }
 
     .photo-polaroid:hover .polaroid-img-box img {
-      transform: scale(1.08);
+      transform: scale(1.06);
     }
 
     .polaroid-text {
@@ -645,7 +709,7 @@
       font-weight: 700;
     }
 
-    /* Love Note */
+    /* Note */
     .pink-letter {
       background: linear-gradient(135deg, rgba(255, 0, 127, 0.2), rgba(217, 0, 255, 0.15));
       border: 2px solid rgba(255, 255, 255, 0.3);
@@ -662,7 +726,6 @@
       font-size: 2rem;
       color: #fff;
       margin-bottom: 1.2rem;
-      text-shadow: 0 0 15px var(--hot-pink);
     }
 
     .letter-text {
@@ -679,7 +742,6 @@
       margin-top: 1.6rem;
     }
 
-    /* Keyframes */
     @keyframes floatGift {
       0% { transform: translateY(0); }
       100% { transform: translateY(-12px); }
@@ -692,10 +754,6 @@
       from { transform: rotate(0deg); }
       to { transform: rotate(360deg); }
     }
-    @keyframes pulseLive {
-      0%, 100% { opacity: 1; transform: scale(1); }
-      50% { opacity: 0.4; transform: scale(0.85); }
-    }
   </style>
 </head>
 <body>
@@ -703,40 +761,38 @@
   <!-- Floating Hearts Background Canvas -->
   <canvas id="hearts-canvas"></canvas>
 
-  <!-- =========================================================
-       AUDIO ELEMENT: Loaded with your exact song title!
-       ========================================================= -->
+  <!-- Audio Element: Exact Song Title -->
   <audio id="main-audio" loop preload="auto">
     <source src="ravyn lenae - love me not [ slowed + reverb ] (lyrics).mp3" type="audio/mp3">
   </audio>
 
   <!-- =========================================================
-       1. VIVID GIFT UNWRAPPING OVERLAY
+       1. VIVID GIFT CARD UNWRAP
        ========================================================= -->
   <div id="gift-portal">
     <div class="gift-box" id="unwrap-card">
       <div class="gift-ribbon-v"></div>
       <div class="gift-ribbon-h"></div>
       <div class="gift-badge">💖</div>
-      <h2 class="gift-title">For The Birthday Girl</h2>
-      <p class="gift-subtitle">A special musical surprise awaits inside...</p>
+      <h2 class="gift-title">For The Birthday Queen</h2>
+      <p class="gift-subtitle">A special musical surprise awaits...</p>
       <div class="tap-btn-pill">✨ Tap To Open & Play ✨</div>
     </div>
   </div>
 
-  <!-- Subtle Music Status Pill -->
+  <!-- Music Pill -->
   <div class="top-pill" id="pill-toggle">
     <div class="vinyl-dot"></div>
-    <span class="track-info">Love Me Not [Slowed] 🎵</span>
+    <span style="font-size:0.8rem; font-weight:700;">Love Me Not [Slowed] 🎵</span>
   </div>
 
   <div class="app-container">
     
     <!-- Hero Banner -->
     <header class="hero-banner">
-      <div class="sparkle-tag">✨ 100% IT GIRL • BIRTHDAY EDITION ✨</div>
+      <div class="sparkle-tag">✨ BIRTHDAY GIRL • SPECIAL EDITION ✨</div>
       <h1>Happy Birthday, Gorgeous! 💖</h1>
-      <p>A high-energy, candy-coated celebration made just for your beauty, radiant smile, and pure magic.</p>
+      <p>Every photograph holds your unmistakable radiance, warmth, and grace. Today is made entirely to celebrate you.</p>
     </header>
 
     <!-- ========================================================
@@ -744,103 +800,121 @@
          ======================================================== -->
     <div class="lyrics-container">
       <div class="lyrics-header">
-        <span class="lyrics-header-title"><span class="live-dot"></span> Synchronized Lyrics</span>
+        <span class="lyrics-header-title"><span class="live-dot"></span> Live Lyrics</span>
         <span style="font-size: 0.8rem; color: #ffb3c6; font-weight: 700;">Ravyn Lenae • Love Me Not</span>
       </div>
       <div class="lyrics-scroller" id="lyrics-scroller">
-        <div class="lyrics-stream" id="lyrics-stream">
-          <!-- Lyrics will be generated here by JavaScript -->
-        </div>
+        <div class="lyrics-stream" id="lyrics-stream"></div>
       </div>
     </div>
 
     <!-- ========================================================
-         3. VIVID 3D PHOTO DECK
+         3. WHOLE FACE VISIBLE 3D SHOWCASE
          ======================================================== -->
     <div class="photo-deck-wrapper">
       <div class="deck-viewport">
 
-        <!-- 1. Yellow & Purple Saree -->
+        <!-- 1. NEW PHOTO: WhatsApp Image 2026-09-15 at 15.21.50.jpeg -->
         <div class="deck-slide active">
+          <span class="y2k-badge">SPECIAL HIGHLIGHT ✨</span>
+          <img class="bg-blur" src="WhatsApp Image 2026-09-15 at 15.21.50.jpeg" alt="New Special" />
+          <img class="fg-main" src="WhatsApp Image 2026-09-15 at 15.21.50.jpeg" alt="New Special" />
+          <div class="deck-caption-box">
+            <div>
+              <div class="deck-title">Unmatched Radiance</div>
+              <div class="deck-sub">A smile that brightens the world 💕</div>
+            </div>
+            <div class="deck-counter">01 / 07</div>
+          </div>
+        </div>
+
+        <!-- 2. Yellow & Purple Saree -->
+        <div class="deck-slide">
           <span class="y2k-badge">PURE SUNSHINE 💛</span>
-          <img src="WhatsApp Image 2026-09-15 at 14.25.10.jpeg" alt="Saree Royalty" onerror="this.src='psl2.jpeg'" />
+          <img class="bg-blur" src="WhatsApp Image 2026-09-15 at 14.25.10.jpeg" alt="Saree" onerror="this.src='psl2.jpeg'" />
+          <img class="fg-main" src="WhatsApp Image 2026-09-15 at 14.25.10.jpeg" alt="Saree" onerror="this.src='psl2.jpeg'" />
           <div class="deck-caption-box">
             <div>
               <div class="deck-title">Saree Goddess</div>
               <div class="deck-sub">That golden hour glow ✨</div>
             </div>
-            <div class="deck-counter">01 / 06</div>
+            <div class="deck-counter">02 / 07</div>
           </div>
         </div>
 
-        <!-- 2. Candid Stone Wall Laugh with Gajra -->
+        <!-- 3. Candid Stone Wall Laugh with Gajra -->
         <div class="deck-slide">
           <span class="y2k-badge">THAT SMILE 🌸</span>
-          <img src="WhatsApp Image 2026-09-15 at 14.25.12.jpeg" alt="Candid Laughter" onerror="this.src='psl3.jpeg'" />
+          <img class="bg-blur" src="WhatsApp Image 2026-09-15 at 14.25.12.jpeg" alt="Laugh" onerror="this.src='psl3.jpeg'" />
+          <img class="fg-main" src="WhatsApp Image 2026-09-15 at 14.25.12.jpeg" alt="Laugh" onerror="this.src='psl3.jpeg'" />
           <div class="deck-caption-box">
             <div>
               <div class="deck-title">Unfiltered Joy</div>
               <div class="deck-sub">The prettiest laugh in the room 💕</div>
             </div>
-            <div class="deck-counter">02 / 06</div>
+            <div class="deck-counter">03 / 07</div>
           </div>
         </div>
 
-        <!-- 3. Purple Silk by Temple Gate -->
+        <!-- 4. Purple Silk by Temple Gate -->
         <div class="deck-slide">
           <span class="y2k-badge">ROYAL ENERGY 👑</span>
-          <img src="WhatsApp Image 2026-09-15 at 14.25.11.jpeg" alt="Temple Gate" />
+          <img class="bg-blur" src="WhatsApp Image 2026-09-15 at 14.25.11.jpeg" alt="Temple" />
+          <img class="fg-main" src="WhatsApp Image 2026-09-15 at 14.25.11.jpeg" alt="Temple" />
           <div class="deck-caption-box">
             <div>
               <div class="deck-title">Silk & Heritage</div>
               <div class="deck-sub">Standing tall like a queen 🏛️</div>
             </div>
-            <div class="deck-counter">03 / 06</div>
+            <div class="deck-counter">04 / 07</div>
           </div>
         </div>
 
-        <!-- 4. Yellow Kurti Ganesha Blessings -->
+        <!-- 5. Yellow Kurti Ganesha Blessings -->
         <div class="deck-slide">
           <span class="y2k-badge">BLESSED VIBES ✨</span>
-          <img src="WhatsApp Image 2026-09-15 at 14.25.08.jpeg" alt="Ganesha Blessings" />
+          <img class="bg-blur" src="WhatsApp Image 2026-09-15 at 14.25.08.jpeg" alt="Blessings" />
+          <img class="fg-main" src="WhatsApp Image 2026-09-15 at 14.25.08.jpeg" alt="Blessings" />
           <div class="deck-caption-box">
             <div>
               <div class="deck-title">Shining Bright</div>
-              <div class="deck-sub">Big dreams and good fortune ahead 🙏</div>
+              <div class="deck-sub">Big dreams and divine luck 🙏</div>
             </div>
-            <div class="deck-counter">04 / 06</div>
+            <div class="deck-counter">05 / 07</div>
           </div>
         </div>
 
-        <!-- 5. Under the Tree -->
+        <!-- 6. Under the Tree -->
         <div class="deck-slide">
           <span class="y2k-badge">PEACEFUL DAYS 🌿</span>
-          <img src="psl2.jpeg" alt="By the Tree" />
+          <img class="bg-blur" src="psl2.jpeg" alt="Tree" />
+          <img class="fg-main" src="psl2.jpeg" alt="Tree" />
           <div class="deck-caption-box">
             <div>
-              <div class="deck-title">Soft Nature Walks</div>
+              <div class="deck-title">Nature Walks</div>
               <div class="deck-sub">Effortless and serene 🍃</div>
             </div>
-            <div class="deck-counter">05 / 06</div>
+            <div class="deck-counter">06 / 07</div>
           </div>
         </div>
 
-        <!-- 6. Night Cafe Leaning on Table -->
+        <!-- 7. Night Cafe Leaning on Table -->
         <div class="deck-slide">
           <span class="y2k-badge">MAIN CHARACTER ☕</span>
-          <img src="psl3.jpeg" alt="Night Cafe" />
+          <img class="bg-blur" src="psl3.jpeg" alt="Night Cafe" />
+          <img class="fg-main" src="psl3.jpeg" alt="Night Cafe" />
           <div class="deck-caption-box">
             <div>
               <div class="deck-title">Night Talks</div>
-              <div class="deck-sub">Warm coffee and endless memories 🌙</div>
+              <div class="deck-sub">Warm coffee & soft smiles 🌙</div>
             </div>
-            <div class="deck-counter">06 / 06</div>
+            <div class="deck-counter">07 / 07</div>
           </div>
         </div>
 
       </div>
 
-      <!-- Navigation -->
+      <!-- Controls -->
       <div class="deck-nav">
         <button class="nav-btn" id="deck-prev">❮</button>
         <div class="deck-dots" id="deck-dots"></div>
@@ -849,7 +923,25 @@
     </div>
 
     <!-- ========================================================
-         4. INTERACTIVE BIRTHDAY CAKE
+         4. LANDSCAPE SPOTLIGHT VIDEO REEL
+         ======================================================== -->
+    <div class="video-spotlight">
+      <div class="video-header">
+        <div class="video-title">Spotlight Cinema Reel 🎬</div>
+        <button class="rotate-btn" id="rotate-vid-btn">🔄 Rotate Orientation</button>
+      </div>
+      <div class="video-landscape-box">
+        <!-- Exact video file name loaded, rotated to landscape -->
+        <video id="feature-video" class="spotlight-video" controls playsinline loop autoplay muted>
+          <source src="WhatsApp Video 2026-09-15 at 15.21.54.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+      </div>
+      <p style="font-size:0.9rem; color:#ffb3c6; font-style:italic;">Tap "Rotate Orientation" anytime to switch between landscape and portrait views!</p>
+    </div>
+
+    <!-- ========================================================
+         5. INTERACTIVE BIRTHDAY CAKE
          ======================================================== -->
     <div class="cake-zone">
       <div class="cake-prompt" id="cake-hint">Touch the heart flame to make a wish! 🕯️</div>
@@ -862,12 +954,21 @@
     </div>
 
     <!-- ========================================================
-         5. FULL PHOTO SCRAPBOOK (All 6 Photos)
+         6. SCRAPBOOK GALLERY (All Photos + Video)
          ======================================================== -->
     <h2 class="grid-header">A Scrapbook of You 🎀</h2>
 
     <div class="girly-grid">
-      <!-- 1 -->
+      <!-- 1: New Photo -->
+      <div class="photo-polaroid">
+        <span class="polaroid-top-sticker">💖</span>
+        <div class="polaroid-img-box">
+          <img src="WhatsApp Image 2026-09-15 at 15.21.50.jpeg" alt="Photo New" />
+        </div>
+        <div class="polaroid-text">The Birthday Glow ✨</div>
+      </div>
+
+      <!-- 2 -->
       <div class="photo-polaroid">
         <span class="polaroid-top-sticker">✨</span>
         <div class="polaroid-img-box">
@@ -876,16 +977,16 @@
         <div class="polaroid-text">Golden Hour Royalty 💛</div>
       </div>
 
-      <!-- 2 -->
+      <!-- 3 -->
       <div class="photo-polaroid">
         <span class="polaroid-top-sticker">🌸</span>
         <div class="polaroid-img-box">
           <img src="WhatsApp Image 2026-09-15 at 14.25.12.jpeg" alt="Photo 2" onerror="this.src='psl3.jpeg'" />
         </div>
-        <div class="polaroid-text">Unfiltered Laughter & Gajra 💕</div>
+        <div class="polaroid-text">Unfiltered Laughter 💕</div>
       </div>
 
-      <!-- 3 -->
+      <!-- 4 -->
       <div class="photo-polaroid">
         <span class="polaroid-top-sticker">👑</span>
         <div class="polaroid-img-box">
@@ -894,7 +995,7 @@
         <div class="polaroid-text">Temple Gate Splendor 💜</div>
       </div>
 
-      <!-- 4 -->
+      <!-- 5 -->
       <div class="photo-polaroid">
         <span class="polaroid-top-sticker">🙏</span>
         <div class="polaroid-img-box">
@@ -903,7 +1004,7 @@
         <div class="polaroid-text">Sunshine & Blessings 🌻</div>
       </div>
 
-      <!-- 5 -->
+      <!-- 6 -->
       <div class="photo-polaroid">
         <span class="polaroid-top-sticker">🌿</span>
         <div class="polaroid-img-box">
@@ -912,7 +1013,7 @@
         <div class="polaroid-text">Serene & Beautiful 🍃</div>
       </div>
 
-      <!-- 6 -->
+      <!-- 7 -->
       <div class="photo-polaroid">
         <span class="polaroid-top-sticker">☕</span>
         <div class="polaroid-img-box">
@@ -920,15 +1021,24 @@
         </div>
         <div class="polaroid-text">Night-Time Magic ✨</div>
       </div>
+
+      <!-- 8: Video Polaroid -->
+      <div class="photo-polaroid">
+        <span class="polaroid-top-sticker">🎬</span>
+        <div class="polaroid-img-box">
+          <video src="WhatsApp Video 2026-09-15 at 15.21.54.mp4" muted loop autoplay playsinline style="object-fit:cover;"></video>
+        </div>
+        <div class="polaroid-text">Live In Motion 🎥</div>
+      </div>
     </div>
 
     <!-- Letter Note -->
     <div class="pink-letter">
-      <h3>To The Prettiest Soul,</h3>
+      <h3>To The Most Special Girl,</h3>
       <div class="letter-text">
-        <p>You have this rare, bright energy that instantly lights up everywhere you go. Whether draped in beautiful silk sarees, laughing against ancient temple walls, or sharing quiet evening conversations, you are completely unforgettable.</p>
+        <p>You have a vibrant spirit and a laugh that instantly makes the world feel lighter. Whether wearing traditional silks with unmatched elegance or smiling in quiet candid moments, you are truly one of a kind.</p>
         <br>
-        <p>May your new year be overflowing with endless laughter, answered prayers, sweet treats, good music on repeat, and all the love in the world.</p>
+        <p>May this year bring you all the warmth, answered prayers, spontaneous adventures, and happiness you so genuinely deserve.</p>
       </div>
       <div class="letter-sign">Happy Birthday, Queen 💖✨</div>
     </div>
@@ -937,7 +1047,7 @@
 
   <script>
     /* ==========================================================
-       1. TIMED LYRICS DATABASE
+       1. SYNCHRONIZED LYRICS
        ========================================================== */
     const lyricsData = [
       { time: 0, text: "🎵 [Intro - Slowed + Reverb] 🎵" },
@@ -977,20 +1087,17 @@
     const lyricsStream = document.getElementById('lyrics-stream');
     const lyricsScroller = document.getElementById('lyrics-scroller');
 
-    // Build the lyric elements
     lyricsData.forEach((item, index) => {
       const line = document.createElement('div');
       line.className = 'lyric-line';
       line.innerText = item.text;
       line.id = `lyric-${index}`;
-      line.addEventListener('click', () => {
-        audio.currentTime = item.time;
-      });
+      line.addEventListener('click', () => { audio.currentTime = item.time; });
       lyricsStream.appendChild(line);
     });
 
     /* ==========================================================
-       2. UNBOXING / AUDIO PLAYBACK
+       2. UNWRAPPING & AUDIO
        ========================================================= */
     const unwrapCard = document.getElementById('unwrap-card');
     const giftPortal = document.getElementById('gift-portal');
@@ -1000,7 +1107,6 @@
     unwrapCard.addEventListener('click', () => {
       audio.play().catch(e => console.log(e));
       giftPortal.classList.add('unlocked');
-
       confetti({
         particleCount: 120,
         spread: 100,
@@ -1010,39 +1116,25 @@
     });
 
     pillToggle.addEventListener('click', () => {
-      if (audio.paused) {
-        audio.play();
-      } else {
-        audio.pause();
-      }
+      if (audio.paused) audio.play();
+      else audio.pause();
     });
 
-    /* ==========================================================
-       3. SYNCHRONIZED LYRIC SCROLLER ENGINE
-       ========================================================= */
     let currentActiveIdx = -1;
-
     audio.addEventListener('timeupdate', () => {
       const curTime = audio.currentTime;
       let activeIndex = -1;
 
       for (let i = 0; i < lyricsData.length; i++) {
-        if (curTime >= lyricsData[i].time) {
-          activeIndex = i;
-        } else {
-          break;
-        }
+        if (curTime >= lyricsData[i].time) activeIndex = i;
+        else break;
       }
 
       if (activeIndex !== currentActiveIdx && activeIndex !== -1) {
         currentActiveIdx = activeIndex;
-
-        // Update CSS classes
         document.querySelectorAll('.lyric-line').forEach((el, idx) => {
           el.classList.toggle('active', idx === currentActiveIdx);
         });
-
-        // Scroll to active line in center
         const activeElem = document.getElementById(`lyric-${currentActiveIdx}`);
         if (activeElem) {
           const offsetTop = activeElem.offsetTop;
@@ -1054,7 +1146,7 @@
     });
 
     /* ==========================================================
-       4. 3D PHOTO DECK
+       3. 3D PHOTO DECK
        ========================================================= */
     const slides = document.querySelectorAll('.deck-slide');
     const prevBtn = document.getElementById('deck-prev');
@@ -1092,7 +1184,26 @@
     resetAuto();
 
     /* ==========================================================
-       5. CAKE BLOW-OUT
+       4. VIDEO ROTATION ENGINE (Landscape Mode)
+       ========================================================= */
+    const videoElem = document.getElementById('feature-video');
+    const rotateBtn = document.getElementById('rotate-vid-btn');
+    const rotations = [
+      { deg: 90, scale: 1.35, label: "Landscape (90°)" },
+      { deg: 270, scale: 1.35, label: "Landscape (270°)" },
+      { deg: 0, scale: 1, label: "Original (0°)" }
+    ];
+    let currentRotIndex = 0;
+
+    rotateBtn.addEventListener('click', () => {
+      currentRotIndex = (currentRotIndex + 1) % rotations.length;
+      const rot = rotations[currentRotIndex];
+      videoElem.style.transform = `rotate(${rot.deg}deg) scale(${rot.scale})`;
+      rotateBtn.innerText = `🔄 ${rot.label}`;
+    });
+
+    /* ==========================================================
+       5. INTERACTIVE CAKE
        ========================================================= */
     const cake = document.getElementById('cake-click');
     const flame = document.getElementById('cake-flame');
@@ -1104,7 +1215,6 @@
         flame.classList.add('extinguished');
         cakeHint.innerText = "Wish Granted to the Birthday Queen! 💖✨";
         blownOut = true;
-
         confetti({
           particleCount: 130,
           spread: 90,
@@ -1119,7 +1229,7 @@
     });
 
     /* ==========================================================
-       6. FLOATING VIVID HEARTS CANVAS
+       6. FLOATING HEARTS CANVAS
        ========================================================= */
     const canvas = document.getElementById('hearts-canvas');
     const ctx = canvas.getContext('2d');
