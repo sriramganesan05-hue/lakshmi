@@ -57,7 +57,7 @@
     }
 
     /* =========================================================
-       1. GIFT UNWRAP OVERLAY
+       1. GIFT UNWRAP CARD OVERLAY
        ========================================================= */
     #gift-portal {
       position: fixed;
@@ -475,9 +475,7 @@
       box-shadow: 0 0 10px rgba(255, 255, 255, 0.9);
     }
 
-    /* =========================================================
-       4. DUAL HIGH-DEFINITION CINEMA THEATERS (BOTH VIDEOS)
-       ========================================================= */
+    /* Dual Video Theaters */
     .video-spotlight {
       width: 100%;
       background: var(--card-white);
@@ -761,6 +759,182 @@
       flex-wrap: wrap;
     }
 
+    /* =========================================================
+       9. FUNNY INTERACTIVE QUESTION CARD: "HOW MUCH DO YOU LOVE BROTHER?"
+       ========================================================= */
+    .brother-quiz-card {
+      width: 100%;
+      background: var(--card-white);
+      border: 3px solid var(--ruby-red);
+      border-radius: 30px;
+      padding: 2.2rem 1.4rem;
+      box-shadow: 0 25px 60px rgba(164, 19, 60, 0.45);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .quiz-badge {
+      display: inline-block;
+      background: #ffebf0;
+      color: var(--ruby-red);
+      border: 1.5px solid var(--ruby-red);
+      font-size: 0.75rem;
+      font-weight: 800;
+      letter-spacing: 1.5px;
+      padding: 0.35rem 1rem;
+      border-radius: 999px;
+      text-transform: uppercase;
+      margin-bottom: 0.8rem;
+    }
+
+    .quiz-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.7rem;
+      font-weight: 900;
+      color: var(--wine-text);
+      line-height: 1.25;
+      margin-bottom: 0.5rem;
+    }
+
+    .quiz-sub {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--crimson-heart);
+      font-style: italic;
+      margin-bottom: 1.8rem;
+    }
+
+    .quiz-arena {
+      position: relative;
+      width: 100%;
+      min-height: 230px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 1.1rem;
+    }
+
+    /* The Winning "The Most" Button */
+    .btn-most-love {
+      width: 100%;
+      max-width: 380px;
+      background: linear-gradient(135deg, var(--crimson-heart), var(--ruby-red));
+      color: #ffffff;
+      border: none;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 800;
+      font-size: 1.05rem;
+      letter-spacing: 0.5px;
+      padding: 1.1rem 1.4rem;
+      border-radius: 20px;
+      box-shadow: 0 8px 30px rgba(217, 4, 41, 0.55);
+      cursor: pointer;
+      transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      animation: pulseBigLove 2s infinite ease-in-out;
+      z-index: 5;
+    }
+
+    .btn-most-love:active {
+      transform: scale(0.96);
+    }
+
+    /* The Runaway / Dodging Buttons */
+    .btn-runaway {
+      width: 100%;
+      max-width: 280px;
+      background: #ffffff;
+      color: var(--wine-text);
+      border: 2px dashed var(--ruby-red);
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 700;
+      font-size: 0.95rem;
+      padding: 0.85rem 1.2rem;
+      border-radius: 16px;
+      cursor: pointer;
+      transition: transform 0.25s cubic-bezier(0.2, 0.9, 0.3, 1.2), opacity 0.3s ease;
+      user-select: none;
+      z-index: 10;
+    }
+
+    /* Pop-up Celebration Modal when she picks the right answer */
+    #victory-modal {
+      position: fixed;
+      inset: 0;
+      background: rgba(40, 0, 15, 0.85);
+      backdrop-filter: blur(12px);
+      z-index: 999999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    #victory-modal.show {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .victory-card {
+      background: #ffffff;
+      border: 3.5px solid var(--ruby-red);
+      border-radius: 30px;
+      padding: 2.4rem 1.8rem;
+      text-align: center;
+      max-width: 360px;
+      width: 100%;
+      box-shadow: 0 25px 70px rgba(217, 4, 41, 0.7);
+      transform: scale(0.85);
+      transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    #victory-modal.show .victory-card {
+      transform: scale(1);
+    }
+
+    .victory-emoji {
+      font-size: 3.6rem;
+      margin-bottom: 0.8rem;
+      animation: heartBeatBox 1.5s infinite;
+    }
+
+    .victory-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.8rem;
+      font-weight: 900;
+      color: var(--ruby-red);
+      margin-bottom: 0.6rem;
+    }
+
+    .victory-text {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: var(--wine-text);
+      font-style: italic;
+      line-height: 1.5;
+      margin-bottom: 1.6rem;
+    }
+
+    .btn-close-victory {
+      background: linear-gradient(135deg, var(--crimson-heart), var(--ruby-red));
+      border: none;
+      color: #ffffff;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 800;
+      font-size: 0.95rem;
+      letter-spacing: 1px;
+      padding: 0.85rem 1.8rem;
+      border-radius: 999px;
+      cursor: pointer;
+      box-shadow: 0 5px 20px rgba(217, 4, 41, 0.4);
+    }
+
     @keyframes heartBeatBox {
       0% { transform: scale(1); box-shadow: 0 20px 50px rgba(164, 19, 60, 0.4); }
       100% { transform: scale(1.02); box-shadow: 0 25px 65px rgba(164, 19, 60, 0.6); }
@@ -772,6 +946,10 @@
     @keyframes flameWobble {
       0% { transform: rotate(-3deg) scale(0.96); }
       100% { transform: rotate(3deg) scale(1.04); }
+    }
+    @keyframes pulseBigLove {
+      0%, 100% { transform: scale(1); box-shadow: 0 8px 30px rgba(217, 4, 41, 0.55); }
+      50% { transform: scale(1.04); box-shadow: 0 12px 40px rgba(217, 4, 41, 0.85); }
     }
   </style>
 </head>
@@ -937,9 +1115,7 @@
       </div>
     </div>
 
-    <!-- =========================================================
-         4A. CINEMA THEATER 1 (WhatsApp Video 2026-09-15 at 15.21.54.mp4)
-         ========================================================= -->
+    <!-- Dual Video Theaters -->
     <div class="video-spotlight">
       <div class="video-header">
         <div class="video-title">Special Reel I 🎬</div>
@@ -954,9 +1130,6 @@
       <p style="font-size:0.8rem; color:var(--crimson-heart); font-style:italic; text-align:center; font-weight:600;">Rotated to landscape view. Tap rotate if your screen requires a different angle!</p>
     </div>
 
-    <!-- =========================================================
-         4B. CINEMA THEATER 2 (WhatsApp Video 2026-09-15 at 17.38.10.mp4)
-         ========================================================= -->
     <div class="video-spotlight">
       <div class="video-header">
         <div class="video-title">Special Reel II 🎬</div>
@@ -979,6 +1152,32 @@
         <div class="candle-pillar"></div>
         <div class="cake-tier-1"></div>
         <div class="cake-tier-2"></div>
+      </div>
+    </div>
+
+    <!-- =========================================================
+       FUNNY RUNAWAY QUESTION: "HOW MUCH DO YOU LOVE BROTHER?"
+       ========================================================= -->
+    <div class="brother-quiz-card" id="brother-quiz-card">
+      <span class="quiz-badge">Mandatory Sister Quiz 🧐</span>
+      <h3 class="quiz-title">Lakshmi, how much do you love your brother? 🤨❤️</h3>
+      <p class="quiz-sub">Choose wisely... there is only one correct answer! 😜</p>
+
+      <div class="quiz-arena" id="quiz-arena">
+        <!-- The ONLY winning answer that she is forced to pick -->
+        <button class="btn-most-love" id="btn-most-love">
+          The MOST in the entire universe! 👑❤️
+        </button>
+
+        <!-- Funny Runaway Option 1 -->
+        <button class="btn-runaway" id="btn-dodge-1">
+          Just a little bit 🤏
+        </button>
+
+        <!-- Funny Runaway Option 2 -->
+        <button class="btn-runaway" id="btn-dodge-2">
+          Not at all / No 🙅‍♀️
+        </button>
       </div>
     </div>
 
@@ -1067,6 +1266,18 @@
 
   </div>
 
+  <!-- Victory Pop-up when she picks the ONLY allowed answer -->
+  <div id="victory-modal">
+    <div class="victory-card">
+      <div class="victory-emoji">👑❤️🎉</div>
+      <h3 class="victory-title">I KNEW IT! 😂❤️</h3>
+      <p class="victory-text">
+        "That's my girl! Best Little Sister in the entire galaxy! Love you forever, Lakshmi!"
+      </p>
+      <button class="btn-close-victory" id="btn-close-victory">Best Big Brother Ever! 💖</button>
+    </div>
+  </div>
+
   <script>
     /* ==========================================================
        1. SYNCHRONIZED TIMED LYRICS
@@ -1144,6 +1355,8 @@
     });
 
     let currentActiveIdx = -1;
+    let quizAutoPrompted = false;
+
     audio.addEventListener('timeupdate', () => {
       const curTime = audio.currentTime;
       let activeIndex = -1;
@@ -1165,6 +1378,13 @@
           const lineMiddle = offsetTop - (containerHeight / 2) + (activeElem.clientHeight / 2);
           lyricsStream.style.transform = `translateY(-${Math.max(0, lineMiddle)}px)`;
         }
+      }
+
+      // At the end of the song, scroll to the Brother Love Quiz!
+      if (audio.duration && curTime >= (audio.duration - 4) && !quizAutoPrompted) {
+        quizAutoPrompted = true;
+        const quizCard = document.getElementById('brother-quiz-card');
+        quizCard.scrollIntoView({ behavior: 'smooth' });
       }
     });
 
@@ -1231,7 +1451,7 @@
     /* ==========================================================
        4. DUAL VIDEO ROTATION HANDLERS
        ========================================================= */
-    // Video 1 (15.21.54) - Defaults to Landscape 270°
+    // Video 1
     const videoElem1 = document.getElementById('feature-video-1');
     const rotateBtn1 = document.getElementById('rotate-vid1-btn');
     const rotations1 = [
@@ -1249,7 +1469,7 @@
       rotateBtn1.innerText = `🔄 ${rot.label}`;
     });
 
-    // Video 2 (17.38.10) - Defaults to Original 0°
+    // Video 2
     const videoElem2 = document.getElementById('feature-video-2');
     const rotateBtn2 = document.getElementById('rotate-vid2-btn');
     const rotations2 = [
@@ -1294,7 +1514,75 @@
     });
 
     /* ==========================================================
-       6. FLOATING RED HEARTS CANVAS ENGINE
+       6. THE FUNNY RUNAWAY BUTTON ENGINE (FORCES MAXIMUM LOVE)
+       ========================================================= */
+    const btnMostLove = document.getElementById('btn-most-love');
+    const btnDodge1 = document.getElementById('btn-dodge-1');
+    const btnDodge2 = document.getElementById('btn-dodge-2');
+    const victoryModal = document.getElementById('victory-modal');
+    const btnCloseVictory = document.getElementById('btn-close-victory');
+
+    const funnyProtests = [
+      "Nice try, Lakshmi! 🏃‍♂️",
+      "Access Denied! ❌",
+      "Are you crazy?! 😭",
+      "Wrong button! 🚨",
+      "Illegal Choice! 🚫",
+      "Can't click me! 😜",
+      "You know you love him! ❤️",
+      "Big Brother is watching! 👀",
+      "Click the BIG red one! 👆"
+    ];
+
+    let dodgeStep = 0;
+
+    function runAway(btn) {
+      if (navigator.vibrate) navigator.vibrate(35);
+
+      // Random displacement
+      const randomX = (Math.random() - 0.5) * 160;
+      const randomY = (Math.random() - 0.5) * 120;
+      const randomScale = Math.max(0.65, 0.95 - (dodgeStep * 0.05));
+
+      btn.style.transform = `translate(${randomX}px, ${randomY}px) scale(${randomScale})`;
+      btn.innerText = funnyProtests[dodgeStep % funnyProtests.length];
+      dodgeStep++;
+
+      // Make the winning button even bigger!
+      btnMostLove.style.transform = `scale(${1 + Math.min(0.25, dodgeStep * 0.03)})`;
+    }
+
+    // Dodging on both touch & hover so she can NEVER click them!
+    ['touchstart', 'mouseover', 'click', 'pointerdown'].forEach(evt => {
+      btnDodge1.addEventListener(evt, (e) => {
+        e.preventDefault();
+        runAway(btnDodge1);
+      });
+      btnDodge2.addEventListener(evt, (e) => {
+        e.preventDefault();
+        runAway(btnDodge2);
+      });
+    });
+
+    // When she picks the winning choice!
+    btnMostLove.addEventListener('click', () => {
+      if (navigator.vibrate) navigator.vibrate([60, 50, 100]);
+      victoryModal.classList.add('show');
+
+      confetti({
+        particleCount: 120,
+        spread: 100,
+        origin: { y: 0.5 },
+        colors: ['#ef233c', '#d90429', '#ffffff', '#ffbe0b']
+      });
+    });
+
+    btnCloseVictory.addEventListener('click', () => {
+      victoryModal.classList.remove('show');
+    });
+
+    /* ==========================================================
+       7. FLOATING RED HEARTS CANVAS ENGINE
        ========================================================= */
     const canvas = document.getElementById('hearts-canvas');
     const ctx = canvas.getContext('2d');
