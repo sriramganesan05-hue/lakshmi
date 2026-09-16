@@ -57,7 +57,7 @@
     }
 
     /* =========================================================
-       1. GIFT UNWRAP CARD OVERLAY
+       1. GIFT UNWRAP OVERLAY
        ========================================================= */
     #gift-portal {
       position: fixed;
@@ -152,7 +152,7 @@
       gap: 3.8rem;
     }
 
-    /* Top Audio Pill (Mobile) */
+    /* Top Audio Pill */
     .top-pill {
       position: fixed;
       top: 14px;
@@ -475,7 +475,9 @@
       box-shadow: 0 0 10px rgba(255, 255, 255, 0.9);
     }
 
-    /* Dual Video Theaters */
+    /* =========================================================
+       4. CINEMA THEATERS (ALL 3 VIDEOS INCLUDED)
+       ========================================================= */
     .video-spotlight {
       width: 100%;
       background: var(--card-white);
@@ -760,7 +762,7 @@
     }
 
     /* =========================================================
-       9. FUNNY INTERACTIVE QUESTION CARD: "HOW MUCH DO YOU LOVE BROTHER?"
+       FUNNY QUESTION CARD
        ========================================================= */
     .brother-quiz-card {
       width: 100%;
@@ -817,7 +819,6 @@
       gap: 1.1rem;
     }
 
-    /* The Winning "The Most" Button */
     .btn-most-love {
       width: 100%;
       max-width: 380px;
@@ -841,7 +842,6 @@
       transform: scale(0.96);
     }
 
-    /* The Runaway / Dodging Buttons */
     .btn-runaway {
       width: 100%;
       max-width: 280px;
@@ -859,7 +859,6 @@
       z-index: 10;
     }
 
-    /* Pop-up Celebration Modal when she picks the right answer */
     #victory-modal {
       position: fixed;
       inset: 0;
@@ -963,7 +962,8 @@
 
   <!-- =========================================================
        1. GIFT UNWRAP OVERLAY
-       ========================================================= -->
+       ========================================================= */
+  -->
   <div id="gift-portal">
     <div class="gift-box" id="unwrap-card">
       <div class="gift-seal">❤️</div>
@@ -1115,7 +1115,26 @@
       </div>
     </div>
 
-    <!-- Dual Video Theaters -->
+    <!-- =========================================================
+         4A. THROWBACK: HER YOUNG VERSION (NEW CLIP ADDED)
+         ========================================================= -->
+    <div class="video-spotlight">
+      <div class="video-header">
+        <div class="video-title">Little Lakshmi • Throwback 👶❤️</div>
+        <button class="rotate-btn" id="rotate-vid-young-btn">🔄 Rotate View</button>
+      </div>
+      <div class="video-cinema-box">
+        <video id="feature-video-young" class="spotlight-video" controls playsinline autoplay loop muted preload="auto">
+          <source src="WhatsApp Video 2026-09-16 at 16.39.29.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+      </div>
+      <p style="font-size:0.82rem; color:var(--crimson-heart); font-style:italic; text-align:center; font-weight:700;">"Watching you grow from this sweet little angel into the queen you are today has been my greatest joy..." 🌸✨</p>
+    </div>
+
+    <!-- =========================================================
+         4B. CINEMA THEATER 1 (WhatsApp Video 2026-09-15 at 15.21.54.mp4)
+         ========================================================= -->
     <div class="video-spotlight">
       <div class="video-header">
         <div class="video-title">Special Reel I 🎬</div>
@@ -1127,9 +1146,12 @@
           Your browser does not support the video tag.
         </video>
       </div>
-      <p style="font-size:0.8rem; color:var(--crimson-heart); font-style:italic; text-align:center; font-weight:600;">Rotated to landscape view. Tap rotate if your screen requires a different angle!</p>
+      <p style="font-size:0.8rem; color:var(--crimson-heart); font-style:italic; text-align:center; font-weight:600;">Rotated to landscape view. Tap rotate if desired!</p>
     </div>
 
+    <!-- =========================================================
+         4C. CINEMA THEATER 2 (WhatsApp Video 2026-09-15 at 17.38.10.mp4)
+         ========================================================= -->
     <div class="video-spotlight">
       <div class="video-header">
         <div class="video-title">Special Reel II 🎬</div>
@@ -1156,7 +1178,7 @@
     </div>
 
     <!-- =========================================================
-       FUNNY RUNAWAY QUESTION: "HOW MUCH DO YOU LOVE BROTHER?"
+       FUNNY QUESTION CARD
        ========================================================= -->
     <div class="brother-quiz-card" id="brother-quiz-card">
       <span class="quiz-badge">Mandatory Sister Quiz 🧐</span>
@@ -1266,7 +1288,7 @@
 
   </div>
 
-  <!-- Victory Pop-up when she picks the ONLY allowed answer -->
+  <!-- Victory Pop-up -->
   <div id="victory-modal">
     <div class="victory-card">
       <div class="victory-emoji">👑❤️🎉</div>
@@ -1380,7 +1402,6 @@
         }
       }
 
-      // At the end of the song, scroll to the Brother Love Quiz!
       if (audio.duration && curTime >= (audio.duration - 4) && !quizAutoPrompted) {
         quizAutoPrompted = true;
         const quizCard = document.getElementById('brother-quiz-card');
@@ -1449,8 +1470,25 @@
     resetAuto();
 
     /* ==========================================================
-       4. DUAL VIDEO ROTATION HANDLERS
+       4. TRIPLE VIDEO ROTATION HANDLERS
        ========================================================= */
+    // Video 0: Young Version
+    const videoElemYoung = document.getElementById('feature-video-young');
+    const rotateBtnYoung = document.getElementById('rotate-vid-young-btn');
+    const rotationsYoung = [
+      { deg: 0, scale: 1, label: "Original (0°)" },
+      { deg: 270, scale: 1.35, label: "Landscape (270°)" },
+      { deg: 90, scale: 1.35, label: "Landscape (90°)" }
+    ];
+    let rotIndexYoung = 0;
+
+    rotateBtnYoung.addEventListener('click', () => {
+      rotIndexYoung = (rotIndexYoung + 1) % rotationsYoung.length;
+      const rot = rotationsYoung[rotIndexYoung];
+      videoElemYoung.style.transform = `rotate(${rot.deg}deg) scale(${rot.scale})`;
+      rotateBtnYoung.innerText = `🔄 ${rot.label}`;
+    });
+
     // Video 1
     const videoElem1 = document.getElementById('feature-video-1');
     const rotateBtn1 = document.getElementById('rotate-vid1-btn');
@@ -1514,7 +1552,7 @@
     });
 
     /* ==========================================================
-       6. THE FUNNY RUNAWAY BUTTON ENGINE (FORCES MAXIMUM LOVE)
+       6. THE FUNNY RUNAWAY BUTTON ENGINE
        ========================================================= */
     const btnMostLove = document.getElementById('btn-most-love');
     const btnDodge1 = document.getElementById('btn-dodge-1');
@@ -1538,8 +1576,6 @@
 
     function runAway(btn) {
       if (navigator.vibrate) navigator.vibrate(35);
-
-      // Random displacement
       const randomX = (Math.random() - 0.5) * 160;
       const randomY = (Math.random() - 0.5) * 120;
       const randomScale = Math.max(0.65, 0.95 - (dodgeStep * 0.05));
@@ -1548,11 +1584,9 @@
       btn.innerText = funnyProtests[dodgeStep % funnyProtests.length];
       dodgeStep++;
 
-      // Make the winning button even bigger!
       btnMostLove.style.transform = `scale(${1 + Math.min(0.25, dodgeStep * 0.03)})`;
     }
 
-    // Dodging on both touch & hover so she can NEVER click them!
     ['touchstart', 'mouseover', 'click', 'pointerdown'].forEach(evt => {
       btnDodge1.addEventListener(evt, (e) => {
         e.preventDefault();
@@ -1564,11 +1598,9 @@
       });
     });
 
-    // When she picks the winning choice!
     btnMostLove.addEventListener('click', () => {
       if (navigator.vibrate) navigator.vibrate([60, 50, 100]);
       victoryModal.classList.add('show');
-
       confetti({
         particleCount: 120,
         spread: 100,
