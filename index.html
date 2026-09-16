@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
   <title>Happy Birthday, Lakshmi ❤️✨</title>
 
-  <!-- Google Luxury & Calligraphy Fonts -->
+  <!-- Google Luxury Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,600&family=Playfair+Display:ital,wght@0,700;0,900;1,600&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
@@ -57,7 +57,7 @@
     }
 
     /* =========================================================
-       1. GIFT UNWRAP CARD OVERLAY
+       1. GIFT UNWRAP OVERLAY
        ========================================================= */
     #gift-portal {
       position: fixed;
@@ -476,7 +476,7 @@
     }
 
     /* =========================================================
-       4. HIGH-DEFINITION CINEMA THEATER (NEW VIDEO INCLUDED)
+       4. DUAL HIGH-DEFINITION CINEMA THEATERS (BOTH VIDEOS)
        ========================================================= */
     .video-spotlight {
       width: 100%;
@@ -518,7 +518,6 @@
       cursor: pointer;
     }
 
-    /* Ultra-Clean High-Resolution Video Theater */
     .video-cinema-box {
       width: 100%;
       min-height: 280px;
@@ -939,20 +938,37 @@
     </div>
 
     <!-- =========================================================
-         4. HIGH-DEFINITION VIDEO THEATER (NEW MP4 ADDED)
+         4A. CINEMA THEATER 1 (WhatsApp Video 2026-09-15 at 15.21.54.mp4)
          ========================================================= -->
     <div class="video-spotlight">
       <div class="video-header">
-        <div class="video-title">Special Moments 🎬</div>
-        <button class="rotate-btn" id="rotate-vid-btn">🔄 Rotate View</button>
+        <div class="video-title">Special Reel I 🎬</div>
+        <button class="rotate-btn" id="rotate-vid1-btn">🔄 Rotate View</button>
       </div>
       <div class="video-cinema-box">
-        <video id="feature-video" class="spotlight-video" controls playsinline preload="auto">
+        <video id="feature-video-1" class="spotlight-video" controls playsinline autoplay loop muted preload="auto">
+          <source src="WhatsApp Video 2026-09-15 at 15.21.54.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+      </div>
+      <p style="font-size:0.8rem; color:var(--crimson-heart); font-style:italic; text-align:center; font-weight:600;">Rotated to landscape view. Tap rotate if your screen requires a different angle!</p>
+    </div>
+
+    <!-- =========================================================
+         4B. CINEMA THEATER 2 (WhatsApp Video 2026-09-15 at 17.38.10.mp4)
+         ========================================================= -->
+    <div class="video-spotlight">
+      <div class="video-header">
+        <div class="video-title">Special Reel II 🎬</div>
+        <button class="rotate-btn" id="rotate-vid2-btn">🔄 Rotate View</button>
+      </div>
+      <div class="video-cinema-box">
+        <video id="feature-video-2" class="spotlight-video" controls playsinline autoplay loop muted preload="auto">
           <source src="WhatsApp Video 2026-09-15 at 17.38.10.mp4" type="video/mp4">
           Your browser does not support the video tag.
         </video>
       </div>
-      <p style="font-size:0.8rem; color:var(--crimson-heart); font-style:italic; text-align:center; font-weight:600;">Full HD video loaded. Tap "Rotate View" if recorded horizontally or vertically!</p>
+      <p style="font-size:0.8rem; color:var(--crimson-heart); font-style:italic; text-align:center; font-weight:600;">Full HD video loaded in crystal clarity!</p>
     </div>
 
     <!-- Candle Cake -->
@@ -1213,22 +1229,41 @@
     resetAuto();
 
     /* ==========================================================
-       4. VIDEO ROTATION ENGINE
+       4. DUAL VIDEO ROTATION HANDLERS
        ========================================================= */
-    const videoElem = document.getElementById('feature-video');
-    const rotateBtn = document.getElementById('rotate-vid-btn');
-    const rotations = [
-      { deg: 0, scale: 1, label: "Original View (0°)" },
-      { deg: 270, scale: 1.3, label: "Landscape (270°)" },
-      { deg: 90, scale: 1.3, label: "Landscape (90°)" }
+    // Video 1 (15.21.54) - Defaults to Landscape 270°
+    const videoElem1 = document.getElementById('feature-video-1');
+    const rotateBtn1 = document.getElementById('rotate-vid1-btn');
+    const rotations1 = [
+      { deg: 270, scale: 1.35, label: "Landscape (270°)" },
+      { deg: 90, scale: 1.35, label: "Landscape (90°)" },
+      { deg: 0, scale: 1, label: "Portrait (0°)" }
     ];
-    let currentRotIndex = 0;
+    let rotIndex1 = 0;
+    videoElem1.style.transform = `rotate(270deg) scale(1.35)`;
 
-    rotateBtn.addEventListener('click', () => {
-      currentRotIndex = (currentRotIndex + 1) % rotations.length;
-      const rot = rotations[currentRotIndex];
-      videoElem.style.transform = `rotate(${rot.deg}deg) scale(${rot.scale})`;
-      rotateBtn.innerText = `🔄 ${rot.label}`;
+    rotateBtn1.addEventListener('click', () => {
+      rotIndex1 = (rotIndex1 + 1) % rotations1.length;
+      const rot = rotations1[rotIndex1];
+      videoElem1.style.transform = `rotate(${rot.deg}deg) scale(${rot.scale})`;
+      rotateBtn1.innerText = `🔄 ${rot.label}`;
+    });
+
+    // Video 2 (17.38.10) - Defaults to Original 0°
+    const videoElem2 = document.getElementById('feature-video-2');
+    const rotateBtn2 = document.getElementById('rotate-vid2-btn');
+    const rotations2 = [
+      { deg: 0, scale: 1, label: "Original (0°)" },
+      { deg: 270, scale: 1.35, label: "Landscape (270°)" },
+      { deg: 90, scale: 1.35, label: "Landscape (90°)" }
+    ];
+    let rotIndex2 = 0;
+
+    rotateBtn2.addEventListener('click', () => {
+      rotIndex2 = (rotIndex2 + 1) % rotations2.length;
+      const rot = rotations2[rotIndex2];
+      videoElem2.style.transform = `rotate(${rot.deg}deg) scale(${rot.scale})`;
+      rotateBtn2.innerText = `🔄 ${rot.label}`;
     });
 
     /* ==========================================================
@@ -1259,7 +1294,7 @@
     });
 
     /* ==========================================================
-       6. FLOATING RED HEARTS CANVAS
+       6. FLOATING RED HEARTS CANVAS ENGINE
        ========================================================= */
     const canvas = document.getElementById('hearts-canvas');
     const ctx = canvas.getContext('2d');
